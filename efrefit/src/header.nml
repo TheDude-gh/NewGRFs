@@ -1,0 +1,61 @@
+grf {
+	grfid:                  "JS\01\17";
+	name:                   string(STR_GRF_NAME);
+	desc:                   string(STR_GRF_DESCRIPTION);
+	version:                4;
+	min_compatible_version: 0;
+	url: string(STR_GRF_URL);
+
+	param 0 {
+ 		choochoo {
+ 			type:    bool;
+ 			name:    string(STR_PARAM_CHOCHO);
+ 			desc:    string(STR_PARAM_CHOCHO_DESC);
+ 			bit:     0;
+ 		}
+	}
+}
+
+cargotable {
+	//original 31
+	PASS, COAL, MAIL, OIL_, LVST, GOOD, GRAI, WOOD,
+	IORE, STEL, VALU, PAPR, WHEA, FOOD, GOLD, RUBR,
+	FRUT,	MAIZ, CORE, WATR, DIAM,	SUGR, TOYS,	BATT,
+	SWET, TOFF,	COLA, CTCD,	BUBL, PLST, FZDR,
+	//ECS    19
+	CERE, FISH, WOOL, BRCK, SAND, GLAS, WDPR, DYES,
+	FERT, OLSD, RFPR, VEHI, PETR, AORE, BDMT,	FICR,
+	CMNT, TOUR, LIME,
+	//FIRS   12
+	MILK, SGBT, FRVG, CLAY, MNSP, SCMT, FMSP,	ENSP,
+	GRVL, BEER, SGCN, RCYC, 
+	//YETI   2
+	YETI, URAN,
+	//cargo pyramid  3      31+19+12+2+3=67
+	CASH, HCOW, ENRG
+}
+
+
+/*
+   1	CC_PASSENGERS
+   2	CC_MAIL
+   4	CC_EXPRESS
+   8	CC_ARMOURED
+
+  10	CC_BULK
+  20	CC_PIECE_GOODS
+  40	CC_LIQUID
+  80	CC_REFRIGERATED
+
+ 100	CC_HAZARDOUS
+ 200	CC_COVERED
+ 400	CC_OVERSIZED
+ 800	CC_POWDERIZED
+
+1000	CC_NON_POURABLE
+2000	CC_NEO_BULK
+4000	CC_SPECIAL
+NO_CARGO_CLASS
+ALL_NORMAL_CARGO_CLASSES
+ALL_CARGO_CLASSES
+*/

@@ -1,0 +1,1416 @@
+//[(left_x, upper_y, width, height, )offset_x, offset_y(, flags)(, filename)(, mask)]
+//<xpos> <ypos> <compression> <ysize> <xsize> <xrel> <yrel>
+
+//finish industry tiles
+spriteset(sprites_madcow, "gfx/lester.png") {
+  [0, 0, 32, 68, -14, -45]
+}
+
+spritelayout spritelayout_madcow {
+	ground { sprite: 2355; }
+	building {
+		sprite: sprites_madcow(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 68;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+
+spriteset(sprites_cowgrass, "gfx/cowgrass.png") {
+  [0, 0, 48, 37, -19, -13]
+}
+spriteset(sprites_cowhappy, "gfx/cowtilehappy.png") {
+  [0, 0, 32, 32, -15, -8]
+}
+spriteset(sprites_cowsad, "gfx/cowtilesad.png") {
+  [0, 0, 32, 32, -17, -8]
+}
+spriteset(sprites_cowalert, "gfx/cowalert.png") {
+  [0, 0, 32, 32, -16, 0]
+}
+
+spritelayout spritelayout_cowgrass {
+	ground { sprite: 4126; }
+	building {
+		sprite: sprites_cowgrass(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_cowhappy {
+	ground { sprite: 4126; }
+	building {
+		sprite: sprites_cowhappy(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 24;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_cowsad {
+	ground { sprite: 4126; }
+	building {
+		sprite: sprites_cowsad(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 24;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_cowalert {
+	ground { sprite: 4126; }
+	building {
+		sprite: sprites_cowalert(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 8;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_fieldhay {
+	ground { sprite: 4278; }
+	building {
+		sprite: 4278;
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 8;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+
+spritelayout spritelayout_umbrella {
+	ground { sprite: 4690; }
+	building {
+		sprite: 1978;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+
+spritelayout spritelayout_explosion1 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3711;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion2 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3712;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion3 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3713;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion4 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3714;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+
+spritelayout spritelayout_explosion5 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3715;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion6 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3716;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion7 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3717;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion8 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3718;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion9 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3719;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion10 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3720;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion11 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3721;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion12 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3722;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion13 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3723;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_explosion14 {
+	ground { sprite: 4722; }
+	building {
+		sprite: 3724;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+switch(FEAT_INDUSTRYTILES, SELF, altar_animationx,	[animation_frame]){
+	0: spritelayout_explosion1;
+	1: spritelayout_explosion2;
+	2: spritelayout_explosion3;
+	3: spritelayout_explosion4;
+	4: spritelayout_explosion5;
+	5: spritelayout_explosion6;
+	6: spritelayout_explosion7;
+	7: spritelayout_explosion8;
+	8: spritelayout_explosion9;
+	9: spritelayout_explosion10;
+	10: spritelayout_explosion11;
+	11: spritelayout_explosion12;
+	12: spritelayout_explosion13;
+	spritelayout_explosion14;
+}
+
+//present sprite
+spritelayout spritelayout_clutter01 {
+	ground { sprite: GROUNDSPRITE_NORMAL; }
+	building {
+		sprite: 4639;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+//kettle sprite
+spritelayout spritelayout_clutter02 {
+	ground { sprite: 4771; }
+	building {
+		sprite: 4697;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+//kettle sprite
+spritelayout spritelayout_grass {
+	ground { sprite: GROUNDSPRITE_NORMAL; }
+	building {
+		sprite: GROUNDSPRITE_NORMAL;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+//ufo
+spritelayout spritelayout_ufo {
+	ground { sprite: GROUNDSPRITE_NORMAL; }
+	building {
+		sprite: 3920;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+//plane
+spritelayout spritelayout_plane1 {
+	ground { sprite: GROUNDSPRITE_NORMAL; }
+	building {
+		sprite: 3874;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+spritelayout spritelayout_plane2 {
+	ground { sprite: GROUNDSPRITE_NORMAL; }
+	building {
+		sprite: 3872;
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, animation_ufo1,	[animation_frame]){
+	0: spritelayout_ufo;
+	spritelayout_grass;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, animation_ufo2,	[animation_frame]){
+	1: spritelayout_ufo;
+	spritelayout_grass;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, animation_ufo3,	[animation_frame]){
+	2: spritelayout_ufo;
+	spritelayout_grass;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, animation_ufo4,	[animation_frame]){
+	3: spritelayout_ufo;
+	spritelayout_grass;
+}
+
+//candyfloss
+spriteset(sprites_candyflossforrest, "sprites/trgtr.png") {
+  /*[722, 776, 45, 41, -22, -16]
+  [2, 840, 50, 44, -24, -19]
+  [66, 840, 55, 50, -26, -25]*/
+  [130, 840, 63, 55, -31, -30]
+}
+
+spritelayout spritelayout_candyforrest4 {
+	ground { sprite: 2341; }
+	building {
+		sprite: sprites_candyflossforrest(0);
+		xoffset: 0;
+		yoffset: 0;
+		recolour_mode: RECOLOUR_NONE;
+	}
+}
+
+//industry tiles properties
+item(FEAT_INDUSTRYTILES, COAL_MINE_0, 0){
+  property{
+		substitute: 0;
+		override: 0;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COAL_MINE_1, 1){
+  property{
+		substitute: 1;
+		override: 1;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COAL_MINE_2, 2){
+  property{
+		substitute: 2;
+		override: 2;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COAL_MINE_3, 3){
+  property{
+		substitute: 3;
+		override: 3;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COAL_MINE_4, 4){
+  property{
+		substitute: 4;
+		override: 4;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COAL_MINE_5, 5){
+  property{
+		substitute: 5;
+		override: 5;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COAL_MINE_6, 6){
+  property{
+		substitute: 6;
+		override: 6;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, POWER_STATION_7, 7){
+  property{
+		substitute: 7;
+		override: 7;
+		accepted_cargos: [[FOOD, 8], [SWET, 8], [FZDR, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, POWER_STATION_8, 8){
+  property{
+		substitute: 8;
+		override: 8;
+		accepted_cargos: [[FOOD, 8], [SWET, 8], [FZDR, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, POWER_STATION_9, 9){
+  property{
+		substitute: 9;
+		override: 9;
+		accepted_cargos: [[FOOD, 8], [SWET, 8], [FZDR, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, POWER_STATION_10, 10){
+  property{
+		substitute: 10;
+		override: 10;
+		accepted_cargos: [[FOOD, 8], [SWET, 8], [FZDR, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FOREST_16, 16){
+  property{
+		substitute: 16;
+		override: 16;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FOREST_17, 17){
+  property{
+		substitute: 17;
+		override: 17;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, ACME_18, 18){
+  property{
+		substitute: 18;
+		override: 18;
+		accepted_cargos: [[ENRG, 8], [TOYS, 8]];
+	}
+	graphics{ spritelayout_cowgrass; }
+}
+item(FEAT_INDUSTRYTILES, ACME_19, 19){
+  property{
+		substitute: 19;
+		override: 19;
+		accepted_cargos: [[ENRG, 8], [TOYS, 8]];
+	}
+	graphics{ spritelayout_cowhappy; }
+}
+item(FEAT_INDUSTRYTILES, ACME_20, 20){
+  property{
+		substitute: 20;
+		override: 20;
+		accepted_cargos: [[ENRG, 8], [TOYS, 8]];
+	}
+	graphics{ spritelayout_cowsad; }
+}
+item(FEAT_INDUSTRYTILES, ACME_21, 21){
+  property{
+		substitute: 21;
+		override: 21;
+		accepted_cargos: [[ENRG, 8], [TOYS, 8]];
+	}
+	graphics{ spritelayout_cowalert; }
+}
+item(FEAT_INDUSTRYTILES, ACME_22, 22){
+  property{
+		substitute: 22;
+		override: 22;
+		accepted_cargos: [[ENRG, 8], [TOYS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, ACME_23, 23){
+  property{
+		substitute: 23;
+		override: 23;
+		accepted_cargos: [[ENRG, 8], [TOYS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, OIL_WELLS_29, 29){
+  property{
+		substitute: 29;
+		override: 29;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, OIL_WELLS_30, 30){
+  property{
+		substitute: 30;
+		override: 30;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, OIL_WELLS_31, 31){
+  property{
+		substitute: 31;
+		override: 31;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, OIL_WELLS_32, 32){
+  property{
+		substitute: 32;
+		override: 32;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FARM_33, 33){
+  property{
+		substitute: 33;
+		override: 33;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FARM_34, 34){
+  property{
+		substitute: 34;
+		override: 34;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FARM_35, 35){
+  property{
+		substitute: 35;
+		override: 35;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FARM_36, 36){
+  property{
+		substitute: 36;
+		override: 36;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FARM_37, 37){
+  property{
+		substitute: 37;
+		override: 37;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FARM_38, 38){
+  property{
+		substitute: 38;
+		override: 38;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FACTORY_39, 39){
+  property{
+		substitute: 39;
+		override: 39;
+		accepted_cargos: [[WOOD, 8], [RUBR, 8], [CORE, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FACTORY_40, 40){
+  property{
+		substitute: 40;
+		override: 40;
+		accepted_cargos: [[WOOD, 8], [RUBR, 8], [CORE, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FACTORY_41, 41){
+  property{
+		substitute: 41;
+		override: 41;
+		accepted_cargos: [[WOOD, 8], [RUBR, 8], [CORE, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FACTORY_42, 42){
+  property{
+		substitute: 42;
+		override: 42;
+		accepted_cargos: [[WOOD, 8], [RUBR, 8], [CORE, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, PRINTING_WORKS_43, 43){
+  property{
+		substitute: 43;
+		override: 43;
+		accepted_cargos: [[DIAM, 8], [GOLD, 8], [VALU, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, PRINTING_WORKS_44, 44){
+  property{
+		substitute: 44;
+		override: 44;
+		accepted_cargos: [[DIAM, 8], [GOLD, 8], [VALU, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, PRINTING_WORKS_45, 45){
+  property{
+		substitute: 45;
+		override: 45;
+		accepted_cargos: [[DIAM, 8], [GOLD, 8], [VALU, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COPPERORE_MINE_47, 47){
+  property{
+		substitute: 47;
+		override: 47;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COPPERORE_MINE_48, 48){
+  property{
+		substitute: 48;
+		override: 48;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COPPERORE_MINE_49, 49){
+  property{
+		substitute: 49;
+		override: 49;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COPPERORE_MINE_50, 50){
+  property{
+		substitute: 50;
+		override: 50;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COPPERORE_MINE_51, 51){
+  property{
+		substitute: 51;
+		override: 51;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, STEEL_MILL_52, 52){
+  property{
+		substitute: 52;
+		override: 52;
+		accepted_cargos: [[COAL, 8], [IORE, 8], [OIL_, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, STEEL_MILL_53, 53){
+  property{
+		substitute: 53;
+		override: 53;
+		accepted_cargos: [[COAL, 8], [IORE, 8], [OIL_, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, STEEL_MILL_54, 54){
+  property{
+		substitute: 54;
+		override: 54;
+		accepted_cargos: [[COAL, 8], [IORE, 8], [OIL_, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, STEEL_MILL_55, 55){
+  property{
+		substitute: 55;
+		override: 55;
+		accepted_cargos: [[COAL, 8], [IORE, 8], [OIL_, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, STEEL_MILL_56, 56){
+  property{
+		substitute: 56;
+		override: 56;
+		accepted_cargos: [[COAL, 8], [IORE, 8], [OIL_, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, STEEL_MILL_57, 57){
+  property{
+		substitute: 57;
+		override: 57;
+		accepted_cargos: [[COAL, 8], [IORE, 8], [OIL_, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, BANK_58, 58){
+  property{
+		substitute: 58;
+		override: 58;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, BANK_59, 59){
+  property{
+		substitute: 59;
+		override: 59;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FOODPROCESSING_PLANT_60, 60){
+  property{
+		substitute: 60;
+		override: 60;
+		accepted_cargos: [[LVST, 8], [GRAI, 8], [FRUT, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FOODPROCESSING_PLANT_61, 61){
+  property{
+		substitute: 61;
+		override: 61;
+		accepted_cargos: [[LVST, 8], [GRAI, 8], [FRUT, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FOODPROCESSING_PLANT_62, 62){
+  property{
+		substitute: 62;
+		override: 62;
+		accepted_cargos: [[LVST, 8], [GRAI, 8], [FRUT, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FOODPROCESSING_PLANT_63, 63){
+  property{
+		substitute: 63;
+		override: 63;
+		accepted_cargos: [[LVST, 8], [GRAI, 8], [FRUT, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, ACCACME_64, 64){
+  property{
+		substitute: 64;
+		override: 64;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{
+		spritelayout_madcow;
+	}
+}
+item(FEAT_INDUSTRYTILES, ACCACME_65, 65){
+  property{
+		substitute: 65;
+		override: 65;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_umbrella; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_66, 66){
+  property{
+		substitute: 66;
+		override: 66;
+		accepted_cargos: [[HCOW, 8]];
+		animation_info: [ANIMATION_LOOPING, 14];
+		animation_speed: 1;
+	}
+	graphics{
+		default: altar_animationx;
+	}
+}
+item(FEAT_INDUSTRYTILES, ACCACME_67, 67){
+  property{
+		substitute: 67;
+		override: 67;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_clutter01; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_68, 68){
+  property{
+		substitute: 68;
+		override: 68;
+		accepted_cargos: [[HCOW, 8]];
+	}
+  graphics{ spritelayout_clutter02; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_69, 69){
+  property{
+		substitute: 69;
+		override: 69;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_grass; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_70, 70){
+  property{
+		substitute: 70;
+		override: 70;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_ufo; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_71, 71){
+  property{
+		substitute: 71;
+		override: 71;
+		accepted_cargos: [[HCOW, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_72, 72){
+  property{
+		substitute: 72;
+		override: 72;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_73, 73){
+  property{
+		substitute: 73;
+		override: 73;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_74, 74){
+  property{
+		substitute: 74;
+		override: 74;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_75, 75){
+  property{
+		substitute: 75;
+		override: 75;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_76, 76){
+  property{
+		substitute: 76;
+		override: 76;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_77, 77){
+  property{
+		substitute: 77;
+		override: 77;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_78, 78){
+  property{
+		substitute: 78;
+		override: 78;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_79, 79){
+  property{
+		substitute: 79;
+		override: 79;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_80, 80){
+  property{
+		substitute: 80;
+		override: 80;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_81, 81){
+  property{
+		substitute: 81;
+		override: 81;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_82, 82){
+  property{
+		substitute: 82;
+		override: 82;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_83, 83){
+  property{
+		substitute: 83;
+		override: 83;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_84, 84){
+  property{
+		substitute: 84;
+		override: 84;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_85, 85){
+  property{
+		substitute: 85;
+		override: 85;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_86, 86){
+  property{
+		substitute: 86;
+		override: 86;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_87, 87){
+  property{
+		substitute: 87;
+		override: 87;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_88, 88){
+  property{
+		substitute: 88;
+		override: 88;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_91, 91){
+  property{
+		substitute: 91;
+		override: 91;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_92, 92){
+  property{
+		substitute: 92;
+		override: 92;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_93, 93){
+  property{
+		substitute: 93;
+		override: 93;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_94, 94){
+  property{
+		substitute: 94;
+		override: 94;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_95, 95){
+  property{
+		substitute: 95;
+		override: 95;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_96, 96){
+  property{
+		substitute: 96;
+		override: 96;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_97, 97){
+  property{
+		substitute: 97;
+		override: 97;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_98, 98){
+  property{
+		substitute: 98;
+		override: 98;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, DIAMOND_MINE_99, 99){
+  property{
+		substitute: 99;
+		override: 99;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_100, 100){
+  property{
+		substitute: 100;
+		override: 100;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_101, 101){
+  property{
+		substitute: 101;
+		override: 101;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_102, 102){
+  property{
+		substitute: 102;
+		override: 102;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_103, 103){
+  property{
+		substitute: 103;
+		override: 103;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_104, 104){
+  property{
+		substitute: 104;
+		override: 104;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_105, 105){
+  property{
+		substitute: 105;
+		override: 105;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_106, 106){
+  property{
+		substitute: 106;
+		override: 106;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_107, 107){
+  property{
+		substitute: 107;
+		override: 107;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_108, 108){
+  property{
+		substitute: 108;
+		override: 108;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_109, 109){
+  property{
+		substitute: 109;
+		override: 109;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_110, 110){
+  property{
+		substitute: 110;
+		override: 110;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_111, 111){
+  property{
+		substitute: 111;
+		override: 111;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_112, 112){
+  property{
+		substitute: 112;
+		override: 112;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_113, 113){
+  property{
+		substitute: 113;
+		override: 113;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_114, 114){
+  property{
+		substitute: 114;
+		override: 114;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, IRONORE_MINE_115, 115){
+  property{
+		substitute: 115;
+		override: 115;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FRUIT_PLANTATION_116, 116){
+  property{
+		substitute: 116;
+		override: 116;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, RUBBER_PLANTATION_117, 117){
+  property{
+		substitute: 117;
+		override: 117;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, WATER_SUPPLY_118, 118){
+  property{
+		substitute: 118;
+		override: 118;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, WATER_SUPPLY_119, 119){
+  property{
+		substitute: 119;
+		override: 119;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, CANDYFLOSS_FOREST_129, 129){
+  property{
+		substitute: 129;
+		override: 129;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics { spritelayout_candyforrest4; }
+}
+item(FEAT_INDUSTRYTILES, CANDYFLOSS_FOREST_130, 130){
+  property{
+		substitute: 130;
+		override: 130;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics { spritelayout_candyforrest4; }
+}
+item(FEAT_INDUSTRYTILES, SWEET_FACTORY_131, 131){
+  property{
+		substitute: 131;
+		override: 131;
+		accepted_cargos: [[CTCD, 8], [SUGR, 8], [TOFF, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SWEET_FACTORY_132, 132){
+  property{
+		substitute: 132;
+		override: 132;
+		accepted_cargos: [[CTCD, 8], [SUGR, 8], [TOFF, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SWEET_FACTORY_133, 133){
+  property{
+		substitute: 133;
+		override: 133;
+		accepted_cargos: [[CTCD, 8], [SUGR, 8], [TOFF, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SWEET_FACTORY_134, 134){
+  property{
+		substitute: 134;
+		override: 134;
+		accepted_cargos: [[CTCD, 8], [SUGR, 8], [TOFF, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, COLA_WELLS_137, 137){
+  property{
+		substitute: 137;
+		override: 137;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOY_FACTORY_142, 142){
+  property{
+		substitute: 142;
+		override: 142;
+		accepted_cargos: [[STEL, 8], [GOOD, 8], [CASH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOY_FACTORY_143, 143){
+  property{
+		substitute: 143;
+		override: 143;
+		accepted_cargos: [[STEL, 8], [GOOD, 8], [CASH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOY_FACTORY_144, 144){
+  property{
+		substitute: 144;
+		override: 144;
+		accepted_cargos: [[STEL, 8], [GOOD, 8], [CASH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOY_FACTORY_145, 145){
+  property{
+		substitute: 145;
+		override: 145;
+		accepted_cargos: [[STEL, 8], [GOOD, 8], [CASH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOY_FACTORY_146, 146){
+  property{
+		substitute: 146;
+		override: 146;
+		accepted_cargos: [[STEL, 8], [GOOD, 8], [CASH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOY_FACTORY_147, 147){
+  property{
+		substitute: 147;
+		override: 147;
+		accepted_cargos: [[STEL, 8], [GOOD, 8], [CASH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FIZZYDRINK_FACTORY_156, 156){
+  property{
+		substitute: 156;
+		override: 156;
+		accepted_cargos: [[BUBL, 8], [COLA, 8], [WATR, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FIZZYDRINK_FACTORY_157, 157){
+  property{
+		substitute: 157;
+		override: 157;
+		accepted_cargos: [[BUBL, 8], [COLA, 8], [WATR, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FIZZYDRINK_FACTORY_158, 158){
+  property{
+		substitute: 158;
+		override: 158;
+		accepted_cargos: [[BUBL, 8], [COLA, 8], [WATR, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, FIZZYDRINK_FACTORY_159, 159){
+  property{
+		substitute: 159;
+		override: 159;
+		accepted_cargos: [[BUBL, 8], [COLA, 8], [WATR, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, BUBBLE_GENERATOR_160, 160){
+  property{
+		substitute: 160;
+		override: 160;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, BUBBLE_GENERATOR_161, 161){
+  property{
+		substitute: 161;
+		override: 161;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, BUBBLE_GENERATOR_162, 162){
+  property{
+		substitute: 162;
+		override: 162;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, BUBBLE_GENERATOR_163, 163){
+  property{
+		substitute: 163;
+		override: 163;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOFFEE_QUARRY_164, 164){
+  property{
+		substitute: 164;
+		override: 164;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOFFEE_QUARRY_165, 165){
+  property{
+		substitute: 165;
+		override: 165;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, TOFFEE_QUARRY_166, 166){
+  property{
+		substitute: 166;
+		override: 166;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SUGAR_MINE_167, 167){
+  property{
+		substitute: 167;
+		override: 167;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SUGAR_MINE_168, 168){
+  property{
+		substitute: 168;
+		override: 168;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SUGAR_MINE_169, 169){
+  property{
+		substitute: 169;
+		override: 169;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SUGAR_MINE_170, 170){
+  property{
+		substitute: 170;
+		override: 170;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SUGAR_MINE_171, 171){
+  property{
+		substitute: 171;
+		override: 171;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SUGAR_MINE_172, 172){
+  property{
+		substitute: 172;
+		override: 172;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SUGAR_MINE_173, 173){
+  property{
+		substitute: 173;
+		override: 173;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, SUGAR_MINE_174, 174){
+  property{
+		substitute: 174;
+		override: 174;
+		accepted_cargos: [[PASS, 8]];
+	}
+}
+//new
+item(FEAT_INDUSTRYTILES, ACCACME_175, 175){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+		animation_info: [ANIMATION_LOOPING, 4];
+		animation_speed: 5;
+	}
+	graphics{ animation_ufo1; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_176, 176){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+		animation_info: [ANIMATION_LOOPING, 4];
+		animation_speed: 5;
+	}
+	graphics{ animation_ufo2; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_177, 177){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+		animation_info: [ANIMATION_LOOPING, 4];
+		animation_speed: 5;
+	}
+	graphics{ animation_ufo3; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_178, 178){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+		animation_info: [ANIMATION_LOOPING, 4];
+		animation_speed: 5;
+	}
+	graphics{ animation_ufo4; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_179, 179){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_plane1; }
+}
+item(FEAT_INDUSTRYTILES, ACCACME_180, 180){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_plane2; }
+}
+
+item(FEAT_INDUSTRYTILES, ACME_HAPPY, 181){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_cowhappy; }
+}
+item(FEAT_INDUSTRYTILES, ACME_SAD, 182){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_cowsad; }
+}
+item(FEAT_INDUSTRYTILES, ACME_ALERT, 183){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_cowalert; }
+}
+item(FEAT_INDUSTRYTILES, ACME_GRASS, 184){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_cowgrass; }
+}
+item(FEAT_INDUSTRYTILES, ACME_FIELD, 185){
+  property{
+		substitute: 71;
+		accepted_cargos: [[HCOW, 8]];
+	}
+	graphics{ spritelayout_fieldhay; }
+}
+

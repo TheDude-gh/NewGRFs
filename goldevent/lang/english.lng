@@ -1,0 +1,18 @@
+##grflangid 0x01
+##plural 0
+STR_GRF_NAME        :Novapolis Special Event
+STR_GRF_DESCRIPTION :{LTBLUE}GNU GPLv2{}{YELLOW}Coded by The Dude{}{GREEN}Version # 2014.02.13
+STR_GRF_URL         :http://www.novapolis.net/
+
+STR_PAR_DESC        :Start Year
+
+STR_STEAMPUNK       :Steam Punk (Steam)
+
+#04 0A FF 01 22 D0 C3 9E 98 " (" EE 81 BE " " 8F "max" 98 ")" 00
+#04 0A FF 01 23 D0 C3 9E 98 " (" EE 81 BE " " 8B "max" 98 ")" 00
+
+STR_GOLDMINEYES     :{BLACK} ({UNSIGNED_WORD} {GREEN}max{BLACK} )
+STR_GOLDMINENO      :{BLACK} ({UNSIGNED_WORD} {RED}max{BLACK} )
+
+STR_INDTOWN         :Can't be built near a town!
+STR_INDTOONEAR      :Too near to the same industry!

@@ -1,0 +1,35 @@
+##grflangid 0x01
+##plural 0
+STR_GRF_NAME           :ECS Industries Addon
+STR_GRF_DESCRIPTION    :{LTBLUE}ECS Industries Addon{}Adds new industries for ECS to accept cargos which need houses otherwise{}{GOLD}Coded Together by The Dude{}{SILVER}GNU GPL v2{}{GREEN}Version # 2021.04.22
+
+STR_GRF_URL            :https://www.novapolis.net/
+
+STR_I_BANK_CLOSE       :Bank closes
+STR_I_BANK_NEW         :New Bank
+STR_I_BANK_NAME        :National Bank
+STR_I_PUMP_CLOSE       :Petrol station closes
+STR_I_PUMP_NEW         :New Petrol station
+STR_I_PUMP_NAME        :Petrol station
+STR_I_SALOON_CLOSE     :Vehicle Saloon closes
+STR_I_SALOON_NEW       :New Vehicle Saloon
+STR_I_SALOON_NAME      :Vehicle Saloon
+STR_I_STORE_CLOSE      :Cargo Store closes
+STR_I_STORE_NEW        :New Cargo Store
+STR_I_STORE_NAME       :Cargo Store
+STR_I_WATER_CLOSE      :Water Tower closes
+STR_I_WATER_NEW        :New Water Tower
+STR_I_WATER_NAME       :Water Tower
+
+STR_BUILD_ONLY_1X1     :Can be built only on flat 1x1 land. Have to be placed over buildings.
+STR_BUILD_ONLY_2X2     :Can be built only on flat 2x2 land. Have to be placed over buildings.
+
+STR_BUILD_ONLY_DIST    :Can in town but not close to town center.{}{LTBLUE}When industry is in town center it will be closed in 6 months
+
+STR_EMPTY              :
+STR_LOCATION_CENTER    :Industry cannot be built in town center
+STR_LOCATION_CHECK     :Indusry has to be build closer to town
+STR_I_CLOSE_COUNT      :Industry cannot be in town center and will be closed in {YELLOW}{COMMA}{BLACK} month{P "" s}
+
+STR_LOCATION_CHECK_P   :Too close to town center {COMMA} {COMMA}.
+STR_I_EXTRA_TEXT       :Number {COMMA}

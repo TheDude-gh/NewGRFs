@@ -1,0 +1,714 @@
+//exit if ECS active
+if(grf_current_status("\4D\65\6F\91")){ exit; } //ECS
+if(grf_future_status("\4D\65\6F\91")){ exit; } //ECS
+
+//banks are cheaper
+if(hasbit(param[0], 7)){
+	if(climate == CLIMATE_TEMPERATE){
+		item(FEAT_INDUSTRIES, banktemp, 0x0C) {
+			property {
+				substitute: 0x0C;
+				override: 0x0C;
+				fund_cost_multiplier: 57;
+				nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_BANK));
+			}
+		}
+	}
+
+	if(climate == CLIMATE_ARCTIC || climate == CLIMATE_TROPICAL){
+		item(FEAT_INDUSTRIES, bankarcdes, 0x10) {
+			property {
+				substitute: 0x10;
+				override: 0x10;
+				fund_cost_multiplier: 57;
+			}
+		}
+	}
+}
+
+//exit if industry section not set
+if(!hasbit(param[0], 2)){ exit; }
+
+//POWER STATION
+switch(FEAT_INDUSTRIES, SELF, sw_power_station_location, industry_distance(power_station, -1)){
+	0..param[3]: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+//CB POWER STATION
+switch(FEAT_INDUSTRIES, SELF, sw_power_station_cb_onepertown, [industry_town_count(power_station, -1)]){
+	0: sw_power_station_location;
+	default: string(STR_PLACEFAIL_ONLYONE);
+}
+switch(FEAT_INDUSTRIES, SELF, sw_power_station_cb_mapgen, [build_type]){
+  IND_CREATION_GENERATION..IND_CREATION_RANDOM: sw_power_station_cb_onepertown;
+  default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_power_station_cb_towndist, [town_manhattan_dist(0, 0)]){
+	0..9: string(STR_PLACEFAIL_TOWNFAR);
+	10..30: sw_power_station_cb_mapgen;
+	default: string(STR_PLACEFAIL_TOWNNEAR);
+}
+switch(FEAT_INDUSTRIES, PARENT, sw_power_station_cb_nocity, [is_city]){
+	1: string(STR_PLACEFAIL_NOCITY);
+	default: sw_power_station_cb_towndist;
+}
+
+//OIL REFINERY
+switch(FEAT_INDUSTRIES, SELF, sw_refinery_near_water, water_distance){
+	0..param[1]: CB_RESULT_LOCATION_ALLOW;
+	default: string(STR_PLACEFAIL_COASTNEAR);
+}
+switch(FEAT_INDUSTRIES, SELF, sw_oil_refinery_cb_towndist,  [town_manhattan_dist(0, 0)]){
+	0..16: string(STR_PLACEFAIL_TOWNFAR);
+	default: sw_refinery_near_water;
+}
+//NOT IN DESERT
+switch(FEAT_INDUSTRIES, SELF, sw_industry_notin_desert, [nearby_tile_terrain_type(0, 0)]){
+	TILETYPE_DESERT: string(STR_PLACEFAIL_NODESERT);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+//FARMS
+switch(FEAT_INDUSTRIES, SELF, sw_farms_below_snowline, [max(nearby_tile_height(0, 0), snowline_height - 1) + 1 - snowline_height]){
+	0: CB_RESULT_LOCATION_ALLOW;
+	default: string(STR_PLACEFAIL_SNOW);
+}
+switch(FEAT_INDUSTRIES, SELF, sw_farms_cb_climate, climate){
+	CLIMATE_ARCTIC: sw_farms_below_snowline;
+	CLIMATE_TROPICAL: sw_industry_notin_desert;
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_farms_cb_towndist, town_manhattan_dist(0, 0)){
+	0..param[6]: string(STR_PLACEFAIL_TOWNFAR);
+	default: sw_farms_cb_climate;
+}
+switch(FEAT_INDUSTRIES, PARENT, sw_farms_cb_nocity, [is_city]){
+	1: sw_farms_cb_climate; //allow in cities = skip towndist check
+	default: sw_farms_cb_towndist;
+}
+
+//OIL RIG
+switch(FEAT_INDUSTRIES, SELF, sw_oilrig_dist_self, industry_distance(oil_rig, -1)){
+	0..param[5]: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_oilrig_dist_coast, water_distance){
+	0..param[2]: string(STR_PLACEFAIL_COASTFAR);
+	default: sw_oilrig_dist_self;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_oilrig_build, [nearby_tile_height(0, 0)]){
+	0: sw_oilrig_dist_coast;
+	default: CB_RESULT_LOCATION_DISALLOW;
+}
+
+//FOREST
+switch(FEAT_INDUSTRIES, SELF, sw_forest_dist_self, industry_distance(forest, -1)){
+	0..param[4]: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_forest_above_snowline, [max(nearby_tile_height(0, 0), snowline_height - 1) + 1 - snowline_height]){
+	0: string(STR_PLACEFAIL_SNOWABOVE);
+	default: sw_forest_dist_self;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_forest_cb_towndist, town_manhattan_dist(0, 0)){
+	0..param[6]: string(STR_PLACEFAIL_TOWNFAR);
+	default: sw_forest_above_snowline;
+}
+switch(FEAT_INDUSTRIES, PARENT, sw_forest_cb_city, [is_city]){
+	1: sw_forest_above_snowline; //allow in cities
+	default: sw_forest_cb_towndist; //in towns do town dist check
+}
+
+//BANK AT
+switch(FEAT_INDUSTRIES, SELF, sw_bankta_dist_self, [industry_distance(bank_tropic_arctic, -1)]){
+	0..10: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+//CB BANK AT
+switch(FEAT_INDUSTRIES, SELF, sw_bankat_cb_count, [industry_town_count(bank_tropic_arctic -1)]){
+	0: sw_bankta_dist_self;
+	default: string(STR_PLACEFAIL_ONLYONE);
+}
+switch(FEAT_INDUSTRIES, SELF, sw_bankat_cb_mapgen, [build_type]){
+  IND_CREATION_GENERATION..IND_CREATION_RANDOM: sw_bankat_cb_count;
+  default: sw_bankta_dist_self;
+}
+switch(FEAT_INDUSTRIES, PARENT, sw_bankat_cb_nocity, [is_city]){
+	1: string(STR_PLACEFAIL_NOCITY);
+	default: sw_bankat_cb_mapgen;
+}
+
+//WATER SUPPLY
+switch(FEAT_INDUSTRIES, SELF, sw_water_supply_town_far, [town_manhattan_dist(0, 0)]){
+	0..10: string(STR_PLACEFAIL_TOWNFAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_water_supply_only_desert, [nearby_tile_terrain_type(0, 0)]){
+	TILETYPE_DESERT: sw_water_supply_town_far;
+	default: CB_RESULT_LOCATION_DISALLOW_ONLY_DESERT;
+}
+
+//WATER TOWER
+switch(FEAT_INDUSTRIES, SELF, sw_water_tower_dist_self, [industry_distance(water_tower, -1)]){
+	0..15: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_water_tower_only_desert, [nearby_tile_terrain_type(0, 0)]){
+	TILETYPE_DESERT: sw_water_tower_dist_self;
+	default: CB_RESULT_LOCATION_DISALLOW_ONLY_DESERT;
+}
+
+//LUMBER MILL
+switch(FEAT_INDUSTRIES, SELF, sw_lumber_mill_limit_production, [STORE_PERM(production_level, 0x02)]){
+	0..24: CB_RESULT_IND_PROD_NO_CHANGE;
+  25..36: CB_RESULT_IND_PROD_DECREMENT_BY_1;
+	default: CB_RESULT_IND_PROD_HALF;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_lumber_mill_only_rainforest, [nearby_tile_terrain_type(0, 0)]){
+	TILETYPE_RAIN_FOREST: CB_RESULT_LOCATION_ALLOW;
+	default: CB_RESULT_LOCATION_DISALLOW_ONLY_RAINFOREST;
+}
+
+//FARM FIELDS
+switch(FEAT_INDUSTRIES, SELF, sw_farm_cb_fields_do, current_date - build_date){
+	0..param[7]: 0; //if time is in this interval, dont plant
+	default: 1; //plant field
+}
+switch(FEAT_INDUSTRIES, SELF, sw_farm_cb_fields, [extra_callback_info1 & 0xFF]){ //pick 0..255
+	0..32: sw_farm_cb_fields_do; //chance 1/8 = 32/256
+	default: 0;
+}
+
+//CB primary industries far from town
+switch(FEAT_INDUSTRIES, SELF, sw_industry_cb_towndist, town_manhattan_dist(0, 0)){
+	0..param[6]: string(STR_PLACEFAIL_TOWNFAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, PARENT, sw_industry_cb_nocity, [is_city]){
+	1: CB_RESULT_LOCATION_ALLOW; //allow in cities
+	default: sw_industry_cb_towndist;
+}
+
+//CB SECONDARY INDUSTRIES TOWN DISTANCE
+switch(FEAT_INDUSTRIES, SELF, sw_sawmill_cb_towndist, [town_manhattan_dist(0, 0)]){
+	0..13: string(STR_PLACEFAIL_TOWNFAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_factory_cb_towndist, [town_manhattan_dist(0, 0)]){
+	0..10: string(STR_PLACEFAIL_TOWNFAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_steelmill_cb_towndist, [town_manhattan_dist(0, 0)]){
+	0..32: string(STR_PLACEFAIL_TOWNFAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_printworks_cb_towndist, [town_manhattan_dist(0, 0)]){
+	0..12: string(STR_PLACEFAIL_TOWNFAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_foodplant_cb_towndist, [town_manhattan_dist(0, 0)]){
+	0..10: string(STR_PLACEFAIL_TOWNFAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_papermill_cb_towndist, [town_manhattan_dist(0, 0)]){
+	0..22: string(STR_PLACEFAIL_TOWNFAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_factory2_cb_towndist, [town_manhattan_dist(0, 0)]){
+	0..8: string(STR_PLACEFAIL_TOWNFAR);
+	default: sw_industry_notin_desert;
+}
+//sweet factory
+switch(FEAT_INDUSTRIES, SELF, sw_candyfactory_cb_distself, industry_distance(candy_factory, -1)){
+	0..48: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_candyfactory_cb_towndist, town_manhattan_dist(0, 0)){
+	15..32: sw_candyfactory_cb_distself;
+	default: string(STR_PLACEFAIL_TOWNFAR);
+}
+//toy shop
+switch(FEAT_INDUSTRIES, SELF, sw_toyshop_cb_distself, industry_distance(toy_shop, -1)){
+	0..48: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_toyshop_cb_towndist, town_manhattan_dist(0, 0)){
+	5..25: sw_toyshop_cb_distself;
+	default: string(STR_PLACEFAIL_TOWNFAR);
+}
+//toy factory
+switch(FEAT_INDUSTRIES, SELF, sw_toyfactory_cb_distself, industry_distance(toy_factory, -1)){
+	0..32: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_toyfactory_cb_towndist, town_manhattan_dist(0, 0)){
+	16..64: sw_toyfactory_cb_distself;
+	default: string(STR_PLACEFAIL_TOWNFAR);
+}
+//fizzy drinks
+switch(FEAT_INDUSTRIES, SELF, sw_fizzydrink_cb_distself, industry_distance(fizzy_drink, -1)){
+	0..48: string(STR_PLACEFAIL_TOOCLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_fizzydrink_cb_towndist, town_manhattan_dist(0, 0)){
+	10..32: sw_fizzydrink_cb_distself;
+	default: string(STR_PLACEFAIL_TOWNFAR);
+}
+
+//CB bank production
+//new prod = (pop>>5)/prod == 0 ? prod-- : prod++
+switch(FEAT_INDUSTRIES, SELF, sw_bank_cb_prod_final, [ (LOAD_TEMP(0x00) >> 5) / produced_last_month_1 ]){
+	0: CB_RESULT_IND_PROD_DECREMENT_BY_1;
+	default: CB_RESULT_IND_PROD_INCREMENT_BY_1;
+}
+switch(FEAT_INDUSTRIES, PARENT, sw_bank_cb_prod_new, [STORE_TEMP(population, 0x00)]){
+	0: sw_bank_cb_prod_final;
+	default: sw_bank_cb_prod_final;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_bank_cb_prod_random, [extra_callback_info2 & 0xFF]){
+	0..127: sw_bank_cb_prod_new; // 1/2
+	128..159: CB_RESULT_IND_PROD_DECREMENT_BY_1; //1/8
+	default: CB_RESULT_IND_PROD_NO_CHANGE; // 3/8
+}
+switch(FEAT_INDUSTRIES, PARENT, sw_bank_cb_prod_citychange, [is_city]){
+	1: sw_bank_cb_prod_random;
+	default: CB_RESULT_IND_PROD_NO_CHANGE;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_bank_cb_prod, [produced_last_month_1]){
+	0..140: sw_bank_cb_prod_citychange;
+	default: CB_RESULT_IND_PROD_DECREMENT_BY_1;
+}
+//CB bank location
+switch(FEAT_INDUSTRIES, PARENT, sw_bank_cb_poplimit, [population]){
+	0..500: string(STR_PLACEFAIL_BANK500);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, PARENT, sw_bank_cb_onlycity, [is_city]){
+	1: sw_bank_cb_poplimit;
+	default: CB_RESULT_LOCATION_DISALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_bank_cb_mapgen, [build_type]){
+  IND_CREATION_GENERATION..IND_CREATION_RANDOM: sw_bank_cb_onlycity;
+  default: sw_bank_cb_poplimit;
+}
+/*
+switch(FEAT_INDUSTRIES, SELF, , []){
+}
+*/
+
+//PROPERTIES
+if(climate == CLIMATE_TEMPERATE){
+	item(FEAT_INDUSTRIES, coal_mine, 0){
+		property{
+			substitute: 0;
+			override: 0;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_COAL_MINE));
+		}
+	}
+	item(FEAT_INDUSTRIES, power_station, 1){
+		property{
+			substitute: 1;
+			override: 1;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_POWER_STATION));
+		}
+		graphics {
+			location_check: sw_power_station_location;
+		}
+	}
+	item(FEAT_INDUSTRIES, sawmill, 2){
+		property{
+			substitute: 2;
+			override: 2;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_SAWMILL));
+		}
+	}
+	item(FEAT_INDUSTRIES, forest, 3){
+		property{
+			substitute: 3;
+			override: 3;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FOREST));
+		}
+	}
+	item(FEAT_INDUSTRIES, oil_refinery, 4){
+		property{
+			substitute: 4;
+			override: 4;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_OIL_REFINERY));
+		}
+		graphics {
+			location_check: sw_refinery_near_water;
+		}
+	}
+	item(FEAT_INDUSTRIES, oil_rig, 5){
+		property{
+			substitute: 5;
+			override: 5;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_OIL_RIG));
+			prob_random: 6;
+			prob_in_game: 2;
+		}
+		graphics {
+			location_check: sw_oilrig_build;
+		}
+	}
+	item(FEAT_INDUSTRIES, factory, 6){
+		property{
+			substitute: 6;
+			override: 6;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FACTORY));
+		}
+	}
+	item(FEAT_INDUSTRIES, steel_mill, 8){
+		property{
+			substitute: 8;
+			override: 8;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_STEEL_MILL));
+		}
+	}
+	item(FEAT_INDUSTRIES, farm, 9){
+		property{
+			substitute: 9;
+			override: 9;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FARM));
+		}
+		graphics {
+			location_check: sw_farms_below_snowline;
+		}
+	}
+	item(FEAT_INDUSTRIES, oil_wells, 11){
+		property{
+			substitute: 11;
+			override: 11;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_OIL_WELLS));
+			spec_flags: 0;
+		}
+	}
+	item(FEAT_INDUSTRIES, bank, 12){
+		property{
+			substitute: 12;
+			override: 12;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_BANK));
+		}
+	}
+	item(FEAT_INDUSTRIES, iron_ore_mine, 18){
+		property{
+			substitute: 18;
+			override: 18;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_IRON_ORE_MINE));
+		}
+	}
+}
+//ARCTIC
+if(climate == CLIMATE_ARCTIC){
+	item(FEAT_INDUSTRIES, coal_mine, 0){
+		property{
+			substitute: 0;
+			override: 0;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_COAL_MINE));
+		}
+	}
+	item(FEAT_INDUSTRIES, power_station, 1){
+		property{
+			substitute: 1;
+			override: 1;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_POWER_STATION));
+		}
+		graphics {
+			location_check: sw_power_station_location;
+		}
+	}
+	item(FEAT_INDUSTRIES, forest, 3){
+		property{
+			substitute: 3;
+			override: 3;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FOREST));
+		}
+		graphics {
+			location_check: sw_forest_above_snowline;
+		}
+	}
+	item(FEAT_INDUSTRIES, oil_refinery, 4){
+		property{
+			substitute: 4;
+			override: 4;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_OIL_REFINERY));
+		}
+		graphics {
+			location_check: sw_refinery_near_water;
+		}
+	}
+	item(FEAT_INDUSTRIES, printing_works, 7){
+		property{
+			substitute: 7;
+			override: 7;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_PRINTING_WORKS));
+		}
+	}
+	item(FEAT_INDUSTRIES, farm, 9){
+		property{
+			substitute: 9;
+			override: 9;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FARM));
+		}
+		graphics {
+			location_check: sw_farms_below_snowline;
+		}
+	}
+	item(FEAT_INDUSTRIES, oil_wells, 11){
+		property{
+			substitute: 11;
+			override: 11;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_OIL_WELLS));
+		}
+	}
+	item(FEAT_INDUSTRIES, food_plant, 13){
+		property{
+			substitute: 13;
+			override: 13;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FOOD_PLANT));
+		}
+	}
+	item(FEAT_INDUSTRIES, paper_mill, 14){
+		property{
+			substitute: 14;
+			override: 14;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_PAPER_MILL));
+		}
+	}
+	item(FEAT_INDUSTRIES, gold_mine, 15){
+		property{
+			substitute: 15;
+			override: 15;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_GOLD_MINE));
+		}
+	}
+	item(FEAT_INDUSTRIES, bank_tropic_arctic, 16){
+		property{
+			substitute: 16;
+			override: 16;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_BANK_TROPIC_ARCTIC));
+		}
+		graphics {
+			location_check: sw_bankta_dist_self;
+		}
+	}
+}
+//ARCTIC
+if(climate == CLIMATE_TROPICAL){
+	item(FEAT_INDUSTRIES, oil_refinery, 4){
+		property{
+			substitute: 4;
+			override: 4;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_OIL_REFINERY));
+		}
+		graphics {
+			location_check: sw_refinery_near_water;
+		}
+	}
+	item(FEAT_INDUSTRIES, copper_ore_mine, 10){
+		property{
+			substitute: 10;
+			override: 10;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_COPPER_ORE_MINE));
+		}
+	}
+	item(FEAT_INDUSTRIES, oil_wells, 11){
+		property{
+			substitute: 11;
+			override: 11;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_OIL_WELLS));
+		}
+	}
+	item(FEAT_INDUSTRIES, food_plant, 13){
+		property{
+			substitute: 13;
+			override: 13;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FOOD_PLANT));
+		}
+	}
+	item(FEAT_INDUSTRIES, bank_tropic_arctic, 16){
+		property{
+			substitute: 16;
+			override: 16;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_BANK_TROPIC_ARCTIC));
+		}
+		graphics {
+			location_check: sw_bankta_dist_self;
+		}
+	}
+	item(FEAT_INDUSTRIES, diamond_mine, 17){
+		property{
+			substitute: 17;
+			override: 17;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_DIAMOND_MINE));
+		}
+	}
+
+	item(FEAT_INDUSTRIES, fruit_plantation, 19){
+		property{
+			substitute: 19;
+			override: 19;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FRUIT_PLANTATION));
+		}
+		graphics {
+			location_check: sw_industry_notin_desert;
+		}
+	}
+	item(FEAT_INDUSTRIES, rubber_plantation, 20){
+		property{
+			substitute: 20;
+			override: 20;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_RUBBER_PLANTATION));
+		}
+		graphics {
+			location_check: sw_industry_notin_desert;
+		}
+	}
+	item(FEAT_INDUSTRIES, water_supply, 21){
+		property{
+			substitute: 21;
+			override: 21;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_WATER_SUPPLY));
+		}
+		graphics {
+			location_check: sw_water_supply_only_desert;
+		}
+	}
+	item(FEAT_INDUSTRIES, water_tower, 22){
+		property{
+			substitute: 22;
+			override: 22;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_WATER_TOWER));
+		}
+		graphics {
+			location_check: sw_water_tower_only_desert;
+		}
+	}
+	item(FEAT_INDUSTRIES, factory_2, 23){
+		property{
+			substitute: 23;
+			override: 23;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FACTORY_2));
+		}
+		graphics {
+			location_check: sw_industry_notin_desert;
+		}
+	}
+	item(FEAT_INDUSTRIES, farm_2, 24){
+		property{
+			substitute: 24;
+			override: 24;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FARM_2));
+		}
+		graphics {
+			location_check: sw_industry_notin_desert;
+		}
+	}
+	if(!hasbit(param[0], 5)){
+		item(FEAT_INDUSTRIES, lumber_mill, 25){
+			property{
+				substitute: 25;
+				override: 25;
+				nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_LUMBER_MILL));
+			}
+			graphics {
+				location_check: sw_lumber_mill_only_rainforest;
+			}
+		}
+	}
+	else{
+		item(FEAT_INDUSTRIES, lumber_mill, 25){
+			property{
+				substitute: 25;
+				override: 25;
+				nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_LUMBER_MILL));
+				life_type: IND_LIFE_TYPE_ORGANIC;
+				fund_cost_multiplier: 43;
+				prod_multiplier: [19];
+				spec_flags: 0;
+			}
+			graphics {
+				location_check: sw_lumber_mill_only_rainforest;
+				monthly_prod_change: sw_lumber_mill_limit_production;
+			}
+		}
+	}
+}
+if(climate == CLIMATE_TOYLAND){
+	item(FEAT_INDUSTRIES, cotton_candy, 26){
+		property{
+			substitute: 26;
+			override: 26;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_COTTON_CANDY));
+		}
+	}
+	item(FEAT_INDUSTRIES, candy_factory, 27){
+		property{
+			substitute: 27;
+			override: 27;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_CANDY_FACTORY));
+		}
+	}
+	item(FEAT_INDUSTRIES, battery_farm, 28){
+		property{
+			substitute: 28;
+			override: 28;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_BATTERY_FARM));
+		}
+	}
+	item(FEAT_INDUSTRIES, cola_wells, 29){
+		property{
+			substitute: 29;
+			override: 29;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_COLA_WELLS));
+		}
+	}
+	item(FEAT_INDUSTRIES, toy_shop, 30){
+		property{
+			substitute: 30;
+			override: 30;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_TOY_SHOP));
+		}
+	}
+	item(FEAT_INDUSTRIES, toy_factory, 31){
+		property{
+			substitute: 31;
+			override: 31;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_TOY_FACTORY));
+		}
+	}
+	item(FEAT_INDUSTRIES, plastic_fountains, 32){
+		property{
+			substitute: 32;
+			override: 32;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_PLASTIC_FOUNTAINS));
+		}
+	}
+	item(FEAT_INDUSTRIES, fizzy_drink, 33){
+		property{
+			substitute: 33;
+			override: 33;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FIZZY_DRINK));
+		}
+	}
+	item(FEAT_INDUSTRIES, bubble_generator, 34){
+		property{
+			substitute: 34;
+			override: 34;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_BUBBLE_GENERATOR));
+		}
+	}
+	item(FEAT_INDUSTRIES, toffee_quarry, 35){
+		property{
+			substitute: 35;
+			override: 35;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_TOFFEE_QUARRY));
+		}
+	}
+	item(FEAT_INDUSTRIES, sugar_mine, 36){
+		property{
+			substitute: 36;
+			override: 36;
+			nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_SUGAR_MINE));
+		}
+	}
+}

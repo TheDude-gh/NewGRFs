@@ -1,0 +1,38 @@
+##grflangid 0x01
+
+STR_GRF_NAME           :Enhanced trainset
+STR_GRF_DESCRIPTION    :{LTBLUE}Extended trainset for TTD{}{WHITE}Read Readme.txt for Parametres settings{}http://www.novapolis.net/{}{YELLOW}Graphics and extra trains by Michal Blunck, reedited and extended by The Dude{}{GREEN}Version # 2014.12.01
+STR_GRF_URL            :http://www.novapolis.net/
+
+STR_PAR0_NAME          :Disable V200
+STR_PAR0_DESC          :V200 (Diesel)
+STR_PAR1_NAME          :Disable BR 103
+STR_PAR1_DESC          :BR 103 (Electric)
+STR_PAR2_NAME          :Disable BR 101
+STR_PAR2_DESC          :BR 101 (Electric)
+STR_PAR3_NAME          :Disable ICE3
+STR_PAR3_DESC          :ICE3 (Electric)
+STR_PAR4_NAME          :Disable TGV Thalys
+STR_PAR4_DESC          :TGV Thalys (Electric)
+STR_PAR5_NAME          :Disable RENFE 269
+STR_PAR5_DESC          :RENFE 269 (Electric)
+STR_PAR6_NAME          :Disable RENFE 252
+STR_PAR6_DESC          :RENFE 252 (Electric)
+STR_PAR7_NAME          :Disable Re66
+STR_PAR7_DESC          :Re66 (Electric)
+STR_PAR8_NAME          :Disable Re460
+STR_PAR8_DESC          :Re460 (Electric)
+STR_PAR9_NAME          :Disable DE-AC33C
+STR_PAR9_DESC          :DE-AC33C (Diesel)
+STR_PARA_NAME          :Enable tier system
+STR_PARA_DESC          :Enables different train tree based on tiers
+
+
+STR_TRAIN_FREIGHT_LIGHT    :Suitable for: {ORANGE}Light Freight
+STR_TRAIN_FREIGHT_MEDIUM   :Suitable for: {ORANGE}Freight
+STR_TRAIN_FREIGHT_HEAVY    :Suitable for: {ORANGE}Heavy Freight
+STR_TRAIN_FREIGHT_EXPRESS  :Suitable for: {ORANGE}Express Freight
+STR_TRAIN_PAX              :Suitable for: {ORANGE}Passengers
+STR_TRAIN_PAX_EXPRESS      :Suitable for: {ORANGE}Express Passengers
+STR_TRAIN_PAX_FREIGHT      :Suitable for: {ORANGE}Freight and Passengers
+STR_TRAIN_ONLY_PAX         :Only passengers, mail and armoured class wagons allowed

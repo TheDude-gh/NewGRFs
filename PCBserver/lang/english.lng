@@ -1,0 +1,125 @@
+##grflangid 0x01
+STR_GRF_NAME           :PCB Server v1.7
+STR_GRF_DESCRIPTION    :{LTBLUE}For use with City Builder servers{}{WHITE}Read Readme.txt for Parametres settings{}{YELLOW}http://www.novapolis.net/{}{GOLD}Coded Together by The Dude{}{SILVER}GNU GPL v2{}{GREEN}Version # 2014.12.05
+STR_GRF_URL            :http://www.novapolis.net/
+
+STR_PAR0_NAME          :Enable Citybuilder section
+STR_PAR0_DESC          :Changes cargo acceptance of some houses (food, goods, if ECS, water also). LA penalty for destroying buildings is set to 0
+
+STR_PAR1_NAME          :Disable Monorail/Maglev
+STR_PAR1_DESC          :Monorail and Maglev engines and wagons wont be available in game
+
+STR_PAR2_NAME          :Industry behavior changes
+STR_PAR2_DESC          :Changes this behavior if enabled{} * Water towers and banks appear only once per town even with Multiple industries patch enabled{} * Oil wells can increase{} * Rafineries can be build further from coast (set by parameter #4){} * Oil Rigs can be built closer to coast (set by parameter #5, if #5 not set, it is equal to #4{} * Station names are affected by close industries{}
+
+STR_PAR3_NAME          :Enhanced CB industry behavior
+STR_PAR3_DESC          :Lower probability for secondary industries, position restrictions
+
+STR_PAR4_NAME          :ENABLE ECS SUPPORT
+STR_PAR4_DESC          :Changes cargo acceptance of few houses for better ECS support
+
+STR_PAR5_NAME          :Lumber Mills doesn't cut trees, but costs more
+STR_PAR5_DESC          :Trees are happy
+
+STR_PAR6_NAME          :Increased Ship's cargo hold
+STR_PAR6_DESC          :Ships are happy
+
+STR_PAR7_NAME          :Cheaper banks and such
+STR_PAR7_DESC          :Banks are less happy = cheaper
+
+STR_PAR8_NAME          :Toyland company statue
+STR_PAR8_DESC          :You're no fun anymore
+
+STR_PAR9_NAME          :Oil Rafineries max distance from coast
+STR_PAR9_DESC          :Def. value 1024, range 2-2048
+
+STR_PARA_NAME          :Oil Rigs min distance to coast
+STR_PARA_DESC          :Def value 16, range 1-64
+
+STR_PARB_NAME          :Power station distance
+STR_PARB_DESC          :Power stations distance to each other. Range 1-255
+
+STR_PARC_NAME          :Forest distance
+STR_PARC_DESC          :Forest distance to each other in Sub-Arctic. Range 1-255
+
+STR_PARD_NAME          :Oil Rig distance
+STR_PARD_DESC          :Oil Rig distance to each other. Range 1-255
+
+STR_PARE_NAME          :Primary industries distance from town
+STR_PARE_DESC          :Coal mine, Oil wells, Farm, Forest and Iron Ore mine distance from town center
+
+STR_PARF_NAME          :Farms plant fields this days after funded
+STR_PARF_DESC          :Noob's feature
+
+STR_PLACEFAIL_SNOW              :Can only be built below snowline! 
+STR_PLACEFAIL_SNOWABOVE         :Can only be built above snowline! 
+STR_PLACEFAIL_NODESERT          :Can't be built in desert areas! 
+STR_PLACEFAIL_HEIGHT            :Can be built only if height is less than 4! 
+STR_PLACEFAIL_COASTFAR          :Too near to the coast! 
+STR_PLACEFAIL_COASTNEAR         :Too far from the coast! 
+STR_PLACEFAIL_INDCONFLICT       :Can't be built near the conflicting industry! 
+STR_PLACEFAIL_TOWNFAR           :Can't be built near a town! 
+STR_PLACEFAIL_TOWNNEAR          :Must be built near a Town! 
+STR_PLACEFAIL_TOOCLOSE          :Too near to the same industry! 
+STR_PLACEFAIL_ONLYONE           :There can be only one per town! 
+STR_PLACEFAIL_NOCITY            :Industry can't be built in city. Only towns! 
+STR_PLACEFAIL_BANK500           :Bank can be built only in town with population over 500! 
+
+STR_INDWDTEXT_POWER_CLOSETOWN   :{SILVER}Power Station should be built near town, further from the center. Not in cities. 
+STR_INDWDTEXT_TOWN_FAR          :{SILVER}Industry should be further from towns. 
+STR_INDWDTEXT_OILRAF            :{SILVER}Oil Rafinery should be 16 tiles far from towns. 
+STR_INDWDTEXT_SAWMILL           :{SILVER}Sawmill Rafinery should be 13 tiles far from town center. 
+STR_INDWDTEXT_FACTORY           :{SILVER}Factory should be 10 tiles far from towns. 
+STR_INDWDTEXT_STELLMILL         :{SILVER}Steel Mill should be 32 tiles far from towns. 
+STR_INDWDTEXT_PRINTWORKS        :{SILVER}Printing works should be 12 tiles far from towns. 
+STR_INDWDTEXT_TOWN_TILES        :{SILVER}Should be 10 tiles far from towns. 
+STR_INDWDTEXT_PAPERMILL         :{SILVER}Paper mill should be 22 tiles far from towns. 
+STR_INDWDTEXT_FOODPP            :{SILVER}Fodd Processing Plant should be 10 tiles far from towns. 
+STR_INDWDTEXT_FACTORY2          :{SILVER}Factory should be 8 tiles far from towns. 
+STR_INDWDTEXT_SWEETFACT         :{SILVER}Sweet Factory should be between 15 to 32 tiles far from town. 
+STR_INDWDTEXT_FIZZYFACT         :{SILVER}Fizzy Drink Factory should be 10 to 32 tiles far from town. 
+STR_INDWDTEXT_TOYSHOP           :{SILVER}Toy Shop should be between 5 to 25 tiles in towns. 
+STR_INDWDTEXT_TOYFACT           :{SILVER}Toy Factory should be between 16 to 64 tiles further from towns. 
+STR_INDWDTEXT_BANKTOWN          :{SILVER}Bank can be built only in towns, not cities. Only one per town. 
+STR_INDWDTEXT_BANK_TEMP         :{SILVER}Bank can be built only in towns 500 population at least.{}Place over houses. Production is population dependant 
+
+STR_TOWN                        :{STRING}
+STR_STATION                     :{STRING} {STRING}
+
+STR_INDUSTRY_COAL_MINE          :Coal Mine
+STR_INDUSTRY_POWER_STATION      :Power Station
+STR_INDUSTRY_SAWMILL            :Sawmill
+STR_INDUSTRY_FOREST             :Forest
+STR_INDUSTRY_OIL_REFINERY       :Oil Refinery
+STR_INDUSTRY_OIL_RIG            :Oil Rig
+STR_INDUSTRY_FACTORY            :Factory
+STR_INDUSTRY_PRINTING_WORKS     :Printing Works
+STR_INDUSTRY_STEEL_MILL         :Steel Mill
+STR_INDUSTRY_FARM               :Farm
+STR_INDUSTRY_COPPER_ORE_MINE    :Copper Ore Mine
+STR_INDUSTRY_OIL_WELLS          :Oil Wells
+STR_INDUSTRY_BANK               :Bank
+STR_INDUSTRY_FOOD_PLANT         :Food Processing Plant
+STR_INDUSTRY_PAPER_MILL         :Paper Mill
+STR_INDUSTRY_GOLD_MINE          :Gold Mine
+STR_INDUSTRY_BANK_TROPIC_ARCTIC :Bank
+STR_INDUSTRY_DIAMOND_MINE       :Diamond Mine
+STR_INDUSTRY_IRON_ORE_MINE      :Iron Ore Mine
+STR_INDUSTRY_FRUIT_PLANTATION   :Fruit Plantation
+STR_INDUSTRY_RUBBER_PLANTATION  :Rubber Plantation
+STR_INDUSTRY_WATER_SUPPLY       :Water Supply
+STR_INDUSTRY_WATER_TOWER        :Water Tower
+STR_INDUSTRY_FACTORY_2          :Factory
+STR_INDUSTRY_FARM_2             :Farm
+STR_INDUSTRY_LUMBER_MILL        :Lumber Mill
+STR_INDUSTRY_COTTON_CANDY       :Candyfloss Forest
+STR_INDUSTRY_CANDY_FACTORY      :Sweet Factory
+STR_INDUSTRY_BATTERY_FARM       :Battery Farm
+STR_INDUSTRY_COLA_WELLS         :Cola Wells
+STR_INDUSTRY_TOY_SHOP           :Toy Shop
+STR_INDUSTRY_TOY_FACTORY        :Toy Factory
+STR_INDUSTRY_PLASTIC_FOUNTAINS  :Plastic Fountains
+STR_INDUSTRY_FIZZY_DRINK        :Fizzy Drink Factory
+STR_INDUSTRY_BUBBLE_GENERATOR   :Bubble Generator
+STR_INDUSTRY_TOFFEE_QUARRY      :Toffee Quarry
+STR_INDUSTRY_SUGAR_MINE         :Sugar Mine

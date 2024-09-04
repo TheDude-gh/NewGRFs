@@ -1,0 +1,438 @@
+grf {
+	grfid:                  "JS\0A\70";
+	name:                   string(STR_GRF_NAME);
+	desc:                   string(STR_GRF_DESCRIPTION);
+	version:                1;
+	min_compatible_version: 0;
+	url: string(STR_GRF_URL);
+}
+	
+cargotable {
+ GOLD, VALU, DIAM, PETR, BDMT, VEHI, WATR, FOOD
+}
+
+spriteset(sprites_bank_ground, "gfx/ecsadd.png") {
+  [722, 8, 64, 31, -31, 0, NOCROP]
+}
+
+spriteset(sprites_bank, "gfx/ecsadd.png") {
+	[2, 56, 41, 32, -23, -9, NOCROP]
+} 
+
+spriteset(sprites_pump_ground, "gfx/ecsadd.png") {
+  [146, 56, 64, 31, -31, 0, NOCROP]
+}
+
+spriteset(sprites_pump, "gfx/ecsadd.png") {
+  [226, 56, 56, 99, -28, -69, NOCROP]
+}
+
+spriteset(sprites_saloon_ground, "gfx/ecsadd.png") {
+  [386, 56, 64, 31, -31, 0, NOCROP]
+}
+
+spriteset(sprites_saloon, "gfx/ecsadd.png") {
+  [466, 56, 64, 48, -31, -17, NOCROP]
+}
+
+
+spriteset(sprites_store_ground, "gfx/ecsadd.png") {  [690,  56, 64, 31, -31,   0, NOCROP] }
+spriteset(sprites_store00,      "gfx/ecsadd.png") {  [ 82, 168, 64, 71, -31, -39, NOCROP] }
+spriteset(sprites_store01,      "gfx/ecsadd.png") {  [162, 168, 64, 71, -29, -40, NOCROP] }
+spriteset(sprites_store10,      "gfx/ecsadd.png") {  [  2, 168, 64, 71, -33, -40, NOCROP] }
+spriteset(sprites_store11,      "gfx/ecsadd.png") {  [242, 168, 64, 31, -31,   0, NOCROP] }
+
+spriteset(sprites_watertower_ground, "gfx/ecsadd.png") {
+  [514, 168, 64, 31, -31, 0, NOCROP]
+}
+
+spriteset(sprites_watertower, "gfx/ecsadd.png") {
+  [594, 168, 64, 69, -31, -38, NOCROP]
+}
+
+   
+spritelayout spritelayout_bank {
+	ground { sprite: sprites_bank_ground(0); }
+	building {
+		sprite: sprites_bank(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout spritelayout_pump {
+	ground { sprite: sprites_pump_ground(0); }
+	building {
+		sprite: sprites_pump(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout spritelayout_saloon {
+	ground { sprite: sprites_saloon_ground(0); }
+	building {
+		sprite: sprites_saloon(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout spritelayout_store00 {
+	ground { sprite: sprites_store_ground(0); }
+	building {
+		sprite: sprites_store00(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout spritelayout_store01 {
+	ground { sprite: sprites_store_ground(0); }
+	building {
+		sprite: sprites_store01(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout spritelayout_store10 {
+	ground { sprite: sprites_store_ground(0); }
+	building {
+		sprite: sprites_store10(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout spritelayout_store11 {
+	ground { sprite: sprites_store_ground(0); }
+	building {
+		sprite: sprites_store11(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout spritelayout_watertower {
+	ground { sprite: sprites_watertower_ground(0); }
+	building {
+		sprite: sprites_watertower(0);
+		xoffset: 0;
+		yoffset: 0;
+		zextent: 32;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+//BANK
+item(FEAT_INDUSTRYTILES, BANK){
+  property{
+		substitute: 0;
+		accepted_cargos: [[GOLD, 8], [VALU, 8], [DIAM, 8]];
+		land_shape_flags: bitmask(LSF_CANNOT_LOWER_NW_EDGE, LSF_CANNOT_LOWER_NE_EDGE, LSF_CANNOT_LOWER_SW_EDGE, LSF_CANNOT_LOWER_SE_EDGE);
+	}
+	graphics{ spritelayout_bank; }
+}
+
+//PUMP
+item(FEAT_INDUSTRYTILES, PUMP){
+  property{
+		substitute: 0;
+		accepted_cargos: [[PETR, 8]];
+		land_shape_flags: bitmask(LSF_CANNOT_LOWER_NW_EDGE, LSF_CANNOT_LOWER_NE_EDGE, LSF_CANNOT_LOWER_SW_EDGE, LSF_CANNOT_LOWER_SE_EDGE);
+	}
+	graphics{ spritelayout_pump; }
+}
+
+//SALOON
+item(FEAT_INDUSTRYTILES, SALOON){
+  property{
+		substitute: 0;
+		accepted_cargos: [[VEHI, 8]];
+		land_shape_flags: bitmask(LSF_CANNOT_LOWER_NW_EDGE, LSF_CANNOT_LOWER_NE_EDGE, LSF_CANNOT_LOWER_SW_EDGE, LSF_CANNOT_LOWER_SE_EDGE);
+	}
+	graphics{ spritelayout_saloon; }
+}
+
+//STORE
+item(FEAT_INDUSTRYTILES, STORE00){
+  property{
+		substitute: 0;
+		accepted_cargos: [[BDMT, 8], [FOOD, 8]];
+		land_shape_flags: bitmask(LSF_CANNOT_LOWER_NW_EDGE, LSF_CANNOT_LOWER_NE_EDGE, LSF_CANNOT_LOWER_SW_EDGE, LSF_CANNOT_LOWER_SE_EDGE);
+	}
+	graphics{ spritelayout_store00; }
+}
+item(FEAT_INDUSTRYTILES, STORE01){
+  property{
+		substitute: 0;
+		accepted_cargos: [[BDMT, 8], [FOOD, 8]];
+		land_shape_flags: bitmask(LSF_CANNOT_LOWER_NW_EDGE, LSF_CANNOT_LOWER_NE_EDGE, LSF_CANNOT_LOWER_SW_EDGE, LSF_CANNOT_LOWER_SE_EDGE);
+	}
+	graphics{ spritelayout_store01; }
+}
+item(FEAT_INDUSTRYTILES, STORE10){
+  property{
+		substitute: 0;
+		accepted_cargos: [[BDMT, 8], [FOOD, 8]];
+		land_shape_flags: bitmask(LSF_CANNOT_LOWER_NW_EDGE, LSF_CANNOT_LOWER_NE_EDGE, LSF_CANNOT_LOWER_SW_EDGE, LSF_CANNOT_LOWER_SE_EDGE);
+	}
+	graphics{ spritelayout_store10; }
+}
+item(FEAT_INDUSTRYTILES, STORE11){
+  property{
+		substitute: 0;
+		accepted_cargos: [[BDMT, 8], [FOOD, 8]];
+		land_shape_flags: bitmask(LSF_CANNOT_LOWER_NW_EDGE, LSF_CANNOT_LOWER_NE_EDGE, LSF_CANNOT_LOWER_SW_EDGE, LSF_CANNOT_LOWER_SE_EDGE);
+	}
+	graphics{ spritelayout_store11; }
+}
+
+//WATERTOWER
+item(FEAT_INDUSTRYTILES, WATERTOWER){
+  property{
+		substitute: 0;
+		accepted_cargos: [[WATR, 8]];
+		land_shape_flags: bitmask(LSF_CANNOT_LOWER_NW_EDGE, LSF_CANNOT_LOWER_NE_EDGE, LSF_CANNOT_LOWER_SW_EDGE, LSF_CANNOT_LOWER_SE_EDGE);
+	}
+	graphics{ spritelayout_watertower; }
+}
+
+tilelayout layout_bank {
+	0,0: BANK;
+}
+
+tilelayout layout_pump {
+	0,0: PUMP;
+}
+
+tilelayout layout_saloon {
+	0,0: SALOON;
+}
+
+tilelayout layout_store {
+	0,0: STORE00;
+	0,1: STORE01;
+	1,0: STORE10;
+	1,1: STORE11;
+}
+
+tilelayout layout_watertower {
+	0,0: WATERTOWER;
+}
+
+
+/*
+0 TOWNZONE_EDGE
+1 TOWNZONE_OUTSKIRT
+2 TOWNZONE_OUTER_SUBURB
+3 TOWNZONE_INNER_SUBURB
+4 TOWNZONE_CENTRE
+*/
+/*
+
+400 100
+20 10
+
+0.20
+*/  
+//switch(FEAT_INDUSTRIES, SELF, indloc_check_dist, [ STORE_TEMP(LOAD_TEMP(0x00), 0x101), STORE_TEMP((town_euclidean_dist(0, 0) & 0xFFFF), 0x100), max(LOAD_TEMP(0x00) - (town_euclidean_dist(0, 0) & 0xFFFF), 0) ] ) {
+switch(FEAT_INDUSTRIES, SELF, indloc_check_dist, [ max(LOAD_TEMP(0x00) - (town_euclidean_dist(0, 0) & 0xFFFF), 0) ] ) {
+	0: string(STR_LOCATION_CHECK);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+
+switch(FEAT_INDUSTRIES, PARENT, indloc_zone_radius, [ STORE_TEMP(town_zone_0_radius_square, 0x00) ] ) {
+	default: indloc_check_dist;
+}
+
+switch(FEAT_INDUSTRIES, SELF, indloc_check, [town_zone(0, 0)]){
+	TOWNZONE_CENTRE: string(STR_LOCATION_CENTER);
+	default: indloc_zone_radius;
+}
+
+
+//close check
+//when counter is >6 -> close
+switch (FEAT_INDUSTRIES, SELF, close_count, [ STORE_PERM(LOAD_PERM(0x00) + 1, 0x00) ] ) {
+	0..6: CB_RESULT_IND_PROD_NO_CHANGE;
+	default: CB_RESULT_IND_PROD_CLOSE;
+}
+//when in town zone centre, start counting
+switch(FEAT_INDUSTRIES, SELF, close_check, [ town_zone(0, 0) ] ) {
+	TOWNZONE_CENTRE: close_count;
+	return CB_RESULT_IND_PROD_NO_CHANGE;
+}
+
+//industry text to show closure in time
+switch (FEAT_INDUSTRIES, SELF, etext_count, [ STORE_TEMP(7 - LOAD_PERM(0x00), 0x100) ] ) {
+	0..6: string(STR_I_CLOSE_COUNT);
+	default: string(STR_EMPTY);
+}
+
+switch(FEAT_INDUSTRIES, SELF, etext, [ LOAD_PERM(0x00) ] ) {
+	0: string(STR_EMPTY);
+	default: etext_count;
+}
+
+/*
+switch(FEAT_INDUSTRIES, SELF, extra_text_switch, [
+			STORE_TEMP(
+				(    (LOAD_PERM(var_supply_efficiency_factor) == 1) * string(STR_EXTRA_PRIMARY_EFFICIENT1)    ) +
+				(    (LOAD_PERM(var_supply_efficiency_factor) == 2) * string(STR_EXTRA_PRIMARY_EFFICIENT2)    ) +
+				(    (LOAD_PERM(var_supply_efficiency_factor) == 3) * string(STR_EXTRA_PRIMARY_EFFICIENT3)    ) +
+				(    (LOAD_PERM(var_supply_efficiency_factor) == 4) * string(STR_EXTRA_PRIMARY_EFFICIENT4)    ) |
+				LOAD_PERM(var_supply_requirement) << 16,
+				256
+			),
+	return string(STR_EXTRA_PRIMARY);
+}
+*/
+
+item(FEAT_INDUSTRIES, ebank, 0x28) {
+	property {
+		substitute: 0x00;
+		layouts: [layout_bank];
+		life_type: 0;
+		closure_msg: string(STR_I_BANK_CLOSE);
+		fund_cost_multiplier: 2;
+		prod_cargo_types: [];
+		accept_cargo_types: [GOLD, VALU, DIAM];
+		map_colour: 0xFF;
+		//spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+		new_ind_msg: string(STR_I_BANK_NEW);
+		name: string(STR_I_BANK_NAME);
+		conflicting_ind_types: [0xA8];
+		prob_random: 0;
+		prob_in_game: 0;
+	}
+	graphics{
+		extra_text_fund: string(STR_BUILD_ONLY_DIST);
+		location_check: indloc_check;
+		monthly_prod_change: close_check;
+		extra_text_industry: etext;
+	}
+}
+
+item(FEAT_INDUSTRIES, epump, 0x29) {
+	property {
+		substitute: 0x00;
+		layouts: [layout_pump];
+		life_type: 0;
+		closure_msg: string(STR_I_PUMP_CLOSE);
+		fund_cost_multiplier: 2;
+		prod_cargo_types: [];
+		accept_cargo_types: [PETR];
+		map_colour: 0xD1;
+		//spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+		new_ind_msg: string(STR_I_PUMP_NEW);
+		name: string(STR_I_PUMP_NAME);
+		conflicting_ind_types: [0xA9];
+		prob_random: 0;
+		prob_in_game: 0;
+	}
+	graphics{
+		extra_text_fund: string(STR_BUILD_ONLY_DIST);
+		location_check: indloc_check;
+		monthly_prod_change: close_check;
+		extra_text_industry: etext;
+	}
+}
+
+item(FEAT_INDUSTRIES, esaloon, 0x2A) {
+	property {
+		substitute: 0x00;
+		layouts: [layout_saloon];
+		life_type: 0;
+		closure_msg: string(STR_I_SALOON_CLOSE);
+		fund_cost_multiplier: 2;
+		prod_cargo_types: [];
+		accept_cargo_types: [VEHI];
+		map_colour: 0xE0;
+		//spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+		new_ind_msg: string(STR_I_SALOON_NEW);
+		name: string(STR_I_SALOON_NAME);
+		conflicting_ind_types: [0xAA];
+		prob_random: 0;
+		prob_in_game: 0;
+	}
+	graphics{
+		extra_text_fund: string(STR_BUILD_ONLY_DIST);
+		location_check: indloc_check;
+		monthly_prod_change: close_check;
+		extra_text_industry: etext;
+	}
+}
+
+item(FEAT_INDUSTRIES, estore, 0x2B) {
+	property {
+		substitute: 0x00;
+		layouts: [layout_store];
+		life_type: 0;
+		closure_msg: string(STR_I_STORE_CLOSE);
+		fund_cost_multiplier: 2;
+		prod_cargo_types: [];
+		accept_cargo_types: [BDMT, FOOD];
+		map_colour: 0xB9;
+		//spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+		new_ind_msg: string(STR_I_STORE_NEW);
+		name: string(STR_I_STORE_NAME);
+		conflicting_ind_types: [0xAB];
+		prob_random: 0;
+		prob_in_game: 0;
+	}
+	graphics{
+		extra_text_fund: string(STR_BUILD_ONLY_DIST);
+		location_check: indloc_check;
+		monthly_prod_change: close_check;
+		extra_text_industry: etext;
+	}
+}
+
+item(FEAT_INDUSTRIES, ewatertower, 0x2C) {
+	property {
+		substitute: 0x00;
+		layouts: [layout_watertower];
+		life_type: 0;
+		closure_msg: string(STR_I_WATER_CLOSE);
+		fund_cost_multiplier: 1;
+		prod_cargo_types: [];
+		accept_cargo_types: [WATR];
+		map_colour: 0x95;
+		//spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+		new_ind_msg: string(STR_I_WATER_NEW);
+		name: string(STR_I_WATER_NAME);
+		conflicting_ind_types: [0xAC];
+		prob_random: 0;
+		prob_in_game: 0;
+	}
+	graphics{
+		extra_text_fund: string(STR_BUILD_ONLY_DIST);
+		location_check: indloc_check;
+		monthly_prod_change: close_check;
+		extra_text_industry: etext;
+	}
+}

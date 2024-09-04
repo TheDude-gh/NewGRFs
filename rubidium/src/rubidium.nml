@@ -1,0 +1,1054 @@
+grf {
+	grfid:                  "nn\0A\9A";
+	name:                   string(STR_GRF_NAME);
+	desc:                   string(STR_GRF_DESCRIPTION);
+	version:                1;
+	min_compatible_version: 0;
+}
+
+cargotable {
+	RUBI
+}
+
+spriteset(ss_rubi_cargo, "gfx/rub.png") {
+	[274, 8, 10,  8,   0,   2]
+}
+
+//get time spent on route
+switch(FEAT_CARGOS, SELF, rubi_profit,
+	[ getbits(extra_callback_info2, 24, 8) ]
+){
+	//NMLC multiplies this value by ~167. This is not referenced on NML WIKI
+	 0..20: return 480; //keep normal value      0-20 =>  0-50days                48 => 1×, 480 => 10×
+	21..40: return -1600; //                     21-40 =>  51-100 days            1350 => -33×
+	return -10000;//                            >40    =>  > 100days              -5000 => -204×
+}
+
+item(FEAT_CARGOS, rubidium, 31){
+	property{
+		number: 31;
+		type_name: string(STR_CARGO_RUB_NAME);
+		unit_name: string(STR_CARGO_RUB_UNIT);
+		units_of_cargo: string(STR_CARGO_RUB_UNIT1);
+		items_of_cargo: string(STR_CARGO_RUB_UNITS);
+		type_abbreviation: string(STR_ABBREV_RUB);
+		sprite: NEW_CARGO_SPRITE;
+		weight: 15;
+		penalty_lowerbound: 64;  //160 days
+		single_penalty_length: 16;  //40 days
+		price_factor: 12800; //  //NMLC multiplies this value by ~ 41,12. The result value is in compiled GRF in prop12 (cpf)
+		station_list_colour: 0xE0;
+		cargo_payment_list_colour: 0xE0;
+		is_freight: 1;
+		cargo_classes: bitmask(CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_label: "RUBI";
+	}
+	graphics {
+		profit: rubi_profit;
+		ss_rubi_cargo;
+	}
+}
+
+spriteset(ss_rubimine, "gfx/rub.png") {
+  [450, 8, 50, 63, -32, -32, NOANIM]
+	[514, 8, 50, 63, -14, -48, NOANIM]
+}
+
+spritelayout sl_rubimineL {
+	ground { sprite: 4023; }
+	building {
+		sprite: ss_rubimine(0);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 48;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout sl_rubimineR {
+	ground { sprite: 4023; }
+	building {
+		sprite: ss_rubimine(1);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 48;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout sl_rubimineX {
+	ground { sprite: 4023; }
+	building {
+		sprite: 4023;
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 16;
+		recolour_mode: RECOLOUR_REMAP;
+ 		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, RUBMINE_L, 0xAD){
+  property{
+		substitute: 0xAD;
+		override: 0xAD;
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+	}
+	graphics{ sl_rubimineL; }
+}
+
+item(FEAT_INDUSTRYTILES, RUBMINE_R, 0xAE){
+  property{
+		substitute: 0xAE;
+		override: 0xAE;
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+	}
+	graphics{ sl_rubimineR; }
+}
+
+item(FEAT_INDUSTRYTILES, RUBMINE_X, 0x9C){
+  property{
+		substitute: 0x9C;
+		override: 0x9C;
+		accepted_cargos: [];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+	}
+	graphics{ sl_rubimineX; }
+}
+tilelayout layout_rubimine {
+	0,0: RUBMINE_X;
+	0,1: RUBMINE_X;
+	1,0: RUBMINE_L;
+	1,1: RUBMINE_R;
+	2,0: RUBMINE_X;
+	2,1: RUBMINE_X;
+}
+
+produce(prodreg, [], [RUBI: 10000;])
+
+/*switch(FEAT_INDUSTRIES, SELF, prodreg,
+	[extra_callback_info2]
+){
+	default: prodregp;
+}*/
+
+switch(FEAT_INDUSTRIES, SELF, prodchange,
+	[extra_callback_info2 && 0xFF]
+){
+	0..127: CB_RESULT_IND_PROD_DOUBLE;
+	default: CB_RESULT_IND_PROD_INCREMENT_BY_1;
+}
+
+switch(FEAT_INDUSTRIES, SELF, RM_location,
+	[industry_distance(ioblivion_hole, -1)]
+){
+	0..48: string(STR_IND_TOO_CLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+
+item(FEAT_INDUSTRIES, irubimine, 0x24) {
+	property {
+		substitute: 0x24;
+		override: 0x24;
+		layouts: [layout_rubimine];
+		life_type: IND_LIFE_TYPE_EXTRACTIVE;
+		closure_msg: string(STR_IND_RUB_CLOSE);
+		prod_increase_msg: string(STR_IND_RUB_INC);
+		prod_decrease_msg: string(STR_IND_RUB_DEC);
+		fund_cost_multiplier: 254;
+		cargo_types: [
+			produce_cargo("RUBI", 240)
+		];
+		prob_random: 16;
+		prob_in_game: 31;
+		map_colour: 0xE0;
+		//spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+		new_ind_msg: string(STR_IND_RUB_NEW);
+		name: string(STR_IND_RUB_MINE);
+		nearby_station_name: string(STR_IND_RUB_STATION);
+		
+	}
+	graphics{
+		location_check: RM_location;
+		monthly_prod_change: prodchange;
+		produce_256_ticks: prodreg;
+		extra_text_fund: string(STR_IND_RUB_FTEXT);
+		extra_text_industry: string(STR_CARGO_RUB_ITEXT);
+	}
+}
+      
+
+/* OBLIVION HOLE */
+
+spriteset(ss_hole, "gfx/rub.png") {
+	//frame 1
+  [258,  88, 64, 31, -31, 0, ANIM]
+	[338,  88, 64, 31, -31, 0, ANIM]
+	[418,  88, 64, 31, -31, 0, ANIM]
+	[498,  88, 64, 31, -31, 0, ANIM]
+	[578,  88, 64, 31, -31, 0, ANIM]
+	[658,  88, 64, 31, -31, 0, ANIM]
+	[  2, 136, 64, 31, -31, 0, ANIM]
+	[ 82, 136, 64, 31, -31, 0, ANIM]
+	[162, 136, 64, 31, -31, 0, ANIM]
+	//frame 2
+	[402, 136, 64, 31, -31, 0, ANIM]
+	[482, 136, 64, 31, -31, 0, ANIM]
+	[562, 136, 64, 31, -31, 0, ANIM]
+	[642, 136, 64, 31, -31, 0, ANIM]
+	[722, 136, 64, 31, -31, 0, ANIM]
+	[  2, 184, 64, 31, -31, 0, ANIM]
+	[ 82, 184, 64, 31, -31, 0, ANIM]
+	[162, 184, 64, 31, -31, 0, ANIM]
+	[242, 184, 64, 31, -31, 0, ANIM]
+	//frame 3
+	[482, 184, 64, 31, -31, 0, ANIM]
+	[562, 184, 64, 31, -31, 0, ANIM]
+	[642, 184, 64, 31, -31, 0, ANIM]
+	[722, 184, 64, 31, -31, 0, ANIM]
+	[  2, 232, 64, 31, -31, 0, ANIM]
+	[ 82, 232, 64, 31, -31, 0, ANIM]
+	[162, 232, 64, 31, -31, 0, ANIM]
+	[242, 232, 64, 31, -31, 0, ANIM]
+	[322, 232, 64, 31, -31, 0, ANIM]
+	//frame 4
+	[562, 232, 64, 31, -31, 0, ANIM]
+	[642, 232, 64, 31, -31, 0, ANIM]
+	[722, 232, 64, 31, -31, 0, ANIM]
+	[  2, 280, 64, 31, -31, 0, ANIM]
+	[ 82, 280, 64, 31, -31, 0, ANIM]
+	[162, 280, 64, 31, -31, 0, ANIM]
+	[242, 280, 64, 31, -31, 0, ANIM]
+	[322, 280, 64, 31, -31, 0, ANIM]
+	[402, 280, 64, 31, -31, 0, ANIM]
+	//frame 5
+	[642, 280, 64, 31, -31, 0, ANIM]
+	[722, 280, 64, 31, -31, 0, ANIM]
+	[  2, 328, 64, 31, -31, 0, ANIM]
+	[ 82, 328, 64, 31, -31, 0, ANIM]
+	[162, 328, 64, 31, -31, 0, ANIM]
+	[242, 328, 64, 31, -31, 0, ANIM]
+	[322, 328, 64, 31, -31, 0, ANIM]
+	[402, 328, 64, 31, -31, 0, ANIM]
+	[482, 328, 64, 31, -31, 0, ANIM]
+	//ground
+	[  0,   0, 64, 31, -31, 0]
+}
+
+//frame 1
+spritelayout oh_t00_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(0);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t01_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(1);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t02_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(2);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t10_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(3);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t11_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(4);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t12_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(5);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t20_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(6);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t21_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(7);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t22_a0 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(8);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+
+//frame 2
+spritelayout oh_t00_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(9);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t01_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(10);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t02_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(11);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t10_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(12);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t11_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(13);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t12_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(14);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t20_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(15);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t21_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(16);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t22_a1 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(17);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+
+//frame 3
+spritelayout oh_t00_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(18);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t01_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(19);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t02_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(20);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t10_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(21);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t11_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(22);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t12_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(23);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t20_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(24);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t21_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(25);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t22_a2 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(26);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+
+//frame 4
+spritelayout oh_t00_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(27);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t01_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(28);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t02_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(29);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t10_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(30);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t11_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(31);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t12_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(32);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t20_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(33);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t21_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(34);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t22_a3 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(35);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+
+//frame 5
+spritelayout oh_t00_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(36);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t01_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(37);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t02_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(38);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t10_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(39);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t11_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(40);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t12_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(41);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 10;
+	}
+}
+spritelayout oh_t20_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(42);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t21_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(43);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+spritelayout oh_t22_a4 {
+	ground { sprite: ss_hole(45); }
+	building {
+		sprite: ss_hole(44);
+		xoffset: 0;
+		yoffset: 0;
+		xextent: 16;
+		yextent: 16;
+		zextent: 0;
+	}
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation00,	[animation_frame]){
+	0: oh_t00_a0;
+	1: oh_t00_a1;
+	2: oh_t00_a2;
+	3: oh_t00_a3;
+	oh_t00_a4;
+}
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation01,	[animation_frame]){
+	0: oh_t01_a0;
+	1: oh_t01_a1;
+	2: oh_t01_a2;
+	3: oh_t01_a3;
+	oh_t01_a4;
+}
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation02,	[animation_frame]){
+	0: oh_t02_a0;
+	1: oh_t02_a1;
+	2: oh_t02_a2;
+	3: oh_t02_a3;
+	oh_t02_a4;
+}
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation10,	[animation_frame]){
+	0: oh_t10_a0;
+	1: oh_t10_a1;
+	2: oh_t10_a2;
+	3: oh_t10_a3;
+	oh_t10_a4;
+}
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation11,	[animation_frame]){
+	0: oh_t11_a0;
+	1: oh_t11_a1;
+	2: oh_t11_a2;
+	3: oh_t11_a3;
+	oh_t11_a4;
+}
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation12,	[animation_frame]){
+	0: oh_t12_a0;
+	1: oh_t12_a1;
+	2: oh_t12_a2;
+	3: oh_t12_a3;
+	oh_t12_a4;
+}
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation20,	[animation_frame]){
+	0: oh_t20_a0;
+	1: oh_t20_a1;
+	2: oh_t20_a2;
+	3: oh_t20_a3;
+	oh_t20_a4;
+}
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation21,	[animation_frame]){
+	0: oh_t21_a0;
+	1: oh_t21_a1;
+	2: oh_t21_a2;
+	3: oh_t21_a3;
+	oh_t21_a4;
+}
+switch(FEAT_INDUSTRYTILES, SELF, oh_animation22,	[animation_frame]){
+	0: oh_t22_a0;
+	1: oh_t22_a1;
+	2: oh_t22_a2;
+	3: oh_t22_a3;
+	oh_t22_a4;
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile00, 0x9D){
+  property{
+		substitute: 0x9D;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation00;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile01, 0x9E){
+  property{
+		substitute: 0x9E;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation01;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile02, 0x9F){
+  property{
+		substitute: 0x9F;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation02;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile10, 0xA0){
+  property{
+		substitute: 0xA0;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation10;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile11, 0xA1){
+  property{
+		substitute: 0xA1;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation11;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile12, 0xA2){
+  property{
+		substitute: 0xA2;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation12;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile20, 0xA3){
+  property{
+		substitute: 0xA3;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation20;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile21, 0xA4){
+  property{
+		substitute: 0xA4;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation21;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, oh_tile22, 0xA5){
+  property{
+		substitute: 0xA5;
+		accepted_cargos: [[RUBI, 8]];
+		land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+  	animation_info: [ANIMATION_LOOPING, 5];
+		animation_speed: 3;
+	}
+	graphics{
+		oh_animation22;
+	}
+}
+
+tilelayout layout_oblivion_hole {
+	0,0: oh_tile00;
+	0,1: oh_tile01;
+	0,2: oh_tile02;
+	1,0: oh_tile10;
+	1,1: oh_tile11;
+	1,2: oh_tile12;
+	2,0: oh_tile20;
+	2,1: oh_tile21;
+	2,2: oh_tile22;
+}
+
+switch(FEAT_INDUSTRIES, SELF, OH_location,
+	[industry_distance(irubimine, -1)]
+){
+	0..48: string(STR_IND_TOO_CLOSE);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+
+item(FEAT_INDUSTRIES, ioblivion_hole, 0x23) {
+	property {
+		substitute: 0x23;
+		override: 0x23;
+		layouts: [layout_oblivion_hole];
+		life_type: IND_LIFE_TYPE_BLACK_HOLE;
+		fund_cost_multiplier: 255;
+		cargo_types: [
+			accept_cargo("RUBI")
+		];
+		conflicting_ind_types: [irubimine];
+		prob_random: 1;
+		prob_in_game: 0;
+		map_colour: 0x03;
+		new_ind_msg: string(STR_IND_PORTAL_NEW);
+		name: string(STR_IND_HOLE_NAME);
+		nearby_station_name: string(STR_IND_HOLE_STATION);
+	}
+	graphics{
+		location_check: OH_location;
+		extra_text_fund: string(STR_IND_HOLE_FTEXT);
+		extra_text_industry: string(STR_IND_HOLE_ITEXT);
+	}
+}
+
+spriteset(sp_rubicar, "gfx/rub.png") {
+	[498, 376,  8, 17,  -3,  -9, NOANIM]
+	[514, 376, 20, 16, -14,  -7, NOANIM]
+	[546, 376, 28, 12, -14,  -6, NOANIM]
+	[594, 376, 20, 17,  -6,  -8, NOANIM]
+	[626, 376,  8, 18,  -3, -10, NOANIM]
+	[642, 376, 20, 17, -14,  -8, NOANIM]
+	[674, 376, 28, 12, -14,  -6, NOANIM]
+	[722, 376, 20, 16,  -6,  -7, NOANIM]
+}
+
+spriteset(sp_rubicar_loaded, "gfx/rub.png") {
+	[754, 376,  8, 21,  -3, -11, NOANIM]
+	[770, 376, 20, 20, -14, -10, NOANIM]
+	[  2, 408, 28, 21, -14, -11, NOANIM]
+	[ 50, 408, 20, 20,  -6, -10, NOANIM]
+	[ 82, 408,  8, 18,  -3, -10, NOANIM]
+	[ 98, 408, 20, 20, -14, -10, NOANIM]
+	[130, 408, 28, 21, -14, -11, NOANIM]
+	[178, 408, 20, 21,  -6, -11, NOANIM]
+}
+
+spritegroup sg_rubicar {
+	loading: [sp_rubicar, sp_rubicar_loaded];
+	loaded:  [sp_rubicar, sp_rubicar_loaded];
+}
+
+item(FEAT_ROADVEHS, vehicle_rubi, 0x57) {
+	property {
+		name: string(STR_VEHICLE);
+		introduction_date: date(1920, 01, 01);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		speed: 80 km/h;
+		default_cargo_type: RUBI;
+		cost_factor: 255;
+		cargo_capacity: 1;
+		power: 2550 hp;
+		tractive_effort_coefficient: 1;	}
+	graphics {
+		default: sg_rubicar;
+	}
+}
+
+spriteset(sp_rubiwagon, "gfx/rub.png") {
+	[290, 408,  8, 16,  -3,  -8, NOANIM]
+	[306, 408, 20, 14, -14,  -5, NOANIM]
+	[338, 408, 28, 10, -14,  -4, NOANIM]
+	[386, 408, 20, 14,  -4,  -6, NOANIM]
+}
+
+spriteset(sp_rubiwagon_loaded, "gfx/rub.png") {
+	[418, 408,  8, 18,  -3,  -9, NOANIM]
+	[434, 408, 20, 20, -14, -10, NOANIM]
+	[466, 408, 28, 21, -14, -10, NOANIM]
+	[514, 408, 20, 20,  -4, -10, NOANIM]
+}
+
+spritegroup sg_rubiwagon {
+	loading: [sp_rubiwagon, sp_rubiwagon_loaded];
+	loaded:  [sp_rubiwagon, sp_rubiwagon_loaded];
+}
+
+item(FEAT_TRAINS, wagon_rubi, 0x2C) {
+	property {
+		name: string(STR_WAGON);
+		introduction_date: date(1920, 01, 01);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		speed: 16 km/h;
+		cargo_capacity: 1;
+		default_cargo_type: RUBI;
+		weight: 150 ton;
+		cost_factor: 255;
+	}
+	graphics {
+		default: sg_rubiwagon;
+	}
+}

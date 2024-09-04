@@ -1,0 +1,103 @@
+
+item(FEAT_SHIPS, ship_oil1, 0) {
+  property {
+	  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+	  is_refittable: 1;
+	  default_cargo_type: OIL_;
+	  cargo_allow_refit: [];
+	  refittable_cargo_classes: bitmask(CC_LIQUID);
+	  non_refittable_cargo_classes: 0;
+	}
+}
+
+item(FEAT_SHIPS, ship_oil2, 1) {
+  property {
+	  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+	  is_refittable: 1;
+	  default_cargo_type: OIL_;
+	  cargo_allow_refit: [];
+	  refittable_cargo_classes: bitmask(CC_LIQUID);
+	  non_refittable_cargo_classes: 0;
+	}
+}
+
+item(FEAT_SHIPS, ship_ferry1, 2) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: PASS;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS);
+  non_refittable_cargo_classes: 0;
+}}
+
+item(FEAT_SHIPS, ship_ferry2, 3) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: PASS;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS);
+  non_refittable_cargo_classes: 0;
+}}
+
+item(FEAT_SHIPS, ship_hovercraft, 4) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: PASS;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS);
+  non_refittable_cargo_classes: 0;
+}}
+
+item(FEAT_SHIPS, ship_ferryToy1, 5) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: PASS;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS);
+  non_refittable_cargo_classes: 0;
+}}
+
+item(FEAT_SHIPS, ship_ferryToy2, 6) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: PASS;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS);
+  non_refittable_cargo_classes: 0;
+}}
+
+item(FEAT_SHIPS, ship_cargo1, 7) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: GOOD;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_BULK,	CC_PIECE_GOODS, CC_REFRIGERATED, CC_HAZARDOUS, CC_COVERED, CC_OVERSIZED);
+  non_refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_LIQUID);
+}}
+
+item(FEAT_SHIPS, ship_cargo2, 8) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: GOOD;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_BULK,	CC_PIECE_GOODS, CC_REFRIGERATED, CC_HAZARDOUS, CC_COVERED, CC_OVERSIZED);
+  non_refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_LIQUID);
+}}
+
+item(FEAT_SHIPS, ship_cargoToy1, 9) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: GOOD;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_BULK,	CC_PIECE_GOODS, CC_REFRIGERATED, CC_HAZARDOUS, CC_COVERED, CC_OVERSIZED);
+  non_refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_LIQUID);
+}}
+
+item(FEAT_SHIPS, ship_cargoToy2, 10) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  is_refittable: 1;
+  default_cargo_type: GOOD;
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_BULK,	CC_PIECE_GOODS, CC_REFRIGERATED, CC_HAZARDOUS, CC_COVERED, CC_OVERSIZED);
+  non_refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_LIQUID);
+}}

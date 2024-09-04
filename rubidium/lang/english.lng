@@ -1,0 +1,29 @@
+##grflangid 0x01
+##plural 0
+STR_GRF_NAME           :Secret Rubidium cargo
+STR_GRF_DESCRIPTION    :{LTBLUE}No description
+
+
+STR_CARGO_RUB_NAME     :Rubidium
+STR_CARGO_RUB_UNIT     :Rubidium
+STR_CARGO_RUB_UNIT1    :{COMMA} ingot of Rubidium
+STR_CARGO_RUB_UNITS    :{COMMA} ingots of Rubidium
+STR_ABBREV_RUB         :{TINYFONT}RU
+STR_IND_RUB_CLOSE      :Rubidium poisoned all miners and thus will be closed
+STR_IND_RUB_INC        :Rubidium is infesting our world again
+STR_IND_RUB_DEC        :Rubidium is going down
+STR_IND_RUB_NEW        :New Rubidium
+STR_IND_RUB_MINE       :Rubidium Mine
+STR_IND_RUB_STATION    :Dangerous area
+STR_IND_RUB_FTEXT      :Rubidium mine is inhabited by Rubitrolls. Be careful
+STR_IND_HOLE_FTEXT     :Oblivion hole can drain your money away if not properly suplied with Rubidium.
+STR_CARGO_RUB_ITEXT    :Rubidium mine is inhabited by Rubitrolls. Be careful!{}Rubidium is hazardous and toxic material!
+STR_IND_HOLE_ITEXT     :Oblivion hole needs fresh Rubidium or it can drain your money.{}Rubidium older than 50 days is billed!{}Rubidium older than 100 days contaminates your bank account!
+STR_IND_TOO_CLOSE      :Too close to conflicting industry.
+
+STR_IND_PORTAL_NAME    :Vortex Portal
+STR_IND_PORTAL_NEW     :New Vortex Portal
+STR_IND_HOLE_NAME      :Oblivion Hole
+STR_IND_HOLE_STATION   :Endless Void
+STR_VEHICLE            :Rubidium Transporter
+STR_WAGON              :Rubidium Transporter

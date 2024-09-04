@@ -1,0 +1,121 @@
+
+if(hasbit(param[0], 8)){
+	replace townstatue(2632, "nfo/toystatue.png") {
+		[0, 0, 53, 104, -22, -81]
+	}
+}
+
+if(hasbit(param[0], 1)){
+	disable_item(FEAT_TRAINS, 0x36, 0x38);
+	disable_item(FEAT_TRAINS, 0x54, 0x58);
+}
+
+
+if(hasbit(param[0], 6)){
+	item(FEAT_SHIPS, ship_00, 0x00) { property { cargo_capacity: 800; }}
+	item(FEAT_SHIPS, ship_01, 0x01) { property { cargo_capacity: 1500; }}
+	item(FEAT_SHIPS, ship_02, 0x02) { property { cargo_capacity: 350; }}
+	item(FEAT_SHIPS, ship_03, 0x03) { property { cargo_capacity: 600; }}
+	item(FEAT_SHIPS, ship_04, 0x04) { property { cargo_capacity: 200; }}
+	item(FEAT_SHIPS, ship_05, 0x05) { property { cargo_capacity: 350; }}
+	item(FEAT_SHIPS, ship_06, 0x06) { property { cargo_capacity: 600; }}
+	item(FEAT_SHIPS, ship_07, 0x07) { property { cargo_capacity: 500; }}
+	item(FEAT_SHIPS, ship_08, 0x08) { property { cargo_capacity: 900; }}
+	item(FEAT_SHIPS, ship_09, 0x09) { property { cargo_capacity: 500; }}
+	item(FEAT_SHIPS, ship_10, 0x0A) { property { cargo_capacity: 900; }}
+}
+
+//early vehicles
+item(FEAT_ROADVEHS, vehicle_00, 0x00) { property { introduction_date: date(1929, 1, 3); }}
+item(FEAT_ROADVEHS, vehicle_01, 0x01) { property { introduction_date: date(1950, 1, 8); }}
+item(FEAT_ROADVEHS, vehicle_02, 0x02) { property { introduction_date: date(1970, 1, 13); }}
+item(FEAT_ROADVEHS, vehicle_03, 0x03) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_07, 0x07) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_08, 0x08) { property { introduction_date: date(1964, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_09, 0x09) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_10, 0x0A) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_11, 0x0B) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_12, 0x0C) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_16, 0x10) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_17, 0x11) { property { introduction_date: date(1962, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_18, 0x12) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_19, 0x13) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_20, 0x14) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_21, 0x15) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_22, 0x16) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_23, 0x17) { property { introduction_date: date(1963, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_24, 0x18) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_25, 0x19) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_26, 0x1A) { property { introduction_date: date(1964, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_27, 0x1B) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_28, 0x1C) { property { introduction_date: date(1936, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_29, 0x1D) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_30, 0x1E) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_31, 0x1F) { property { introduction_date: date(1936, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_32, 0x20) { property { introduction_date: date(1965, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_33, 0x21) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_34, 0x22) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_35, 0x23) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_36, 0x24) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_37, 0x25) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_38, 0x26) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_39, 0x27) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_40, 0x28) { property { introduction_date: date(1936, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_41, 0x29) { property { introduction_date: date(1961, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_42, 0x2A) { property { introduction_date: date(1984, 1, 16); }}
+item(FEAT_ROADVEHS, vehicle_43, 0x2B) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_44, 0x2C) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_45, 0x2D) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_46, 0x2E) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_47, 0x2F) { property { introduction_date: date(1965, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_48, 0x30) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_49, 0x31) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_50, 0x32) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_51, 0x33) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_52, 0x34) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_53, 0x35) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_54, 0x36) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_55, 0x37) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_56, 0x38) { property { introduction_date: date(1965, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_57, 0x39) { property { introduction_date: date(1985, 1, 17); }}
+//toyland vehicles
+item(FEAT_ROADVEHS, vehicle_04, 0x04) { property { introduction_date: date(1935, 3, 27); }}
+item(FEAT_ROADVEHS, vehicle_05, 0x05) { property { introduction_date: date(1965, 5, 8); }}
+item(FEAT_ROADVEHS, vehicle_06, 0x06) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_13, 0x0D) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_14, 0x0E) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_15, 0x0F) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_58, 0x3A) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_59, 0x3B) { property { introduction_date: date(1962, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_60, 0x3C) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_61, 0x3D) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_62, 0x3E) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_63, 0x3F) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_64, 0x40) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_65, 0x41) { property { introduction_date: date(1963, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_66, 0x42) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_67, 0x43) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_68, 0x44) { property { introduction_date: date(1964, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_69, 0x45) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_70, 0x46) { property { introduction_date: date(1936, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_71, 0x47) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_72, 0x48) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_73, 0x49) { property { introduction_date: date(1936, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_74, 0x4A) { property { introduction_date: date(1965, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_75, 0x4B) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_75, 0x4B) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_76, 0x4C) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_77, 0x4D) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_79, 0x4F) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_80, 0x50) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_81, 0x51) { property { introduction_date: date(1985, 1, 17); }}
+item(FEAT_ROADVEHS, vehicle_82, 0x52) { property { introduction_date: date(1936, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_83, 0x53) { property { introduction_date: date(1961, 1, 11); }}
+item(FEAT_ROADVEHS, vehicle_84, 0x54) { property { introduction_date: date(1984, 1, 16); }}
+item(FEAT_ROADVEHS, vehicle_85, 0x55) { property { introduction_date: date(1935, 1, 4); }}
+item(FEAT_ROADVEHS, vehicle_86, 0x56) { property { introduction_date: date(1966, 1, 12); }}
+item(FEAT_ROADVEHS, vehicle_87, 0x57) { property { introduction_date: date(1985, 1, 17); }}
+
+//quit if FIRS are or will be active at this moment
+if(grf_current_status("\F1\25\00\05")){ exit; } //FIRS
+if(grf_future_status("\F1\25\00\05")){ exit; } //FIRS

@@ -1,0 +1,1695 @@
+disable_item(FEAT_ROADVEHS, 0x0D, 0x0F);
+disable_item(FEAT_ROADVEHS, 0x2E, 0x30);
+disable_item(FEAT_ROADVEHS, 0x37, 0x57);
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_passengerA_gfx, [cargo_type_in_veh]){
+	TOUR: sprites_bus2A;
+	default: sprites_busA;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_passengerB_gfx, [cargo_type_in_veh]){
+	TOUR: sprites_bus2B;
+	default: sprites_busBC;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_passengerC_gfx, [cargo_type_in_veh]){
+	TOUR: sprites_bus2C;
+	default: sprites_busBC;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_passengerD_gfx, [cargo_type_in_veh]){
+	TOUR: sprites_bus2D;
+	default: sprites_busD;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_passengerA_cap, [cargo_type_in_veh]){
+	TOUR: 15;
+	default: 30;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_passengerB_cap, [cargo_type_in_veh]){
+	TOUR: 20;
+	default: 35;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_passengerC_cap, [cargo_type_in_veh]){
+	TOUR: 22;
+	default: 37;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_passengerD_cap, [cargo_type_in_veh]){
+	TOUR: 25;
+	default: 40;
+}
+
+item(FEAT_ROADVEHS, vehicle_passengerA_id0, 0x0) { //0
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PASS;
+		cargo_allow_refit: [PASS, TOUR];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes: 0;
+		refit_cost: 208;
+	}
+	graphics {
+		default: sw_vehicle_passengerA_gfx;
+		cargo_capacity: sw_vehicle_passengerA_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_passengerB_id1, 0x1) { //1
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PASS;
+		cargo_allow_refit: [PASS, TOUR];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes: 0;
+		refit_cost: 224;
+	}
+	graphics {
+		default: sw_vehicle_passengerB_gfx;
+		cargo_capacity: sw_vehicle_passengerB_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_passengerC_id2, 0x2) { //2
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PASS;
+		cargo_allow_refit: [PASS, TOUR];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes: 0;
+		refit_cost: 240;
+	}
+	graphics {
+		default: sw_vehicle_passengerC_gfx;
+		cargo_capacity: sw_vehicle_passengerC_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_passengerD_id3, 0x3) { //3
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PASS;
+		cargo_allow_refit: [PASS, TOUR];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes: 0;
+		refit_cost: 255;
+	}
+	graphics {
+		default: sw_vehicle_passengerD_gfx;
+		cargo_capacity: sw_vehicle_passengerD_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_touristsA_id4, 0x4) { //4
+	property {
+		name: string(STR_VEHICLE_BUSA);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: TOUR;
+		cargo_allow_refit: [TOUR, YETI];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+		introduction_date: date(1936, 4, 24);
+		vehicle_life: 12;
+		model_life: 30;
+		loading_speed: 5;
+		speed: 48 km/h;
+		running_cost_factor: 240;
+		running_cost_base: RUNNING_COST_ROADVEH;
+		cargo_capacity: 20;
+		cost_factor: 208;
+		sound_effect: SOUND_BUS_START_PULL_AWAY;
+		power: 142 kW;
+		weight: 10;
+	}
+	graphics {
+		default: sprites_touristsA;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_touristsB_id5, 0x5) { //5
+	property {
+		name: string(STR_VEHICLE_BUSB);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: TOUR;
+		cargo_allow_refit: [TOUR, YETI];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+		introduction_date: date(1966, 4, 24);
+		vehicle_life: 15;
+		model_life: 48;
+		loading_speed: 6;
+		speed: 76 km/h;
+		running_cost_factor: 250;
+		running_cost_base: RUNNING_COST_ROADVEH;
+		cargo_capacity: 25;
+		cost_factor: 229;
+		sound_effect: SOUND_TRUCK_START;
+		power: 328 kW;
+		weight: 12;
+	}
+	graphics {
+		default: sprites_touristsB;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_touristsC_id6, 0x6) { //6
+	property {
+		name: string(STR_VEHICLE_BUSC);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: TOUR;
+		cargo_allow_refit: [TOUR, YETI];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+		introduction_date: date(1986, 4, 24);
+		vehicle_life: 20;
+		model_life: VEHICLE_NEVER_EXPIRES;
+		loading_speed: 7;
+		speed: 150 km/h;
+		running_cost_factor: 255;
+		running_cost_base: RUNNING_COST_ROADVEH;
+		cargo_capacity: 30;
+		cost_factor: 255;
+		sound_effect: SOUND_TRUCK_START_2;
+		power: 420 kW;
+		weight: 15;
+	}
+	graphics {
+		default: sprites_touristsC;
+	}
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_coalA_gfx, [cargo_type_in_veh]){
+	CTCD: gr_vehicle_candyA;
+	IORE: gr_vehicle_ironoreA;
+	CORE: gr_vehicle_clayA;
+	SUGR: gr_vehicle_sugarA;
+	TOFF: gr_vehicle_toffeeA;
+	SAND: gr_vehicle_sandA;
+	AORE: gr_vehicle_stoneA;
+	LIME: gr_vehicle_clayA;
+	CLAY: gr_vehicle_clayA;
+	GRVL: gr_vehicle_stoneA;
+	URAN: gr_vehicle_plastA;
+	SGBT: gr_vehicle_sugarA;
+	SGCN: gr_vehicle_sugarA;
+	gr_vehicle_coalA; //coal
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_coalB_gfx, [cargo_type_in_veh]){
+	CTCD: gr_vehicle_candyB;
+	IORE: gr_vehicle_ironoreB;
+	CORE: gr_vehicle_clayB;
+	SUGR: gr_vehicle_sugarB;
+	TOFF: gr_vehicle_toffeeB;
+	SAND: gr_vehicle_sandB;
+	AORE: gr_vehicle_stoneB;
+	LIME: gr_vehicle_clayB;
+	CLAY: gr_vehicle_clayB;
+	GRVL: gr_vehicle_stoneB;
+	URAN: gr_vehicle_plastB;
+	SGBT: gr_vehicle_sugarB;
+	SGCN: gr_vehicle_sugarB;
+	gr_vehicle_coalB; //coal
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_coalC_gfx, [cargo_type_in_veh]){
+	CTCD: gr_vehicle_candyC;
+	IORE: gr_vehicle_ironoreC;
+	CORE: gr_vehicle_clayC;
+	SUGR: gr_vehicle_sugarC;
+	TOFF: gr_vehicle_toffeeC;
+	SAND: gr_vehicle_sandC;
+	AORE: gr_vehicle_stoneC;
+	LIME: gr_vehicle_clayC;
+	CLAY: gr_vehicle_clayC;
+	GRVL: gr_vehicle_stoneC;
+	URAN: gr_vehicle_plastC;
+	SGBT: gr_vehicle_sugarC;
+	SGCN: gr_vehicle_sugarC;
+	gr_vehicle_coalC; //coal
+}
+
+item(FEAT_ROADVEHS, vehicle_coalA_id7, 0x7) { //7
+	property {
+		name: string(STR_VEHICLE_MINERALA);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: COAL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_coalA_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_coalB_id8, 0x8) { //8
+	property {
+		name: string(STR_VEHICLE_MINERALB);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: COAL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_coalB_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_coalC_id9, 0x9) { //9
+	property {
+		name: string(STR_VEHICLE_MINERALC);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: COAL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_coalC_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_mailA_id10, 0xA) { //10
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: MAIL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_MAIL);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_mailA;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_mailB_id11, 0xB) { //11
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: MAIL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_MAIL);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_mailB;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_mailC_id12, 0xC) { //12
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: MAIL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_MAIL);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_mailC;
+	}
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_oilA_gfx, [cargo_type_in_veh]){
+	WATR: sprites_waterA;
+	COLA: gr_vehicle_refinedA;
+	FZDR: gr_vehicle_fizzyA;
+	DYES: sprites_dyesA;
+	FERT: sprites_fertiliserA;
+	RFPR: gr_vehicle_refinedA;
+	PETR: sprites_petrolA;
+	CMNT: sprites_cementA;
+	MILK: sprites_waterA;
+	BEER: sprites_dyesA;
+	ENRG: gr_vehicle_bubbleA;
+	sprites_oilA;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_oilB_gfx, [cargo_type_in_veh]){
+	WATR: sprites_waterB;
+	COLA: gr_vehicle_refinedB;
+	FZDR: gr_vehicle_fizzyB;
+	DYES: sprites_dyesB;
+	FERT: sprites_fertiliserB;
+	RFPR: gr_vehicle_refinedB;
+	PETR: sprites_petrolB;
+	CMNT: sprites_cementB;
+	MILK: sprites_waterB;
+	BEER: sprites_dyesB;
+	ENRG: gr_vehicle_bubbleB;
+	sprites_oilB;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_oilC_gfx, [cargo_type_in_veh]){
+	WATR: sprites_waterC;
+	COLA: gr_vehicle_refinedC;
+	FZDR: gr_vehicle_fizzyC;
+	DYES: sprites_dyesC;
+	FERT: sprites_fertiliserC;
+	RFPR: gr_vehicle_refinedC;
+	PETR: sprites_petrolC;
+	CMNT: sprites_cementC;
+	MILK: sprites_waterC;
+	BEER: sprites_dyesC;
+	ENRG: gr_vehicle_bubbleC;
+	sprites_oilC;
+}
+
+item(FEAT_ROADVEHS, vehicle_oilA_id16, 0x10) { //16
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: OIL_;
+		cargo_allow_refit: [FZDR, CMNT, FERT];
+		cargo_disallow_refit: [PLST, RUBR];
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_oilA_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_oilB_id17, 0x11) { //17
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: OIL_;
+		cargo_allow_refit: [FZDR, CMNT, FERT];
+		cargo_disallow_refit: [PLST, RUBR];
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_oilB_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_oilC_id18, 0x12) { //18
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: OIL_;
+		cargo_allow_refit: [FZDR, CMNT, FERT];
+		cargo_disallow_refit: [PLST, RUBR];
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_oilC_gfx;
+	}
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_livestockA_gfx, [cargo_type_in_veh]){
+	HCOW: sprites_fishA;
+	sprites_livestockA;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_livestockB_gfx, [cargo_type_in_veh]){
+	HCOW: sprites_fishB;
+	sprites_livestockB;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_livestockC_gfx, [cargo_type_in_veh]){
+	HCOW: sprites_fishC;
+	sprites_livestockC;
+}
+
+item(FEAT_ROADVEHS, vehicle_livestockA_id19, 0x13) { //19
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: LVST;
+		cargo_allow_refit: [LVST, HCOW];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_livestockA_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_livestockB_id20, 0x14) { //20
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: LVST;
+		cargo_allow_refit: [LVST, HCOW];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_livestockB_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_livestockC_id21, 0x15) { //21
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: LVST;
+		cargo_allow_refit: [LVST, HCOW];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_livestockC_gfx;
+	}
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_goodsA_gfx, [cargo_type_in_veh]){
+	TOYS: sprites_fishA;
+	SWET: sprites2_sweetA;
+	WOOL: sprites_woolA;
+	BRCK: sprites_brickA;
+	GLAS: sprites_glassA;
+	MNSP: sprites_glassA;
+	FMSP: sprites2_tmailA;
+	ENSP: sprites2_sweetA;
+	RCYC: sprites_brickA;
+	CASH: sprites2_tmailA;
+	sprites_goodsA; //goods
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_goodsB_gfx, [cargo_type_in_veh]){
+	TOYS: sprites_fishB;
+	SWET: sprites2_sweetB;
+	WOOL: sprites_woolB;
+	BRCK: sprites_brickB;
+	GLAS: sprites_glassB;
+	MNSP: sprites_glassB;
+	FMSP: sprites2_tmailB;
+	ENSP: sprites2_sweetB;
+	RCYC: sprites_brickB;
+	CASH: sprites2_tmailB;
+	sprites_goodsB; //goods
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_goodsC_gfx, [cargo_type_in_veh]){
+	TOYS: sprites_fishC;
+	SWET: sprites2_sweetC;
+	WOOL: sprites_woolC;
+	BRCK: sprites_brickC;
+	GLAS: sprites_glassC;
+	MNSP: sprites_glassC;
+	FMSP: sprites2_tmailC;
+	ENSP: sprites2_sweetC;
+	RCYC: sprites_brickC;
+	CASH: sprites2_tmailC;
+	sprites_goodsC; //goods
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_goodsA_cap, [cargo_type_in_veh]){
+	TOYS: 14;
+	SWET: 14;
+	WOOL: 14;
+	BRCK: 12;
+	MNSP: 14;
+	FMSP: 14;
+	ENSP: 14;
+	RCYC: 12;
+	CASH: 14;
+	GOOD: 14;
+	12;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_goodsB_cap, [cargo_type_in_veh]){
+	TOYS: 16;
+	SWET: 16;
+	WOOL: 16;
+	BRCK: 13;
+	MNSP: 16;
+	FMSP: 16;
+	ENSP: 16;
+	RCYC: 13;
+	CASH: 16;
+	GOOD: 16;
+	13;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_goodsC_cap, [cargo_type_in_veh]){
+	TOYS: 18;
+	SWET: 18;
+	WOOL: 18;
+	BRCK: 15;
+	MNSP: 18;
+	FMSP: 18;
+	ENSP: 18;
+	RCYC: 15;
+	CASH: 18;
+	GOOD: 18;
+	15;
+}
+
+item(FEAT_ROADVEHS, vehicle_goodsA_id22, 0x16) { //22
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		cargo_allow_refit: [GOOD, TOYS, BRCK, GLAS, WOOL];
+		cargo_disallow_refit: [BEER, FISH, FOOD, FRUT, FRVG, MILK, TOUR, YETI, HCOW];
+		refittable_cargo_classes: bitmask(CC_EXPRESS);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_goodsA_gfx;
+		cargo_capacity: sw_vehicle_goodsA_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_goodsB_id23, 0x17) { //23
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		cargo_allow_refit: [GOOD, TOYS, BRCK, GLAS, WOOL];
+		cargo_disallow_refit: [BEER, FISH, FOOD, FRUT, FRVG, MILK, TOUR, YETI, HCOW];
+		refittable_cargo_classes: bitmask(CC_EXPRESS);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_goodsB_gfx;
+		cargo_capacity: sw_vehicle_goodsB_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_goodsC_id24, 0x18) { //24
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		cargo_allow_refit: [GOOD, TOYS, BRCK, GLAS, WOOL];
+		cargo_disallow_refit: [BEER, FISH, FOOD, FRUT, FRVG, MILK, TOUR, YETI, HCOW];
+		refittable_cargo_classes: bitmask(CC_EXPRESS);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_goodsC_gfx;
+		cargo_capacity: sw_vehicle_goodsC_cap;
+	}
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_grainA_gfx, [cargo_type_in_veh]){
+	WHEA: gr_vehicle_grainA;
+	RUBR: gr_vehicle_rubberA;
+	MAIZ: gr_vehicle_grainA;
+	CERE: gr_vehicle_grainA;
+	OLSD: gr_vehicle_rubberA;
+	FICR: gr_vehicle_toffeeA;
+	SGBT: gr_vehicle_sugarA;
+	SGCN: gr_vehicle_sugarA;
+	gr_vehicle_grainA;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_grainB_gfx, [cargo_type_in_veh]){
+	WHEA: gr_vehicle_grainB;
+	RUBR: gr_vehicle_rubberB;
+	MAIZ: gr_vehicle_grainB;
+	CERE: gr_vehicle_grainB;
+	OLSD: gr_vehicle_rubberB;
+	FICR: gr_vehicle_toffeeB;
+	SGBT: gr_vehicle_sugarB;
+	SGCN: gr_vehicle_sugarB;
+	gr_vehicle_grainB;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_grainC_gfx, [cargo_type_in_veh]){
+	WHEA: gr_vehicle_grainC;
+	RUBR: gr_vehicle_rubberC;
+	MAIZ: gr_vehicle_grainC;
+	CERE: gr_vehicle_grainC;
+	OLSD: gr_vehicle_rubberC;
+	FICR: gr_vehicle_toffeeC;
+	SGBT: gr_vehicle_sugarC;
+	SGCN: gr_vehicle_sugarC;
+	gr_vehicle_grainC;
+}
+
+item(FEAT_ROADVEHS, vehicle_grainA_id25, 0x19) { //25
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GRAI;
+		cargo_allow_refit: [CERE, FICR, GRAI, MAIZ, OLSD, RUBR, SGBT, SGCN, WHEA];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_grainA_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_grainB_id26, 0x1A) { //26
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GRAI;
+		cargo_allow_refit: [CERE, FICR, GRAI, MAIZ, OLSD, RUBR, SGBT, SGCN, WHEA];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_grainB_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_grainC_id27, 0x1B) { //27
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GRAI;
+		cargo_allow_refit: [CERE, FICR, GRAI, MAIZ, OLSD, RUBR, SGBT, SGCN, WHEA];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_grainC_gfx;
+	}
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_woodA_gfx, [cargo_type_in_veh]){
+	WDPR: gr_vehicle_timberA;
+	gr_vehicle_woodA; //wood
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_woodB_gfx, [cargo_type_in_veh]){
+	WDPR: gr_vehicle_timberB;
+	gr_vehicle_woodB; //wood
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_woodC_gfx, [cargo_type_in_veh]){
+	WDPR: gr_vehicle_timberC;
+	gr_vehicle_woodC; //wood
+}
+
+item(FEAT_ROADVEHS, vehicle_woodA_id28, 0x1C) { //28
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WOOD;
+		cargo_allow_refit: [WDPR, WOOD];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_woodA_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_woodB_id29, 0x1D) { //29
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WOOD;
+		cargo_allow_refit: [WDPR, WOOD];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_woodB_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_woodC_id30, 0x1E) { //30
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WOOD;
+		cargo_allow_refit: [WDPR, WOOD];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_woodC_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_ironA_id31, 0x1F) { //31
+	property {
+		name: string(STR_VEHICLE_OREA);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: IORE;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, COAL, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_coalA_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_ironB_id32, 0x20) { //32
+	property {
+		name: string(STR_VEHICLE_OREB);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: IORE;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, COAL, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_coalB_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_ironC_id33, 0x21) { //33
+	property {
+		name: string(STR_VEHICLE_OREC);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: IORE;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, COAL, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_coalC_gfx;
+	}
+}
+
+random_switch (FEAT_ROADVEHS, SELF, rsw_vehicle_vehicles) {
+	3: gr_vehicle_vehiclesC;
+	2: gr_vehicle_vehicles21;
+	1: gr_vehicle_vehicles22;
+	1: gr_vehicle_vehicles23;
+	1: gr_vehicle_vehicles24;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_steelA_cap, [cargo_type_in_veh]
+){
+	VEHI: 6;
+	default: 15;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_steelB_cap, [cargo_type_in_veh]
+){
+	VEHI: 10;
+	default: 18;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_steelC_cap, [cargo_type_in_veh]
+){
+	VEHI: 12;
+	default: 20;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_steelA_gfx, [cargo_type_in_veh]){
+	PAPR: gr_vehicle_paperA;
+	BATT: gr_vehicle_battA;
+	BUBL: gr_vehicle_bubbleA;
+	PLST: gr_vehicle_plastA;
+	GLAS: gr_vehicle_steelBA;
+	VEHI: gr_vehicle_vehiclesA;
+	SCMT: gr_vehicle_steelWA;
+	BDMT: gr_vehicle_steelRA;
+	gr_vehicle_steelA; //steel
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_steelB_gfx, [cargo_type_in_veh]){
+	PAPR: gr_vehicle_paperB;
+	BATT: gr_vehicle_battB;
+	BUBL: gr_vehicle_bubbleB;
+	PLST: gr_vehicle_plastB;
+	GLAS: gr_vehicle_steelBB;
+	VEHI: gr_vehicle_vehiclesB;
+	SCMT: gr_vehicle_steelWB;
+	BDMT: gr_vehicle_steelRB;
+	gr_vehicle_steelB; //steel
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_steelC_gfx, [cargo_type_in_veh]){
+	PAPR: gr_vehicle_paperC;
+	BATT: gr_vehicle_battC;
+	BUBL: gr_vehicle_bubbleC;
+	PLST: gr_vehicle_plastC;
+	GLAS: gr_vehicle_steelBC;
+	VEHI: rsw_vehicle_vehicles;
+	SCMT: gr_vehicle_steelWC;
+	BDMT: gr_vehicle_steelRC;
+	gr_vehicle_steelC; //steel
+}
+
+item(FEAT_ROADVEHS, vehicle_steelA_id34, 0x22) { //34
+	property {
+		name: string(STR_VEHICLE_BOLSTERA);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: STEL;
+		cargo_allow_refit: [PLST, SCMT];
+		cargo_disallow_refit: [BRCK, FERT, FICR, FOOD, FRUT, FZDR, LVST, TOYS, WDPR, WOOD, WOOL];
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID);
+	}
+	graphics {
+		default: sw_vehicle_steelA_gfx;
+		cargo_capacity: sw_vehicle_steelA_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_steelB_id35, 0x23) { //35
+	property {
+		name: string(STR_VEHICLE_BOLSTERB);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: STEL;
+		cargo_allow_refit: [PLST, SCMT];
+		cargo_disallow_refit: [BRCK, FERT, FICR, FOOD, FRUT, FZDR, LVST, TOYS, WDPR, WOOD, WOOL];
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID);
+	}
+	graphics {
+		default: sw_vehicle_steelB_gfx;
+		cargo_capacity: sw_vehicle_steelB_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_steelC_id36, 0x24) { //36
+	property {
+		name: string(STR_VEHICLE_BOLSTERC);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: STEL;
+		cargo_allow_refit: [PLST, SCMT];
+		cargo_disallow_refit: [BRCK, FERT, FICR, FOOD, FRUT, FZDR, LVST, TOYS, WDPR, WOOD, WOOL];
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID);
+	}
+	graphics {
+		default: sw_vehicle_steelC_gfx;
+		cargo_capacity: sw_vehicle_steelC_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_armouredA_id37, 0x25) { //37
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: VALU;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_ARMOURED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_goldA;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_armouredB_id38, 0x26) { //38
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: VALU;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_ARMOURED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_goldB;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_armouredC_id39, 0x27) { //39
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: VALU;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_ARMOURED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_goldC;
+	}
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_foodA_gfx, [cargo_type_in_veh]){
+	FISH: sprites_fishA;
+	sprites_foodA; //food
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_foodB_gfx, [cargo_type_in_veh]){
+	FISH: sprites_fishB;
+	sprites_foodB; //food
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_foodC_gfx, [cargo_type_in_veh]){
+	FISH: sprites_fishC;
+	sprites_foodC; //food
+}
+
+item(FEAT_ROADVEHS, vehicle_foodA_id40, 0x28) { //40
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FOOD;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [FRUT, FRVG, MILK];
+		refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_foodA_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_foodB_id41, 0x29) { //41
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FOOD;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [FRUT, FRVG, MILK];
+		refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_foodB_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_foodC_id42, 0x2A) { //42
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FOOD;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [FRUT, FRVG, MILK];
+		refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_vehicle_foodC_gfx;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_paperA_id43, 0x2B) { //43
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PAPR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_vehicle_paperA;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_paperB_id44, 0x2C) { //44
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PAPR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_vehicle_paperB;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_paperC_id45, 0x2D) { //45
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PAPR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_vehicle_paperC;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_waterA_id49, 0x31) { //49
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WATR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_waterA;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_waterB_id50, 0x32) { //50
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WATR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_waterB;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_waterC_id51, 0x33) { //51
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WATR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_waterC;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_fruitA_id52, 0x34) { //52
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FRUT;
+		cargo_allow_refit: [FRUT, FRVG];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_vehicle_fruitA;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_fruitB_id53, 0x35) { //53
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FRUT;
+		cargo_allow_refit: [FRUT, FRVG];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_vehicle_fruitB;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_fruitC_id54, 0x36) { //54
+	property {
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FRUT;
+		cargo_allow_refit: [FRUT, FRVG];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_vehicle_fruitC;
+	}
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_universalA_gfx, [cargo_type_in_veh]
+){
+	PASS: sprites_busA;
+	COAL: gr_vehicle_coalA;
+	MAIL: sprites_mailA;
+	OIL_: sprites_oilA;
+	LVST: sprites_livestockA;
+	GOOD: sprites_goodsA;
+	GRAI: gr_vehicle_grainA;
+	WOOD: gr_vehicle_woodA;
+	IORE: gr_vehicle_ironoreA;
+	STEL: gr_vehicle_steelA;
+	VALU: sprites_goldA;
+	PAPR: gr_vehicle_paperA;
+	WHEA: gr_vehicle_grainA;
+	FOOD: sprites_foodA;
+	GOLD: sprites_goldA;
+	RUBR: gr_vehicle_rubberA;
+	FRUT: gr_vehicle_fruitA;
+	MAIZ: gr_vehicle_grainA;
+	CORE: gr_vehicle_clayA;
+	WATR: sprites_waterA;
+	DIAM: sprites_goldA;
+	SUGR: gr_vehicle_sugarA;
+	TOYS: sprites_fishA;
+	BATT: gr_vehicle_battA;
+	SWET: sprites2_sweetA;
+	TOFF: gr_vehicle_toffeeA;
+	COLA: gr_vehicle_refinedA;
+	CTCD: gr_vehicle_candyA;
+	BUBL: gr_vehicle_bubbleA;
+	PLST: gr_vehicle_plastA;
+	FZDR: gr_vehicle_fizzyA;
+	CERE: gr_vehicle_grainA;
+	FISH: sprites_fishA;
+	WOOL: sprites_woolA;
+	BRCK: sprites_brickA;
+	SAND: gr_vehicle_sandA;
+	GLAS: sprites_glassA;
+	WDPR: gr_vehicle_timberA;
+	DYES: sprites_dyesA;
+	FERT: sprites_fertiliserA;
+	OLSD: gr_vehicle_rubberA;
+	RFPR: gr_vehicle_refinedA;
+	VEHI: gr_vehicle_vehiclesA;
+	PETR: sprites_petrolA;
+	AORE: gr_vehicle_stoneA;
+	BDMT: gr_vehicle_steelRA;
+	FICR: gr_vehicle_toffeeA;
+	CMNT: sprites_cementA;
+	TOUR: sprites_touristsA;
+	LIME: gr_vehicle_clayA;
+	MILK: sprites_waterA;
+	SGBT: gr_vehicle_sugarA;
+	FRVG: gr_vehicle_fruitA;
+	CLAY: gr_vehicle_clayA;
+	MNSP: sprites_glassA;
+	SCMT: gr_vehicle_steelWA;
+	FMSP: sprites2_tmailA;
+	ENSP: sprites2_sweetA;
+	GRVL: gr_vehicle_stoneA;
+	BEER: sprites_dyesA;
+	SGCN: gr_vehicle_sugarA;
+	RCYC: sprites_brickA;
+	YETI: sprites_touristsA;
+	URAN: gr_vehicle_plastA;
+	CASH: sprites2_tmailA;
+	HCOW: sprites_fishA;
+	ENRG: gr_vehicle_bubbleA;
+	sprites_universal_vehicleA;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_universalB_gfx, [cargo_type_in_veh]
+){
+	PASS: sprites_busBC;
+	COAL: gr_vehicle_coalB;
+	MAIL: sprites_mailB;
+	OIL_: sprites_oilB;
+	LVST: sprites_livestockB;
+	GOOD: sprites_goodsB;
+	GRAI: gr_vehicle_grainB;
+	WOOD: gr_vehicle_woodB;
+	IORE: gr_vehicle_ironoreB;
+	STEL: gr_vehicle_steelB;
+	VALU: sprites_goldB;
+	PAPR: gr_vehicle_paperB;
+	WHEA: gr_vehicle_grainB;
+	FOOD: sprites_foodB;
+	GOLD: sprites_goldB;
+	RUBR: gr_vehicle_rubberB;
+	FRUT: gr_vehicle_fruitB;
+	MAIZ: gr_vehicle_grainB;
+	CORE: gr_vehicle_clayB;
+	WATR: sprites_waterB;
+	DIAM: sprites_goldB;
+	SUGR: gr_vehicle_sugarB;
+	TOYS: sprites_fishB;
+	BATT: gr_vehicle_battB;
+	SWET: sprites2_sweetB;
+	TOFF: gr_vehicle_toffeeB;
+	COLA: gr_vehicle_refinedB;
+	CTCD: gr_vehicle_candyB;
+	BUBL: gr_vehicle_bubbleB;
+	PLST: gr_vehicle_plastB;
+	FZDR: gr_vehicle_fizzyB;
+	CERE: gr_vehicle_grainB;
+	FISH: sprites_fishB;
+	WOOL: sprites_woolB;
+	BRCK: sprites_brickB;
+	SAND: gr_vehicle_sandB;
+	GLAS: sprites_glassB;
+	WDPR: gr_vehicle_timberB;
+	DYES: sprites_dyesB;
+	FERT: sprites_fertiliserB;
+	OLSD: gr_vehicle_rubberB;
+	RFPR: gr_vehicle_refinedB;
+	VEHI: gr_vehicle_vehiclesB;
+	PETR: sprites_petrolB;
+	AORE: gr_vehicle_stoneB;
+	BDMT: gr_vehicle_steelRB;
+	FICR: gr_vehicle_toffeeB;
+	CMNT: sprites_cementB;
+	TOUR: sprites_touristsB;
+	LIME: gr_vehicle_clayB;
+	MILK: sprites_waterB;
+	SGBT: gr_vehicle_sugarB;
+	FRVG: gr_vehicle_fruitB;
+	CLAY: gr_vehicle_clayB;
+	MNSP: sprites_glassB;
+	SCMT: gr_vehicle_steelWB;
+	FMSP: sprites2_tmailB;
+	ENSP: sprites2_sweetB;
+	GRVL: gr_vehicle_stoneB;
+	BEER: sprites_dyesB;
+	SGCN: gr_vehicle_sugarB;
+	RCYC: sprites_brickB;
+	YETI: sprites_touristsB;
+	URAN: gr_vehicle_plastB;
+	CASH: sprites2_tmailB;
+	HCOW: sprites_fishB;
+	ENRG: gr_vehicle_bubbleB;
+	sprites_universal_vehicleB;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_universalC_gfx, [cargo_type_in_veh]
+){
+	PASS: sprites_busBC;
+	COAL: gr_vehicle_coalC;
+	MAIL: sprites_mailC;
+	OIL_: sprites_oilC;
+	LVST: sprites_livestockC;
+	GOOD: sprites_goodsC;
+	GRAI: gr_vehicle_grainC;
+	WOOD: gr_vehicle_woodC;
+	IORE: gr_vehicle_ironoreC;
+	STEL: gr_vehicle_steelC;
+	VALU: sprites_goldC;
+	PAPR: gr_vehicle_paperC;
+	WHEA: gr_vehicle_grainC;
+	FOOD: sprites_foodC;
+	GOLD: sprites_goldC;
+	RUBR: gr_vehicle_rubberC;
+	FRUT: gr_vehicle_fruitC;
+	MAIZ: gr_vehicle_grainC;
+	CORE: gr_vehicle_clayC;
+	WATR: sprites_waterC;
+	DIAM: sprites_goldC;
+	SUGR: gr_vehicle_sugarC;
+	TOYS: sprites_fishC;
+	BATT: gr_vehicle_battC;
+	SWET: sprites2_sweetC;
+	TOFF: gr_vehicle_toffeeC;
+	COLA: gr_vehicle_refinedC;
+	CTCD: gr_vehicle_candyC;
+	BUBL: gr_vehicle_bubbleC;
+	PLST: gr_vehicle_plastC;
+	FZDR: gr_vehicle_fizzyC;
+	CERE: gr_vehicle_grainC;
+	FISH: sprites_fishC;
+	WOOL: sprites_woolC;
+	BRCK: sprites_brickC;
+	SAND: gr_vehicle_sandC;
+	GLAS: sprites_glassC;
+	WDPR: gr_vehicle_timberC;
+	DYES: sprites_dyesC;
+	FERT: sprites_fertiliserC;
+	OLSD: gr_vehicle_rubberC;
+	RFPR: gr_vehicle_refinedC;
+	VEHI: rsw_vehicle_vehicles;
+	PETR: sprites_petrolC;
+	AORE: gr_vehicle_stoneC;
+	BDMT: gr_vehicle_steelRC;
+	FICR: gr_vehicle_toffeeC;
+	CMNT: sprites_cementC;
+	TOUR: sprites_touristsC;
+	LIME: gr_vehicle_clayC;
+	MILK: sprites_waterC;
+	SGBT: gr_vehicle_sugarC;
+	FRVG: gr_vehicle_fruitC;
+	CLAY: gr_vehicle_clayC;
+	MNSP: sprites_glassC;
+	SCMT: gr_vehicle_steelWC;
+	FMSP: sprites2_tmailC;
+	ENSP: sprites2_sweetC;
+	GRVL: gr_vehicle_stoneC;
+	BEER: sprites_dyesC;
+	SGCN: gr_vehicle_sugarC;
+	RCYC: sprites_brickC;
+	YETI: sprites_touristsC;
+	URAN: gr_vehicle_plastC;
+	CASH: sprites2_tmailC;
+	HCOW: sprites_fishC;
+	ENRG: gr_vehicle_bubbleC;
+	sprites_universal_vehicleC;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_universalA_cap, [cargo_type_in_veh]){
+	PASS: 31;
+	COAL: 20;
+	MAIL: 22;
+	OIL_: 21;
+	LVST: 14;
+	GOOD: 14;
+	GRAI: 20;
+	WOOD: 20;
+	IORE: 20;
+	STEL: 15;
+	VALU: 12;
+	PAPR: 15;
+	WHEA: 20;
+	FOOD: 17;
+	GOLD: 12;
+	RUBR: 20;
+	FRUT: 18;
+	MAIZ: 20;
+	CORE: 20;
+	WATR: 21;
+	DIAM: 12;
+	SUGR: 20;
+	TOYS: 14;
+	BATT: 15;
+	SWET: 14;
+	TOFF: 20;
+	COLA: 21;
+	CTCD: 20;
+	BUBL: 20;
+	PLST: 15;
+	FZDR: 21;
+	CERE: 20;
+	FISH: 17;
+	WOOL: 14;
+	BRCK: 12;
+	SAND: 20;
+	GLAS: 12;
+	WDPR: 20;
+	DYES: 21;
+	FERT: 21;
+	OLSD: 20;
+	RFPR: 21;
+	VEHI: 6;
+	PETR: 21;
+	AORE: 20;
+	BDMT: 12;
+	FICR: 20;
+	CMNT: 21;
+	TOUR: 15;
+	LIME: 20;
+	MILK: 21;
+	SGBT: 20;
+	FRVG: 18;
+	CLAY: 20;
+	MNSP: 14;
+	SCMT: 15;
+	FMSP: 14;
+	ENSP: 14;
+	GRVL: 20;
+	BEER: 21;
+	SGCN: 20;
+	RCYC: 12;
+	YETI: 15;
+	URAN: 20;
+	CASH: 14;
+	HCOW: 14;
+	ENRG: 20;
+	15;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_universalB_cap, [cargo_type_in_veh]){
+	PASS: 35;
+	COAL: 25;
+	MAIL: 28;
+	OIL_: 21;
+	LVST: 16;
+	GOOD: 16;
+	GRAI: 25;
+	WOOD: 22;
+	IORE: 25;
+	STEL: 18;
+	VALU: 15;
+	PAPR: 18;
+	WHEA: 25;
+	FOOD: 20;
+	GOLD: 15;
+	RUBR: 25;
+	FRUT: 20;
+	MAIZ: 25;
+	CORE: 25;
+	WATR: 25;
+	DIAM: 15;
+	SUGR: 25;
+	TOYS: 16;
+	BATT: 18;
+	SWET: 16;
+	TOFF: 25;
+	COLA: 25;
+	CTCD: 25;
+	BUBL: 25;
+	PLST: 18;
+	FZDR: 25;
+	CERE: 25;
+	FISH: 16;
+	WOOL: 16;
+	BRCK: 14;
+	SAND: 25;
+	GLAS: 14;
+	WDPR: 25;
+	DYES: 25;
+	FERT: 25;
+	OLSD: 25;
+	RFPR: 25;
+	VEHI: 10;
+	PETR: 25;
+	AORE: 25;
+	BDMT: 14;
+	FICR: 25;
+	CMNT: 25;
+	TOUR: 20;
+	LIME: 25;
+	MILK: 25;
+	SGBT: 25;
+	FRVG: 18;
+	CLAY: 25;
+	MNSP: 16;
+	SCMT: 18;
+	FMSP: 16;
+	ENSP: 16;
+	GRVL: 25;
+	BEER: 25;
+	SGCN: 25;
+	RCYC: 18;
+	YETI: 20;
+	URAN: 25;
+	CASH: 16;
+	HCOW: 16;
+	ENRG: 25;
+	18;
+}
+
+switch(FEAT_ROADVEHS, SELF, sw_vehicle_universalC_cap, [cargo_type_in_veh]){
+	PASS: 37;
+	COAL: 28;
+	MAIL: 30;
+	OIL_: 21;
+	LVST: 18;
+	GOOD: 18;
+	GRAI: 28;
+	WOOD: 22;
+	IORE: 28;
+	STEL: 20;
+	VALU: 16;
+	PAPR: 20;
+	WHEA: 28;
+	FOOD: 22;
+	GOLD: 16;
+	RUBR: 28;
+	FRUT: 23;
+	MAIZ: 28;
+	CORE: 28;
+	WATR: 28;
+	DIAM: 16;
+	SUGR: 28;
+	TOYS: 18;
+	BATT: 20;
+	SWET: 18;
+	TOFF: 28;
+	COLA: 28;
+	CTCD: 28;
+	BUBL: 28;
+	PLST: 20;
+	FZDR: 28;
+	CERE: 28;
+	FISH: 18;
+	WOOL: 18;
+	BRCK: 16;
+	SAND: 28;
+	GLAS: 16;
+	WDPR: 28;
+	DYES: 28;
+	FERT: 28;
+	OLSD: 28;
+	RFPR: 28;
+	VEHI: 12;
+	PETR: 28;
+	AORE: 28;
+	BDMT: 16;
+	FICR: 28;
+	CMNT: 28;
+	TOUR: 20;
+	LIME: 28;
+	MILK: 28;
+	SGBT: 28;
+	FRVG: 20;
+	CLAY: 28;
+	MNSP: 18;
+	SCMT: 20;
+	FMSP: 18;
+	ENSP: 18;
+	GRVL: 28;
+	BEER: 28;
+	SGCN: 28;
+	RCYC: 20;
+	YETI: 20;
+	URAN: 28;
+	CASH: 18;
+	HCOW: 18;
+	ENRG: 28;
+	20;
+}
+
+item(FEAT_ROADVEHS, vehicle_universalA_id55, 0x37) { //55
+	property {
+		name: string(STR_VEHICLE_UNIVERSALA);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		refittable_cargo_classes: ALL_CARGO_CLASSES;
+		cost_factor: 255;
+	}
+	graphics {
+		default: sw_vehicle_universalA_gfx;
+		purchase: sprites_universal_vehicleAP;
+		cargo_capacity: sw_vehicle_universalA_cap;
+	}
+}
+
+item(FEAT_ROADVEHS, vehicle_universalB_id56, 0x38) { //56
+	property {
+		name: string(STR_VEHICLE_UNIVERSALB);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		refittable_cargo_classes: ALL_CARGO_CLASSES;
+		cost_factor: 255;
+	}
+	graphics {
+		default: sw_vehicle_universalB_gfx;
+		purchase: sprites_universal_vehicleBP;
+		cargo_capacity: sw_vehicle_universalB_cap;
+	}
+}
+item(FEAT_ROADVEHS, vehicle_universalC_id57, 0x39) { //57
+	property {
+		name: string(STR_VEHICLE_UNIVERSALC);
+		sprite_id: SPRITE_ID_NEW_ROADVEH;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		refittable_cargo_classes: ALL_CARGO_CLASSES;
+		cost_factor: 255;
+	}
+	graphics {
+		default: sw_vehicle_universalC_gfx;
+		purchase: sprites_universal_vehicleCP;
+		cargo_capacity: sw_vehicle_universalC_cap;
+	}
+}
+
+
+sort(FEAT_ROADVEHS, [
+	vehicle_passengerA_id0,
+	vehicle_passengerB_id1,
+	vehicle_passengerC_id2,
+	vehicle_passengerD_id3,
+	vehicle_touristsA_id4,
+	vehicle_touristsB_id5,
+	vehicle_touristsC_id6,
+	vehicle_coalA_id7,
+	vehicle_coalB_id8,
+	vehicle_coalC_id9,
+	vehicle_mailA_id10,
+	vehicle_mailB_id11,
+	vehicle_mailC_id12,
+	vehicle_oilA_id16,
+	vehicle_oilB_id17,
+	vehicle_oilC_id18,
+	vehicle_livestockA_id19,
+	vehicle_livestockB_id20,
+	vehicle_livestockC_id21,
+	vehicle_goodsA_id22,
+	vehicle_goodsB_id23,
+	vehicle_goodsC_id24,
+	vehicle_grainA_id25,
+	vehicle_grainB_id26,
+	vehicle_grainC_id27,
+	vehicle_woodA_id28,
+	vehicle_woodB_id29,
+	vehicle_woodC_id30,
+	vehicle_ironA_id31,
+	vehicle_ironB_id32,
+	vehicle_ironC_id33,
+	vehicle_steelA_id34,
+	vehicle_steelB_id35,
+	vehicle_steelC_id36,
+	vehicle_armouredA_id37,
+	vehicle_armouredB_id38,
+	vehicle_armouredC_id39,
+	vehicle_foodA_id40,
+	vehicle_foodB_id41,
+	vehicle_foodC_id42,
+	vehicle_paperA_id43,
+	vehicle_paperB_id44,
+	vehicle_paperC_id45,
+	vehicle_waterA_id49,
+	vehicle_waterB_id50,
+	vehicle_waterC_id51,
+	vehicle_fruitA_id52,
+	vehicle_fruitB_id53,
+	vehicle_fruitC_id54,
+	vehicle_universalA_id55,
+	vehicle_universalB_id56,
+	vehicle_universalC_id57,
+]);

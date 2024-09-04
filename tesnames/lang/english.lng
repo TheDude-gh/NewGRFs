@@ -1,0 +1,7 @@
+##grflangid 0x01
+##plural 0
+STR_GRF_NAME           :The Elder Scrolls Town Names
+STR_GRF_DESCRIPTION    :{LTBLUE}Coded by The Dude{}{SILVER}GNU GPL v2{}{GREEN}Version # 2013.04.26
+STR_GRF_URL            :http://www.uesp.net/
+
+STR_NAME_STYLES        :The Elder Scrolls

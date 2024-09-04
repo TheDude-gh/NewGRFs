@@ -1,0 +1,552 @@
+grf {
+	grfid:                  "TD\09\00";
+	name:                   string(STR_GRF_NAME);
+	desc:                   string(STR_GRF_DESCRIPTION);
+	version:                6;
+	min_compatible_version: 6;
+	url: string(STR_GRF_URL);
+	
+		param 0 { par_start_year {
+			type: int;  name: string(STR_PAR_DESC);  desc: string(STR_PAR_DESC);  min_value: 0;  max_value: 2100;  def_value: 1950; }
+		}
+}
+
+cargotable {
+	PASS, COAL, MAIL, OIL_, LVST, GOOD, GRAI, WOOD,
+	IORE, STEL, DIAM, PAPR, FOOD, FRUT, CORE, WATR,
+	RUBR, SUGR, TOYS, BATT, SWET, TOFF, COLA, CTCD,
+	BUBL, PLST, FZDR, MAIZ, WHEA, GOLD, VALU, CASH,
+	HCOW, ENRG
+}
+
+basecost {
+	PR_BUILD_ROAD: -2;
+	PR_BUILD_SIGNALS: -8;
+	PR_BUILD_BRIDGE: 1;
+	PR_BUILD_DEPOT_ROAD: -2;
+	PR_BUILD_TUNNEL: 1;
+	PR_BUILD_STATION_AIRPORT: 2;
+	PR_BUILD_STATION_BUS: -2;
+	PR_BUILD_STATION_TRUCK: -2;
+	PR_BUILD_VEHICLE_ROAD: 1;
+	PR_BUILD_VEHICLE_SHIP: 1;
+	PR_BUILD_TREES: 1;
+	PR_TERRAFORM: 1;
+	PR_CLEAR_GRASS: -8;
+	PR_CLEAR_SIGNALS: -8;
+	PR_CLEAR_BRIDGE: -8;
+	PR_CLEAR_DEPOT_TRAIN: -8;
+	PR_CLEAR_DEPOT_ROAD: -8;
+	PR_CLEAR_DEPOT_SHIP: -8;
+	PR_CLEAR_TUNNEL: -8;
+	PR_CLEAR_STATION_RAIL: -8;
+	PR_CLEAR_STATION_AIRPORT: -8;
+	PR_CLEAR_STATION_BUS: -8;
+	PR_CLEAR_STATION_TRUCK: -8;
+	PR_CLEAR_STATION_DOCK: -8;
+	PR_CLEAR_HOUSE: 3;
+	PR_CLEAR_ROAD: -8;
+	PR_RUNNING_TRAIN_STEAM: 3;
+	PR_RUNNING_TRAIN_DIESEL: 3;
+	PR_RUNNING_TRAIN_ELECTRIC: 3;
+	PR_RUNNING_AIRCRAFT: 2;
+	PR_RUNNING_ROADVEH: 2;
+	PR_RUNNING_SHIP: 2;
+	PR_BUILD_INDUSTRY: 4;
+	PR_BUILD_WAYPOINT_RAIL: -8;
+	PR_CLEAR_WAYPOINT_RAIL: -8;
+	PR_BUILD_FOUNDATION: 1;
+	PR_BUILD_INDUSTRY_RAW: 2;
+	PR_BUILD_TOWN: 8;
+	PR_MAINTENANCE_RAIL: -3;
+	PR_MAINTENANCE_ROAD: -3;
+	PR_MAINTENANCE_STATION: -2;
+	PR_MAINTENANCE_AIRPORT: -1;
+}
+
+spriteset(choochoo1, "nfo/LStoyland.png") {
+	[130, 8, 8, 17, -3, -10]
+	[146, 8, 22, 16, -14, -6]
+	[178, 8, 28, 12, -14, -6]
+	[226, 8, 20, 16, -4, -8]
+	[258, 8, 8, 16, -3, -9]
+	[274, 8, 20, 16, -14, -7]
+	[306, 8, 28, 12, -14, -6]
+	[354, 8, 22, 16, -6, -7]
+}
+spriteset(choochoo2, "nfo/LStoyland.png") {
+	[386, 8, 8, 17, -3, -10]
+	[402, 8, 22, 16, -14, -6]
+	[434, 8, 28, 12, -14, -6]
+	[482, 8, 20, 16, -4, -8]
+	[514, 8, 8, 16, -3, -9]
+	[530, 8, 20, 16, -14, -7]
+	[562, 8, 28, 12, -14, -6]
+	[610, 8, 22, 16, -6, -7]
+}
+spriteset(choochoo3, "nfo/LStoyland.png") {
+	[642, 8, 8, 17, -3, -10]
+	[658, 8, 22, 16, -14, -6]
+	[690, 8, 28, 12, -14, -6]
+	[738, 8, 20, 16, -4, -8]
+	[770, 8, 8, 16, -3, -9]
+	[2, 40, 20, 16, -14, -7]
+	[34, 40, 28, 12, -14, -6]
+	[82, 40, 22, 16, -6, -7]
+}
+
+
+item(FEAT_TRAINS, train_kirby, 0x00) { //0
+	property {
+		introduction_date: date(1919, 1, 1);
+		climates_available: ALL_CLIMATES;
+		speed: 80 km/h;
+		power: 650 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 10;
+		engine_class: ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient: 0.541;
+	}
+}
+item(FEAT_TRAINS, train_ploddyphut, 0x02) { //2
+	property {
+		introduction_date: date(1919, 1, 1);
+		climates_available: ALL_CLIMATES;
+		speed: 135 km/h;
+		power: 450 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 14;
+		engine_class: ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient: 0.239;
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+	}
+	graphics {
+		default: choochoo1;
+	}
+}
+item(FEAT_TRAINS, train_powernaut, 0x03) { //3
+	property {
+		introduction_date: date(1951, 1, 8);
+		climates_available: ALL_CLIMATES;
+		speed: 175 km/h;
+		power: 750 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 13;
+		engine_class: ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient: 0.314;
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+	}
+	graphics {
+		default: choochoo2;
+	}
+}
+item(FEAT_TRAINS, train_mightymower, 0x04) { //4
+	property {
+		introduction_date: date(1957, 1, 9);
+		climates_available: ALL_CLIMATES;
+		speed: 270 km/h;
+		power: 6000 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 55;
+		engine_class: ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient: 0.784;
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+	}
+	graphics {
+		default: choochoo3;
+	}
+}
+item(FEAT_TRAINS, train_wills, 0x07) { //7
+	property {
+		introduction_date: date(1948, 1, 25);
+		climates_available: ALL_CLIMATES;
+		speed: 160 km/h;
+		power: 900 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 17;
+		engine_class: ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient: 0.157;
+	}
+}
+item(FEAT_TRAINS, train_chaney, 0x08) { //8
+	property {
+		introduction_date: date(1953, 1, 8);
+		climates_available: ALL_CLIMATES;
+		speed: 165 km/h;
+		power: 1800 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 23;
+		engine_class: ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient: 0.467;
+	}
+}
+item(FEAT_TRAINS, train_ginzu, 0x09) { //9
+	property {
+		introduction_date: date(1954, 1, 8);
+		climates_available: ALL_CLIMATES;
+		speed: 220 km/h;
+		power: 650 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 28;
+		engine_class: ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient: 0.11;
+	}
+}
+item(FEAT_TRAINS, train_sh8p, 0x0A) { //10
+	property {
+		introduction_date: date(1956, 1, 9);
+		climates_available: ALL_CLIMATES;
+		speed: 200 km/h;
+		power: 3500 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 35;
+		engine_class: ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient: 0.596;
+	}
+}
+item(FEAT_TRAINS, train_steampunk, 0x57) { //87
+	property {
+	  name: string(STR_STEAMPUNK);
+		introduction_date: date(1958, 3, 27);
+		climates_available: ALL_CLIMATES;
+		speed: 500 km/h;
+		power: 9000 hp;
+		running_cost_base: RUNNING_COST_STEAM;
+		cost_factor: 118;
+		engine_class: ENGINE_CLASS_STEAM;
+		loading_speed: 128;
+		tractive_effort_coefficient: 0.314;
+		track_type: RAIL;
+	}
+}
+sort(FEAT_TRAINS, [
+	train_kirby,
+	train_ploddyphut,
+	train_powernaut,
+	train_mightymower,
+	train_wills,
+	train_chaney,
+	train_ginzu,
+	train_sh8p,
+	train_steampunk
+]);
+
+disable_item(FEAT_TRAINS, 0x01);
+disable_item(FEAT_TRAINS, 0x10);
+disable_item(FEAT_TRAINS, 0x13);
+disable_item(FEAT_ROADVEHS, 0x00, 0x39);
+
+
+item(FEAT_ROADVEHS, veh_0, 0x00) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 240 km/h;
+		power: 630 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 39;
+		tractive_effort_coefficient: 0.816;
+		air_drag_coefficient: 0.007;
+		loading_speed: 12;
+	}
+}
+item(FEAT_ROADVEHS, veh_7, 0x07) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 202 km/h;
+		power: 1410 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 40;
+		tractive_effort_coefficient: 1;
+	}
+}
+item(FEAT_ROADVEHS, veh_10, 0x0A) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 200 km/h;
+		power: 1410 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 41;
+		tractive_effort_coefficient: 0.941;
+	}
+}
+item(FEAT_ROADVEHS, veh_16, 0x10) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 198 km/h;
+		power: 1380 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 49;
+		tractive_effort_coefficient: 0.961;
+	}
+}
+item(FEAT_ROADVEHS, veh_19, 0x13) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 192 km/h;
+		power: 1400 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 41;
+		tractive_effort_coefficient: 0.992;
+	}
+}
+item(FEAT_ROADVEHS, veh_22, 0x16) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 210 km/h;
+		power: 1400 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 50;
+		tractive_effort_coefficient: 0.961;
+	}
+}
+item(FEAT_ROADVEHS, veh_25, 0x19) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 194 km/h;
+		power: 1390 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 51;
+		tractive_effort_coefficient: 0.976;
+	}
+}
+item(FEAT_ROADVEHS, veh_28, 0x1C) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 192 km/h;
+		power: 1400 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 53;
+		tractive_effort_coefficient: 0.996;
+	}
+}
+item(FEAT_ROADVEHS, veh_37, 0x25) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 150 km/h;
+		power: 1240 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 135;
+		tractive_effort_coefficient: 0.98;
+	}
+}
+item(FEAT_ROADVEHS, veh_40, 0x28) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 204 km/h;
+		power: 1410 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 49;
+		tractive_effort_coefficient: 0.988;
+	}
+}
+item(FEAT_ROADVEHS, veh_43, 0x2B) {
+	property {
+		climates_available: ALL_CLIMATES;
+		speed: 202 km/h;
+		power: 1400 hp;
+		running_cost_base: RUNNING_COST_DIESEL;
+		cost_factor: 39;
+		tractive_effort_coefficient: 0.953;
+	}
+}
+
+item(FEAT_SHIPS, ship_2, 0x02) {
+	property {
+		speed: 127 km/h;
+	}
+}
+
+item(FEAT_AIRCRAFT, plane_0, 0x02) {
+	property {
+	  cost_factor: 32;
+		speed: 3280 km/h;
+		acceleration: 204;
+	}
+}
+
+//pax payment    do: ((10 - time) << 5), max(min(res, 16), -1000)
+switch(FEAT_CARGOS, SELF, sw_cargo_pax_payment,
+  max(min((10 - ((extra_callback_info2 >> 16) & 0xFF)) * 32, 16), -1000)
+){
+	default: return;
+}
+
+item(FEAT_CARGOS, pax, 0x01) {
+	property {
+	  penalty_lowerbound: 4;
+		single_penalty_length: 18;
+		price_factor: 256;
+	}
+	graphics {
+  	profit: sw_cargo_pax_payment;
+	}
+}
+
+//gold payment, income = result/8192 * amount * cpf;   //var18: ttaadddd -> LE.ddddaatt, tt 1 unit =185 ticks ~= 2,5 days, 1 day ~= 74 ticks
+//gold payment, nvar=0 returns callback result
+// max(time - 5, 0), store in TR[0]
+// max(that - 20, 0) store in TR[1]
+// max(that - 50, 0) *4 -> store in TR[2]
+// max(255 - TR[0] - TR[1] - TR[2], 31)
+// ((that * dist) >> 8) * TR[3] & 3F FF (first 14 bits)
+switch(FEAT_CARGOS, SELF, sw_gold_final,	[
+	STORE_TEMP(max(STORE_TEMP(max(STORE_TEMP(max(((extra_callback_info2 >> 16) & 0xFF) - 5, 0), 0x00) - 20, 0), 0x01) - 40, 0) * 4, 0x02),
+	(max(255 - LOAD_TEMP(0x00) - LOAD_TEMP(0x01) - LOAD_TEMP(0x02), 31) * (extra_callback_info2 & 0xFFFF) / 256 * LOAD_TEMP(0x03)) & 0x3FFF
+]){
+	default: return;
+}
+
+//negative profit   do: (time - 70) * 5 ->store in TR[0], do: -1 - TR[0] return that
+switch(FEAT_CARGOS, SELF, sw_gold_negative, [
+	STORE_TEMP((((extra_callback_info2 >> 16) & 0xFF) - 70) * 5, 0x00),
+	((-1 - LOAD_TEMP(0x00)) & 0x7FFF) | 0x4000
+]){
+	default: return;
+}
+// do: max(time, 60), if >70 go to negative calc
+switch(FEAT_CARGOS, SELF, sw_gold_time, max((extra_callback_info2 >> 16) & 0xFF, 70) ){
+	0..70: sw_gold_final;
+	default: sw_gold_negative;
+}
+//delivery multiplier, year based, store in TR[3]
+switch(FEAT_CARGOS, SELF, sw_gold_delivery_mult1, STORE_TEMP(2, 0x03)){
+	0: sw_gold_final;
+	default: sw_gold_final;
+}
+switch(FEAT_CARGOS, SELF, sw_gold_delivery_mult2, STORE_TEMP(3, 0x03)){
+	0: sw_gold_final;
+	default: sw_gold_final;
+}
+switch(FEAT_CARGOS, SELF, sw_gold_delivery_mult3, STORE_TEMP(8, 0x03)){
+	0: sw_gold_time;
+	default: sw_gold_time;
+}
+switch(FEAT_CARGOS, SELF, sw_gold_delivery_mult4, STORE_TEMP(19, 0x03)){
+	0: sw_gold_time;
+	default: sw_gold_time;
+}
+
+//do: current year - start year from par0
+switch(FEAT_CARGOS, SELF, sw_cargo_gold_payment,
+  current_year - param[0]
+){
+	0..2: sw_gold_delivery_mult1;
+	3..5: sw_gold_delivery_mult2;
+	6..8: sw_gold_delivery_mult3;
+	default: sw_gold_delivery_mult4;
+}
+
+item(FEAT_CARGOS, gold, 0x0A) {
+	property {
+	  penalty_lowerbound: 8;
+		single_penalty_length: 22;
+		price_factor: 5802;
+		town_growth_effect: TOWNGROWTH_GOODS;
+		town_growth_multiplier: 100;
+	}
+	graphics {
+  	profit: sw_cargo_gold_payment;
+	}
+}
+		
+item(FEAT_INDUSTRIES, farm, 0x09) {
+	property {
+	  spec_flags: IND_FLAG_PLANT_FIELDS_PERIODICALLY;
+	}
+}
+item(FEAT_INDUSTRIES, bank, 0x10) {
+	property {
+	  conflicting_ind_types: [goldmine];
+	}
+}
+//GOLDMINE
+/*
+7C - PSTO, 7D - TSTO, 7F - parameter
+industry acceptance
+PR[0] = WAITING CARGO
+PR[1] = >0-DISABLE ACCEPT, 0-ENABLE ACCEPT
+PR[2] = MAX ACCEPT
+-PR[3] =
+-PR[4] =
+PR[5] = YEAR DIFF (CURRENT - START)
+PR[6] = SUBSTRACT
+PR[7] = ADD
+*/
+
+//production callback called every 256 ticks (3.5 days, day=74 ticks), 8,5x per month"
+//prodcall loaded from TR
+//PRODUCTION CALLBACK
+produce(sw_goldmine_production_final, LOAD_TEMP(0x06), 0, 0, LOAD_TEMP(0x07), 0, 0);
+
+//do: waiting cargo -> store in PR[0] / PR[2] -> store in PR[1]
+// SUBSTRACT = waiting / 8, ADD = SUBSTRACT >> 1
+//do: waiting cargo >> 3 -> store in TR[6] >> 1  -> store in TR[7], set 0 to TR[8] (def value for prod call)
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_do, [
+	STORE_PERM(STORE_PERM(waiting_cargo_1, 0x00) / LOAD_PERM(0x02), 0x01),
+	STORE_TEMP(STORE_TEMP(waiting_cargo_1 / 8, 0x06) / 2, 0x07),
+	STORE_TEMP(0, 0x08)
+]){
+	0: sw_goldmine_production_final;
+	default: sw_goldmine_production_final;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept1, STORE_PERM(50, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept2, STORE_PERM(150, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept3, STORE_PERM(250, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept4, STORE_PERM(450, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept5, STORE_PERM(10000, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
+
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production, STORE_PERM(current_year - param[0], 0x05)){
+	0..2: sw_goldmine_production_maxaccept1;
+	3..5: sw_goldmine_production_maxaccept2;
+	6..7: sw_goldmine_production_maxaccept3;
+	8..9: sw_goldmine_production_maxaccept4;
+	default: sw_goldmine_production_maxaccept5;
+}
+
+//ENABLE/DISABLE CARGO ACCEPT
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_decide_accept, LOAD_PERM(0x01)){
+	0: return 1;
+	default: return 0;
+}
+//CARGO SUBTEXT
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_cargosubtext_show, [
+	STORE_TEMP(LOAD_PERM(0x02) + LOAD_PERM(0x01), 0x100),
+	LOAD_PERM(0x01)
+]){
+	0: string(STR_GOLDMINEYES);
+	default: string(STR_GOLDMINENO);
+}
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_cargosubtext, extra_callback_info2 & 0xFFFF){
+	0x100: sw_goldmine_cargosubtext_show;
+	default: CB_RESULT_NO_TEXT;
+}
+//LOCATION CHECK
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_location_distself, industry_distance(goldmine, -1)){
+	0..20: string(STR_INDTOONEAR);
+	default: CB_RESULT_LOCATION_ALLOW;
+}
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_location_disttown, town_manhattan_dist(0, 0)){
+	0..48: string(STR_INDTOWN);
+	default: sw_goldmine_location_distself;
+}
+
+item(FEAT_INDUSTRIES, goldmine, 0x15) {
+	property {
+ 		substitute: 15;
+		override: 15;
+		fund_cost_multiplier: 255;
+		prod_multiplier: [0];
+		life_type: IND_LIFE_TYPE_PROCESSING;
+		accept_cargo_types: [PASS];
+		input_multiplier_1: [0.5];
+	}
+	graphics {
+    produce_256_ticks: sw_goldmine_production;
+    location_check: sw_goldmine_location_disttown;
+    cargo_subtype_display: sw_goldmine_cargosubtext;
+    stop_accept_cargo: sw_goldmine_decide_accept;
+	}
+}
+   
+   
+   

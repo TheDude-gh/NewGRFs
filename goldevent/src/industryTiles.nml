@@ -1,0 +1,143 @@
+
+switch(FEAT_INDUSTRYTILES, PARENT, goldmine_tile_accept,	LOAD_PERM(0x01)){
+	0: return 8;
+	default: return 0;
+}
+
+
+item(FEAT_INDUSTRYTILES, GOLD_MINE_72, 72){
+  property{
+		substitute: 72;
+		override: 72;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_73, 73){
+  property{
+		substitute: 73;
+		override: 73;
+		accepted_cargos: [[PASS, 8]];
+	}
+  graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_74, 74){
+  property{
+		substitute: 74;
+		override: 74;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_75, 75){
+  property{
+		substitute: 75;
+		override: 75;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_76, 76){
+  property{
+		substitute: 76;
+		override: 76;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_77, 77){
+  property{
+		substitute: 77;
+		override: 77;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_78, 78){
+  property{
+		substitute: 78;
+		override: 78;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_79, 79){
+  property{
+		substitute: 79;
+		override: 79;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_80, 80){
+  property{
+		substitute: 80;
+		override: 80;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_81, 81){
+  property{
+		substitute: 81;
+		override: 81;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_82, 82){
+  property{
+		substitute: 82;
+		override: 82;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_83, 83){
+  property{
+		substitute: 83;
+		override: 83;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_84, 84){
+  property{
+		substitute: 84;
+		override: 84;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_85, 85){
+  property{
+		substitute: 85;
+		override: 85;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_86, 86){
+  property{
+		substitute: 86;
+		override: 86;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_87, 87){
+  property{
+		substitute: 87;
+		override: 87;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}
+item(FEAT_INDUSTRYTILES, GOLD_MINE_88, 88){
+  property{
+		substitute: 88;
+		override: 88;
+		accepted_cargos: [[PASS, 8]];
+	}
+	graphics{ cargo_amount_accept: goldmine_tile_accept; }
+}

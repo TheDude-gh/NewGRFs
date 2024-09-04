@@ -1,0 +1,351 @@
+
+if(hasbit(param[1], 0)){
+	param[0] = 0x00;
+}
+
+if(!hasbit(param[0], 0)){
+	item(FEAT_TRAINS, train_v200, 0x91) { //145
+		property {
+		  name: string(STR_PAR0_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1953, 1, 8);
+			reliability_decay: 20;
+			vehicle_life: 30;
+			model_life: 30;
+			climates_available: ALL_CLIMATES;
+			speed: 140 km/h;
+			power: 2700 hp;
+			running_cost_factor: 120;
+			running_cost_base: RUNNING_COST_DIESEL;
+			dual_headed: 0;
+			cargo_capacity: 0;
+			weight: 80;
+			cost_factor: 20;
+			engine_class: ENGINE_CLASS_DIESEL;
+			tractive_effort_coefficient: 0.298;
+		}
+		graphics {
+			default: sprites_v200;
+		}
+		livery_override (0x1B) {
+			default: sprites_v200_pax;
+		}
+		livery_override (0x1C) {
+			default: gr_v200_mail;
+		}
+	}
+}
+
+if(!hasbit(param[0], 1)){
+	item(FEAT_TRAINS, train_br103, 0x92) { //146
+		property {
+		  name: string(STR_PAR1_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1969, 1, 12);
+			reliability_decay: 20;
+			vehicle_life: 32;
+			model_life: 32;
+			climates_available: ALL_CLIMATES;
+			speed: 200 km/h;
+			power: 8090 hp;
+			running_cost_factor: 212;
+			running_cost_base: RUNNING_COST_ELECTRIC;
+			dual_headed: 0;
+			cargo_capacity: 0;
+			weight: 114;
+			cost_factor: 42;
+			engine_class: ENGINE_CLASS_ELECTRIC;
+			tractive_effort_coefficient: 0.298;
+		}
+		graphics {
+		  additional_text: string(STR_TRAIN_FREIGHT_EXPRESS);
+			default: sprites_br103;
+		}
+	  livery_override (0x1B) {
+			default: sprites_br103_pax;
+		}
+		livery_override (0x1C) {
+			default: gr_br103_mail;
+		}
+	}
+}
+
+if(!hasbit(param[0], 2)){
+	item(FEAT_TRAINS, train_br101, 0x93) { //147
+		property {
+		  name: string(STR_PAR2_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1995, 1, 18);
+			reliability_decay: 20;
+			vehicle_life: 30;
+			model_life: 30;
+			climates_available: ALL_CLIMATES;
+			speed: 220 km/h;
+			power: 8700 hp;
+			running_cost_factor: 176;
+			running_cost_base: RUNNING_COST_ELECTRIC;
+			dual_headed: 0;
+			cargo_capacity: 0;
+			weight: 86;
+			cost_factor: 42;
+			engine_class: ENGINE_CLASS_ELECTRIC;
+			tractive_effort_coefficient: 0.298;
+		}
+		graphics {
+		  additional_text: string(STR_TRAIN_FREIGHT_EXPRESS);
+			default: sprites_br101;
+		}
+		livery_override (0x1B) {
+			default: sprites_br101_pax;
+		}
+		livery_override (0x1C) {
+			default: gr_br101_mail;
+		}
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_canattach_wagon, [cargo_classes & bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED)]){
+  0: string(STR_TRAIN_ONLY_PAX);
+  default: CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+}
+
+switch(FEAT_TRAINS, SELF, sw_canattach_wagon0, [vehicle_type_id]){
+  0x1B..0x1C: CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+  0x25: CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+  0x28: CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+  default: string(STR_TRAIN_ONLY_PAX);
+}
+
+switch(FEAT_TRAINS, SELF, sw_canattach_wagon_pre, [param[1]]){
+  1: sw_canattach_wagon;
+  default: CB_RESULT_ATTACH_ALLOW_IF_RAILTYPES;
+}
+
+if(!hasbit(param[0], 3)){
+	item(FEAT_TRAINS, train_ice3, 0x94) { //148
+		property {
+		  name: string(STR_PAR3_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1996, 1, 19);
+			reliability_decay: 20;
+			vehicle_life: 30;
+			model_life: 30;
+			climates_available: ALL_CLIMATES;
+			speed: 350 km/h;
+			power: 15500 hp;
+			running_cost_factor: 255;
+			running_cost_base: RUNNING_COST_ELECTRIC;
+			dual_headed: 1;
+			cargo_capacity: 0;
+			weight: 125;
+			cost_factor: 69;
+			engine_class: ENGINE_CLASS_ELECTRIC;
+			tractive_effort_coefficient: 0.424;
+			air_drag_coefficient: 0.004;
+		}
+		graphics {
+		  additional_text: string(STR_TRAIN_PAX_EXPRESS);
+		  purchase: sprites_ice3_PR;
+		  can_attach_wagon: sw_canattach_wagon_pre;
+			default: sprites_ice3;
+		}
+	  livery_override (0x1B) {
+			default: sprites_ice3_pax;
+		}
+		livery_override (0x1C) {
+			default: gr_ice3_mail;
+		}
+	}
+}
+
+if(!hasbit(param[0], 4)){
+	item(FEAT_TRAINS, train_tgv, 0x95) { //149
+		property {
+		  name: string(STR_PAR4_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1993, 1, 18);
+			reliability_decay: 20;
+			vehicle_life: 30;
+			model_life: 100;
+			climates_available: ALL_CLIMATES;
+			speed: 300 km/h;
+			power: 15000 hp;
+			running_cost_factor: 235;
+			running_cost_base: RUNNING_COST_ELECTRIC;
+			dual_headed: 1;
+			cargo_capacity: 0;
+			weight: 110;
+			cost_factor: 60;
+			engine_class: ENGINE_CLASS_ELECTRIC;
+			tractive_effort_coefficient: 0.361;
+			air_drag_coefficient: 0.016;
+		}
+		graphics {
+		  additional_text: string(STR_TRAIN_PAX_EXPRESS);
+		  purchase: sprites_tgv_PR;
+		  can_attach_wagon: sw_canattach_wagon_pre;
+			default: sprites_tgv;
+		}
+	  livery_override (0x1B) {
+			default: sprites_tgv_pax;
+		}
+		livery_override (0x1C) {
+			default: gr_tgv_mail;
+		}
+	}
+}
+
+if(!hasbit(param[0], 5)){
+	item(FEAT_TRAINS, train_renfe269, 0x96) { //150
+		property {
+		  name: string(STR_PAR5_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1979, 1, 15);
+			reliability_decay: 20;
+			vehicle_life: 30;
+			model_life: 30;
+			climates_available: ALL_CLIMATES;
+			speed: 160 km/h;
+			power: 4200 hp;
+			running_cost_factor: 186;
+			running_cost_base: RUNNING_COST_ELECTRIC;
+			dual_headed: 0;
+			cargo_capacity: 0;
+			weight: 83;
+			cost_factor: 27;
+			engine_class: ENGINE_CLASS_ELECTRIC;
+			tractive_effort_coefficient: 0.298;
+		}
+		graphics {
+			additional_text: string(STR_TRAIN_PAX_FREIGHT);
+			default: sprites_renfe269;
+		}
+	}
+}
+
+if(!hasbit(param[0], 6)){
+	item(FEAT_TRAINS, train_renfe252, 0x97) { //151
+		property {
+		  name: string(STR_PAR6_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1984, 1, 16);
+			reliability_decay: 20;
+			vehicle_life: 25;
+			model_life: 25;
+			climates_available: ALL_CLIMATES;
+			speed: 200 km/h;
+			power: 7600 hp;
+			running_cost_factor: 180;
+			running_cost_base: RUNNING_COST_ELECTRIC;
+			dual_headed: 0;
+			cargo_capacity: 0;
+			weight: 86;
+			cost_factor: 40;
+			engine_class: ENGINE_CLASS_ELECTRIC;
+			tractive_effort_coefficient: 0.298;
+		}
+		graphics {
+		  additional_text: string(STR_TRAIN_PAX_FREIGHT);
+			default: sprites_renfe252;
+		}
+	}
+}
+
+if(!hasbit(param[0], 7)){
+	item(FEAT_TRAINS, train_re66, 0xA0) { //160
+		property {
+		  name: string(STR_PAR7_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1971, 1, 12);
+			reliability_decay: 20;
+			vehicle_life: 30;
+			model_life: 30;
+			climates_available: ALL_CLIMATES;
+			speed: 140 km/h;
+			power: 10600 hp;
+			running_cost_factor: 192;
+			running_cost_base: RUNNING_COST_ELECTRIC;
+			dual_headed: 0;
+			cargo_capacity: 0;
+			weight: 120;
+			cost_factor: 36;
+			engine_class: ENGINE_CLASS_ELECTRIC;
+			tractive_effort_coefficient: 0.298;
+		}
+		graphics {
+		  additional_text: string(STR_TRAIN_FREIGHT_HEAVY);
+			default: sprites_re66;
+		}
+	}
+}
+
+if(!hasbit(param[0], 8)){
+	item(FEAT_TRAINS, train_re460, 0xA1) { //161
+		property {
+		  name: string(STR_PAR8_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1993, 1, 17);
+			reliability_decay: 20;
+			vehicle_life: 30;
+			model_life: 30;
+			climates_available: ALL_CLIMATES;
+			speed: 230 km/h;
+			power: 9250 hp;
+			running_cost_factor: 178;
+			running_cost_base: RUNNING_COST_ELECTRIC;
+			dual_headed: 0;
+			cargo_capacity: 0;
+			weight: 82;
+			cost_factor: 45;
+			engine_class: ENGINE_CLASS_ELECTRIC;
+			tractive_effort_coefficient: 0.298;
+		}
+		graphics {
+		  additional_text: string(STR_TRAIN_FREIGHT_HEAVY);
+			default: sprites_re460;
+		}
+	}
+}
+
+if(!hasbit(param[0], 9)){
+	item(FEAT_TRAINS, train_deac33c, 0xA2) { //162
+		property {
+		  name: string(STR_PAR9_DESC);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			introduction_date: date(1996, 1, 18);
+			reliability_decay: 20;
+			vehicle_life: 30;
+			model_life: 30;
+			climates_available: ALL_CLIMATES;
+			speed: 150 km/h;
+			power: 3300 hp;
+			running_cost_factor: 145;
+			running_cost_base: RUNNING_COST_DIESEL;
+			dual_headed: 0;
+			cargo_capacity: 0;
+			weight: 128;
+			cost_factor: 27;
+			engine_class: ENGINE_CLASS_DIESEL;
+			tractive_effort_coefficient: 0.298;
+		}
+		graphics {
+		  additional_text: string(STR_TRAIN_FREIGHT_HEAVY);
+			default: sprites_deac33c;
+		}
+	}
+}
+
+if(param[1] == 0){
+	sort(FEAT_TRAINS, [
+		train_v200,
+		train_br103,
+		train_re66,
+		train_renfe269,
+		train_renfe252,
+		train_re460,
+		train_br101,
+		train_deac33c,
+		train_tgv,
+		train_ice3,
+	]);
+}

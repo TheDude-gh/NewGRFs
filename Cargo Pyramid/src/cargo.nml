@@ -1,0 +1,681 @@
+switch(FEAT_CARGOS, SELF, holycows_profit_go,
+	[ STORE_TEMP(max((extra_callback_info2 >> 24) & 0xFF, 0) >> 2, 0x00),
+		((max(255 - LOAD_TEMP(0x00) * LOAD_TEMP(0x00), 16) * (extra_callback_info2 & 0xFFFF)) >> 8) & 0x3FFF
+	]
+){
+	return;
+}
+
+switch(FEAT_CARGOS, SELF, holycows_profit_start,
+	[max((extra_callback_info2 & 0xFFFF) - 200, 0)]
+){
+	0: return 0;
+	holycows_profit_go;
+}
+
+item(FEAT_CARGOS, passengers, 0){
+	property{
+		number: 0;
+		cargo_classes: bitmask(CC_PASSENGERS);
+		cargo_label: "PASS";
+		type_name: string(STR_CARGO_SINGULAR_PASSENGERS);
+		unit_name: string(STR_CARGO_SINGULAR_PASSENGERS);
+		units_of_cargo: string(STR_QUANTITY_PASSENGERS);
+		items_of_cargo: string(STR_QUANTITY_PASSENGERS);
+		type_abbreviation: string(STR_ABBREV_PASSENGERS);
+		sprite: 4297;
+		weight: 0.0625;
+		penalty_lowerbound: 20;
+		single_penalty_length: 35;
+		price_factor: 67;
+		station_list_colour: 0x98;
+		cargo_payment_list_colour: 0x98;
+		is_freight: 0;
+		capacity_multiplier: 4.0;
+	}
+}
+
+item(FEAT_CARGOS, coal, 1){
+	property{
+		number: 1;
+		cargo_classes: bitmask(CC_BULK);
+		cargo_label: "COAL";
+		type_name: string(STR_CARGO_SINGULAR_COAL);
+		unit_name: string(STR_CARGO_SINGULAR_COAL);
+		units_of_cargo: string(STR_QUANTITY_COAL);
+		items_of_cargo: string(STR_QUANTITY_COAL);
+		type_abbreviation: string(STR_ABBREV_COAL);
+		sprite: 4298;
+		weight: 1;
+		penalty_lowerbound: 7;
+		single_penalty_length: 75;
+		price_factor: 143;
+		station_list_colour: 0x06;
+		cargo_payment_list_colour: 0x06;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, mail, 2){
+	property{
+		number: 2;
+		cargo_classes: bitmask(CC_MAIL);
+		cargo_label: "MAIL";
+		type_name: string(STR_CARGO_SINGULAR_MAIL);
+		unit_name: string(STR_CARGO_SINGULAR_MAIL);
+		units_of_cargo: string(STR_QUANTITY_MAIL);
+		items_of_cargo: string(STR_QUANTITY_MAIL);
+		type_abbreviation: string(STR_ABBREV_MAIL);
+		sprite: 4299;
+		weight: 0.25;
+		penalty_lowerbound: 20;
+		single_penalty_length: 90;
+		price_factor: 100;
+		station_list_colour: 0x0F;
+		cargo_payment_list_colour: 0x0F;
+		is_freight: 0;
+		capacity_multiplier: 2.0;
+	}
+}
+
+item(FEAT_CARGOS, oil, 3){
+	property{
+		number: 3;
+		cargo_classes: bitmask(CC_LIQUID);
+		cargo_label: "OIL_";
+		type_name: string(STR_CARGO_SINGULAR_OIL);
+		unit_name: string(STR_CARGO_SINGULAR_OIL);
+		units_of_cargo: string(STR_QUANTITY_OIL);
+		items_of_cargo: string(STR_QUANTITY_OIL);
+		type_abbreviation: string(STR_ABBREV_OIL);
+		sprite: 4300;
+		weight: 1;
+		penalty_lowerbound: 25;
+		single_penalty_length: 60;
+		price_factor: 107;
+		station_list_colour: 0x97;
+		cargo_payment_list_colour: 0x97;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, livestock, 4){
+	property{
+		number: 4;
+		cargo_classes: bitmask(CC_PIECE_GOODS);
+		cargo_label: "LVST";
+		type_name: string(STR_CARGO_SINGULAR_LIVESTOCK);
+		unit_name: string(STR_CARGO_SINGULAR_LIVESTOCK);
+		units_of_cargo: string(STR_QUANTITY_LIVESTOCK);
+		items_of_cargo: string(STR_QUANTITY_LIVESTOCK);
+		type_abbreviation: string(STR_ABBREV_LIVESTOCK);
+		sprite: 4301;
+		weight: 0.18;
+		penalty_lowerbound: 4;
+		single_penalty_length: 18;
+		price_factor: 104;
+		station_list_colour: 0xD0;
+		cargo_payment_list_colour: 0xD0;
+		is_freight: 0;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, goods, 5){
+	property{
+		number: 5;
+		cargo_classes: bitmask(CC_EXPRESS);
+		cargo_label: "GOOD";
+		type_name: string(STR_CARGO_SINGULAR_GOODS);
+		unit_name: string(STR_CARGO_SINGULAR_GOODS);
+		units_of_cargo: string(STR_QUANTITY_GOODS);
+		items_of_cargo: string(STR_QUANTITY_GOODS);
+		type_abbreviation: string(STR_ABBREV_GOODS);
+		sprite: 4302;
+		weight: 0.5;
+		penalty_lowerbound: 5;
+		single_penalty_length: 28;
+		price_factor: 250;
+		station_list_colour: 0xC2;
+		cargo_payment_list_colour: 0xC2;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, grain, 6){
+	property{
+		number: 6;
+		cargo_classes: bitmask(CC_BULK);
+		cargo_label: "GRAI";
+		type_name: string(STR_CARGO_SINGULAR_GRAIN);
+		unit_name: string(STR_CARGO_SINGULAR_GRAIN);
+		units_of_cargo: string(STR_QUANTITY_GRAIN);
+		items_of_cargo: string(STR_QUANTITY_GRAIN);
+		type_abbreviation: string(STR_ABBREV_GRAIN);
+		sprite: 4303;
+		weight: 1;
+		penalty_lowerbound: 4;
+		single_penalty_length: 20;
+		price_factor: 116;
+		station_list_colour: 0xBF;
+		cargo_payment_list_colour: 0xBF;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, wood, 7){
+	property{
+		number: 7;
+		cargo_classes: bitmask(CC_PIECE_GOODS);
+		cargo_label: "WOOD";
+		type_name: string(STR_CARGO_SINGULAR_WOOD);
+		unit_name: string(STR_CARGO_SINGULAR_WOOD);
+		units_of_cargo: string(STR_QUANTITY_WOOD);
+		items_of_cargo: string(STR_QUANTITY_WOOD);
+		type_abbreviation: string(STR_ABBREV_WOOD);
+		sprite: 4304;
+		weight: 1;
+		penalty_lowerbound: 15;
+		single_penalty_length: 25;
+		price_factor: 121;
+		station_list_colour: 0x54;
+		cargo_payment_list_colour: 0x54;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, iron_ore, 8){
+	property{
+		number: 8;
+		cargo_classes: bitmask(CC_BULK);
+		cargo_label: "IORE";
+		type_name: string(STR_CARGO_SINGULAR_IRON_ORE);
+		unit_name: string(STR_CARGO_SINGULAR_IRON_ORE);
+		units_of_cargo: string(STR_QUANTITY_IRON_ORE);
+		items_of_cargo: string(STR_QUANTITY_IRON_ORE);
+		type_abbreviation: string(STR_ABBREV_IRON_ORE);
+		sprite: 4305;
+		weight: 1;
+		penalty_lowerbound: 9;
+		single_penalty_length: 35;
+		price_factor: 124;
+		station_list_colour: 0x3F;
+		cargo_payment_list_colour: 0x3F;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, steel, 9){
+	property{
+		number: 9;
+		cargo_classes: bitmask(CC_PIECE_GOODS);
+		cargo_label: "STEL";
+		type_name: string(STR_CARGO_SINGULAR_STEEL);
+		unit_name: string(STR_CARGO_SINGULAR_STEEL);
+		units_of_cargo: string(STR_QUANTITY_STEEL);
+		items_of_cargo: string(STR_QUANTITY_STEEL);
+		type_abbreviation: string(STR_ABBREV_STEEL);
+		sprite: 4306;
+		weight: 1;
+		penalty_lowerbound: 7;
+		single_penalty_length: 50;
+		price_factor: 281;
+		station_list_colour: 0x0A;
+		cargo_payment_list_colour: 0x0A;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, diamonds, 10){
+	property{
+		number: 10;
+		cargo_classes: bitmask(CC_ARMOURED);
+		cargo_label: "DIAM";
+		type_name: string(STR_CARGO_SINGULAR_DIAMOND);
+		unit_name: string(STR_CARGO_SINGULAR_DIAMOND);
+		units_of_cargo: string(STR_QUANTITY_DIAMONDS);
+		items_of_cargo: string(STR_QUANTITY_DIAMONDS);
+		type_abbreviation: string(STR_ABBREV_DIAMONDS);
+		sprite: 4311;
+		weight: 0.125;
+		penalty_lowerbound: 10;
+		single_penalty_length: 60;
+		price_factor: 170;
+		station_list_colour: 0xCA;
+		cargo_payment_list_colour: 0xCA;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, money, 11){
+	property{
+		number: 11;
+		cargo_classes: bitmask(CC_EXPRESS);
+		cargo_label: "CASH";
+		type_name: string(STR_CARGO_SINGULAR_MONEY);
+		unit_name: string(STR_CARGO_SINGULAR_MONEY);
+		units_of_cargo: string(STR_QUANTITY_MONEY);
+		items_of_cargo: string(STR_QUANTITY_MONEY);
+		type_abbreviation: string(STR_ABBREV_MONEY);
+		sprite: 4313;
+		weight: 1;
+		penalty_lowerbound: 1;
+		single_penalty_length: 2;
+		price_factor: 271;
+		station_list_colour: 0x57;
+		cargo_payment_list_colour: 0x57;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, food, 12){
+	property{
+		number: 12;
+		cargo_classes: bitmask(CC_REFRIGERATED, CC_EXPRESS);
+		cargo_label: "FOOD";
+		type_name: string(STR_CARGO_SINGULAR_FOOD);
+		unit_name: string(STR_CARGO_SINGULAR_FOOD);
+		units_of_cargo: string(STR_QUANTITY_FOOD);
+		items_of_cargo: string(STR_QUANTITY_FOOD);
+		type_abbreviation: string(STR_ABBREV_FOOD);
+		sprite: 4312;
+		weight: 1;
+		penalty_lowerbound: 0;
+		single_penalty_length: 25;
+		price_factor: 230;
+		station_list_colour: 0x30;
+		cargo_payment_list_colour: 0x30;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, fruit, 13){
+	property{
+		number: 13;
+		cargo_classes: bitmask(CC_BULK, CC_REFRIGERATED);
+		cargo_label: "FRUT";
+		type_name: string(STR_CARGO_SINGULAR_FRUIT);
+		unit_name: string(STR_CARGO_SINGULAR_FRUIT);
+		units_of_cargo: string(STR_QUANTITY_FRUIT);
+		items_of_cargo: string(STR_QUANTITY_FRUIT);
+		type_abbreviation: string(STR_ABBREV_FRUIT);
+		sprite: 4308;
+		weight: 1;
+		penalty_lowerbound: 0;
+		single_penalty_length: 15;
+		price_factor: 102;
+		station_list_colour: 0xCF;
+		cargo_payment_list_colour: 0xCF;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, copper_ore, 14){
+	property{
+		number: 14;
+		cargo_classes: bitmask(CC_BULK);
+		cargo_label: "CORE";
+		type_name: string(STR_CARGO_SINGULAR_COPPER_ORE);
+		unit_name: string(STR_CARGO_SINGULAR_COPPER_ORE);
+		units_of_cargo: string(STR_QUANTITY_COPPER_ORE);
+		items_of_cargo: string(STR_QUANTITY_COPPER_ORE);
+		type_abbreviation: string(STR_ABBREV_COPPER_ORE);
+		sprite: 4309;
+		weight: 1;
+		penalty_lowerbound: 12;
+		single_penalty_length: 40;
+		price_factor: 118;
+		station_list_colour: 0xA2;
+		cargo_payment_list_colour: 0xA2;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, water, 15){
+	property{
+		number: 15;
+		cargo_classes: bitmask(CC_LIQUID);
+		cargo_label: "WATR";
+		type_name: string(STR_CARGO_SINGULAR_WATER);
+		unit_name: string(STR_CARGO_SINGULAR_WATER);
+		units_of_cargo: string(STR_QUANTITY_WATER);
+		items_of_cargo: string(STR_QUANTITY_WATER);
+		type_abbreviation: string(STR_ABBREV_WATER);
+		sprite: 4310;
+		weight: 1;
+		penalty_lowerbound: 20;
+		single_penalty_length: 45;
+		price_factor: 113;
+		station_list_colour: 0x8F;
+		cargo_payment_list_colour: 0x8F;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, rubber, 16){
+	property{
+		number: 16;
+		cargo_classes: bitmask(CC_LIQUID);
+		cargo_label: "RUBR";
+		type_name: string(STR_CARGO_SINGULAR_RUBBER);
+		unit_name: string(STR_CARGO_SINGULAR_RUBBER);
+		units_of_cargo: string(STR_QUANTITY_RUBBER);
+		items_of_cargo: string(STR_QUANTITY_RUBBER);
+		type_abbreviation: string(STR_ABBREV_RUBBER);
+		sprite: 4314;
+		weight: 1;
+		penalty_lowerbound: 2;
+		single_penalty_length: 20;
+		price_factor: 107;
+		station_list_colour: 0xA9;
+		cargo_payment_list_colour: 0xA9;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, sugar, 17){
+	property{
+		number: 17;
+		cargo_classes: bitmask(CC_BULK);
+		cargo_label: "SUGR";
+		type_name: string(STR_CARGO_SINGULAR_SUGAR);
+		unit_name: string(STR_CARGO_SINGULAR_SUGAR);
+		units_of_cargo: string(STR_QUANTITY_SUGAR);
+		items_of_cargo: string(STR_QUANTITY_SUGAR);
+		type_abbreviation: string(STR_ABBREV_SUGAR);
+		sprite: 4316;
+		weight: 1;
+		penalty_lowerbound: 20;
+		single_penalty_length: 45;
+		price_factor: 97;
+		station_list_colour: 0x92;
+		cargo_payment_list_colour: 0x92;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, toys, 18){
+	property{
+		number: 18;
+		cargo_classes: bitmask(CC_PIECE_GOODS);
+		cargo_label: "TOYS";
+		type_name: string(STR_CARGO_SINGULAR_TOY);
+		unit_name: string(STR_CARGO_SINGULAR_TOY);
+		units_of_cargo: string(STR_QUANTITY_TOYS);
+		items_of_cargo: string(STR_QUANTITY_TOYS);
+		type_abbreviation: string(STR_ABBREV_TOYS);
+		sprite: 4317;
+		weight: 0.125;
+		penalty_lowerbound: 25;
+		single_penalty_length: 45;
+		price_factor: 324;
+		station_list_colour: 0xAE;
+		cargo_payment_list_colour: 0xAE;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, energy, 19){
+	property{
+		number: 19;
+		cargo_classes: bitmask(CC_LIQUID);
+		cargo_label: "ENRG";
+		type_name: string(STR_CARGO_SINGULAR_ENERGY);
+		unit_name: string(STR_CARGO_SINGULAR_ENERGY);
+		units_of_cargo: string(STR_QUANTITY_ENERGY);
+		items_of_cargo: string(STR_QUANTITY_ENERGY);
+		type_abbreviation: string(STR_ABBREV_ENERGY);
+		sprite: 4323;
+		weight: 0.25;
+		penalty_lowerbound: 2;
+		single_penalty_length: 30;
+		price_factor: 340;
+		station_list_colour: 0xAA;
+		cargo_payment_list_colour: 0xAA;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, sweets, 20){
+	property{
+		number: 20;
+		cargo_classes: bitmask(CC_EXPRESS);
+		cargo_label: "SWET";
+		type_name: string(STR_CARGO_SINGULAR_SWEET);
+		unit_name: string(STR_CARGO_SINGULAR_SWEET);
+		units_of_cargo: string(STR_QUANTITY_SWEETS);
+		items_of_cargo: string(STR_QUANTITY_SWEETS);
+		type_abbreviation: string(STR_ABBREV_SWEETS);
+		sprite: 4315;
+		weight: 0.35;
+		penalty_lowerbound: 8;
+		single_penalty_length: 40;
+		price_factor: 243;
+		station_list_colour: 0xC5;
+		cargo_payment_list_colour: 0xC5;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, toffee, 21){
+	property{
+		number: 21;
+		cargo_classes: bitmask(CC_BULK);
+		cargo_label: "TOFF";
+		type_name: string(STR_CARGO_SINGULAR_TOFFEE);
+		unit_name: string(STR_CARGO_SINGULAR_TOFFEE);
+		units_of_cargo: string(STR_QUANTITY_TOFFEE);
+		items_of_cargo: string(STR_QUANTITY_TOFFEE);
+		type_abbreviation: string(STR_ABBREV_TOFFEE);
+		sprite: 4320;
+		weight: 1;
+		penalty_lowerbound: 14;
+		single_penalty_length: 30;
+		price_factor: 116;
+		station_list_colour: 0x7A;
+		cargo_payment_list_colour: 0x7A;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, cola, 22){
+	property{
+		number: 22;
+		cargo_classes: bitmask(CC_LIQUID);
+		cargo_label: "COLA";
+		type_name: string(STR_CARGO_SINGULAR_COLA);
+		unit_name: string(STR_CARGO_SINGULAR_COLA);
+		units_of_cargo: string(STR_QUANTITY_COLA);
+		items_of_cargo: string(STR_QUANTITY_COLA);
+		type_abbreviation: string(STR_ABBREV_COLA);
+		sprite: 4310;
+		weight: 1;
+		penalty_lowerbound: 5;
+		single_penalty_length: 35;
+		price_factor: 118;
+		station_list_colour: 0x12;
+		cargo_payment_list_colour: 0x12;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, cotton_candy, 23){
+	property{
+		number: 23;
+		cargo_classes: bitmask(CC_BULK);
+		cargo_label: "CTCD";
+		type_name: string(STR_CARGO_SINGULAR_COTTON_CANDY);
+		unit_name: string(STR_CARGO_SINGULAR_COTTON_CANDY);
+		units_of_cargo: string(STR_QUANTITY_COTTON_CANDY);
+		items_of_cargo: string(STR_QUANTITY_COTTON_CANDY);
+		type_abbreviation: string(STR_ABBREV_COTTON_CANDY);
+		sprite: 4318;
+		weight: 1;
+		penalty_lowerbound: 10;
+		single_penalty_length: 25;
+		price_factor: 121;
+		station_list_colour: 0x31;
+		cargo_payment_list_colour: 0x31;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, bubbles, 24){
+	property{
+		number: 24;
+		cargo_classes: bitmask(CC_PIECE_GOODS);
+		cargo_label: "BUBL";
+		type_name: string(STR_CARGO_SINGULAR_BUBBLE);
+		unit_name: string(STR_CARGO_SINGULAR_BUBBLE);
+		units_of_cargo: string(STR_QUANTITY_BUBBLES);
+		items_of_cargo: string(STR_QUANTITY_BUBBLES);
+		type_abbreviation: string(STR_ABBREV_BUBBLES);
+		sprite: 4321;
+		weight: 0.0625;
+		penalty_lowerbound: 20;
+		single_penalty_length: 35;
+		price_factor: 123;
+		station_list_colour: 0x83;
+		cargo_payment_list_colour: 0x83;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, holycow, 25){
+	property{
+		number: 25;
+		cargo_classes: bitmask(CC_EXPRESS, CC_PIECE_GOODS);
+		cargo_label: "HCOW";
+		type_name: string(STR_CARGO_SINGULAR_HOLYCOW);
+		unit_name: string(STR_CARGO_SINGULAR_HOLYCOW);
+		units_of_cargo: string(STR_QUANTITY_HOLYCOW);
+		items_of_cargo: string(STR_QUANTITY_HOLYCOW);
+		type_abbreviation: string(STR_ABBREV_HOLYCOW);
+		sprite: 4322;
+		weight: 1;
+		penalty_lowerbound: 10;
+		single_penalty_length: 15;
+		price_factor: 500;
+		station_list_colour: 0xE8;
+		cargo_payment_list_colour: 0xE8;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+	graphics{
+    profit: holycows_profit_start;
+	}
+}
+
+item(FEAT_CARGOS, fizzy_drinks, 26){
+	property{
+		number: 26;
+		cargo_classes: bitmask(CC_PIECE_GOODS);
+		cargo_label: "FZDR";
+		type_name: string(STR_CARGO_SINGULAR_FIZZY_DRINK);
+		unit_name: string(STR_CARGO_SINGULAR_FIZZY_DRINK);
+		units_of_cargo: string(STR_QUANTITY_FIZZY_DRINKS);
+		items_of_cargo: string(STR_QUANTITY_FIZZY_DRINKS);
+		type_abbreviation: string(STR_ABBREV_FIZZY_DRINKS);
+		sprite: 4319;
+		weight: 0.125;
+		penalty_lowerbound: 10;
+		single_penalty_length: 20;
+		price_factor: 261;
+		station_list_colour: 0xB8;
+		cargo_payment_list_colour: 0xB8;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+
+item(FEAT_CARGOS, gold, 29){
+	property{
+		number: 29;
+		cargo_classes: bitmask(CC_ARMOURED);
+		cargo_label: "GOLD";
+		type_name: string(STR_CARGO_SINGULAR_GOLD);
+		unit_name: string(STR_CARGO_SINGULAR_GOLD);
+		units_of_cargo: string(STR_QUANTITY_GOLD);
+		items_of_cargo: string(STR_QUANTITY_GOLD);
+		type_abbreviation: string(STR_ABBREV_GOLD);
+		sprite: 4307;
+		weight: 0.5;
+		penalty_lowerbound: 10;
+		single_penalty_length: 50;
+		price_factor: 152;
+		station_list_colour: 0xCC;
+		cargo_payment_list_colour: 0xCC;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, valuables, 30){
+	property{
+		number: 30;
+		cargo_classes: bitmask(CC_ARMOURED);
+		cargo_label: "VALU";
+		type_name: string(STR_CARGO_SINGULAR_VALUABLES);
+		unit_name: string(STR_CARGO_SINGULAR_VALUABLES);
+		units_of_cargo: string(STR_QUANTITY_VALUABLES);
+		items_of_cargo: string(STR_QUANTITY_VALUABLES);
+		type_abbreviation: string(STR_ABBREV_VALUABLES);
+		sprite: 4307;
+		weight: 0.125;
+		penalty_lowerbound: 1;
+		single_penalty_length: 20;
+		price_factor: 150;
+		station_list_colour: 0xCD;
+		cargo_payment_list_colour: 0xCD;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+}
+
+item(FEAT_CARGOS, holycowincome, 31){
+	property{
+		number: 31;
+		cargo_classes: bitmask(CC_HAZARDOUS);
+		cargo_label: "HCWI";
+		type_name: string(STR_CARGO_SINGULAR_HOLYCOW_INC);
+		unit_name: string(STR_CARGO_SINGULAR_HOLYCOW_INC);
+		units_of_cargo: string(STR_QUANTITY_HOLYCOW_INC);
+		items_of_cargo: string(STR_QUANTITY_HOLYCOW_INC);
+		type_abbreviation: string(STR_ABBREV_HOLYCOW_INC);
+		sprite: 4322;
+		weight: 1;
+		penalty_lowerbound: 10;
+		single_penalty_length: 15;
+		price_factor: 500;
+		station_list_colour: 0xB9;
+		cargo_payment_list_colour: 0xB9;
+		is_freight: 1;
+		capacity_multiplier: 1.0;
+	}
+	graphics{
+    profit: holycows_profit_go;
+	}
+}

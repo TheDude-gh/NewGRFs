@@ -1,0 +1,35 @@
+STR_GRF_NAME           :Original vehicles cargo set
+STR_GRF_DESCRIPTION    :{LTBLUE}Enables standard TTD vehicles to be reffited any cargo{}ECS & FIRS & YETI compatible{}{YELLOW}Code by The Dude{}{WHITE}Graphics by various authors{}{GREEN}Version # 2014.11.26
+STR_GRF_URL            :http://www.novapolis.net/
+
+STR_PARAM_CHOCHO       :Secret Choo-choo train
+STR_PARAM_CHOCHO_DESC  :Silly choo choo trains
+
+STR_WAGON_MINERAL1     :Mineral Truck
+STR_WAGON_MINERAL2     :Mineral Hopper
+STR_WAGON_BOLSTER      :Bolster Truck
+STR_WAGON_TOURISTS     :Deluxe Wagon
+
+STR_VEHICLE_MINERALA   :Balogh Mineral Truck
+STR_VEHICLE_MINERALB   :Uhl Mineral Truck
+STR_VEHICLE_MINERALC   :DW Mineral Truck
+STR_VEHICLE_OREA       :MPS Ore Truck
+STR_VEHICLE_OREB       :Uhl Ore Truck
+STR_VEHICLE_OREC       :Chippy Ore Truck
+STR_VEHICLE_BOLSTERA   :Balogh Bolster Truck
+STR_VEHICLE_BOLSTERB   :Uhl Bolster Truck
+STR_VEHICLE_BOLSTERC   :Kelling Bolster Truck
+STR_VEHICLE_BUSA       :Adams Bus
+STR_VEHICLE_BUSB       :Simpsons Bus
+STR_VEHICLE_BUSC       :Rockefeller Bus
+
+STR_TRAIN_CHOOCHOO1    :Freight Choo-choo train (Choo-choo)
+STR_TRAIN_CHOOCHOO2    :Express Choo-choo train (Choo-choo)
+
+STR_WAGON_UNIVERSALA   :Universal Wagon
+STR_WAGON_UNIVERSALB   :Universal Monorail Wagon
+STR_WAGON_UNIVERSALC   :Universal Maglev Wagon
+STR_VEHICLE_UNIVERSALA :Universal Vintage Truck
+STR_VEHICLE_UNIVERSALB :Universal Modern Truck
+STR_VEHICLE_UNIVERSALC :Universal Future Truck
+

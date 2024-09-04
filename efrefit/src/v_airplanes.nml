@@ -1,0 +1,328 @@
+
+item(FEAT_AIRCRAFT, id0, 0) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id1, 1) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id2, 2) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id3, 3) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id4, 4) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id5, 5) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id6, 6) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id7, 7) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id8, 8) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id9, 9) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id10, 10) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id11, 11) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id12, 12) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id14, 14) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id15, 15) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id16, 16) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id18, 18) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id19, 19) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id20, 20) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id21, 21) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id22, 22) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id23, 23) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id24, 24) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id25, 25) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id26, 26) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id27, 27) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id28, 28) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id29, 29) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id30, 30) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id32, 32) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+//toyland planes
+item(FEAT_AIRCRAFT, id33, 33) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id34, 34) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id35, 35) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id36, 36) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+
+item(FEAT_AIRCRAFT, id37, 37) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+  non_refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS);
+}}
+//helicopters
+item(FEAT_AIRCRAFT, id38, 38) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+  non_refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+}}
+
+item(FEAT_AIRCRAFT, id39, 39) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+  non_refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+}}
+//toyland helicopters
+item(FEAT_AIRCRAFT, id40, 40) { property {
+  climates_available: bitmask(CLIMATE_TOYLAND);
+  cargo_allow_refit: [];
+  refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+  non_refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+}}
+
+//all cargo planes
+item(FEAT_AIRCRAFT, id13, 13) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: ALL_CARGO_CLASSES;
+  non_refittable_cargo_classes: 0;
+}}
+
+item(FEAT_AIRCRAFT, id17, 17) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: ALL_CARGO_CLASSES;
+  non_refittable_cargo_classes: 0;
+}}
+
+item(FEAT_AIRCRAFT, id31, 31) { property {
+  climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+  
+  cargo_allow_refit: [];
+  refittable_cargo_classes: ALL_CARGO_CLASSES;
+  non_refittable_cargo_classes: 0;
+}}

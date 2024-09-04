@@ -1,0 +1,1535 @@
+disable_item(FEAT_TRAINS, 0x2B, 0x35);
+disable_item(FEAT_TRAINS, 0x49, 0x53);
+disable_item(FEAT_TRAINS, 0x69, 0x73);
+
+switch(FEAT_TRAINS, SELF, sw_wagon_passengerR_gfx, [cargo_type_in_veh]
+){
+	TOUR: sprites_tourR;
+	sprites_passR;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_passengerM_gfx, [cargo_type_in_veh]
+){
+	TOUR: sprites_tourR;
+	sprites_passM;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_passengerR_cap, [cargo_type_in_veh]
+){
+	TOUR: 20;
+	default: 40;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_passengerMR_cap, [cargo_type_in_veh]
+){
+	TOUR: 25;
+	default: 45;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_passengerM_cap, [cargo_type_in_veh]
+){
+	TOUR: 30;
+	default: 50;
+}
+
+item(FEAT_TRAINS, wagon_passengerA_id27, 0x1B) { //27
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PASS;
+		cargo_allow_refit: [PASS, TOUR];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes: 0;
+		refit_cost: 255;
+	}
+	graphics {
+		default: sw_wagon_passengerR_gfx;
+		cargo_capacity: sw_wagon_passengerR_cap;
+	}
+}
+
+item(FEAT_TRAINS, wagon_passengerB_id57, 0x39) { //57
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		cargo_allow_refit: [PASS, TOUR];
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_passengerM_gfx;
+		cargo_capacity: sw_wagon_passengerMR_cap;
+	}
+}
+
+item(FEAT_TRAINS, wagon_passengerC_id89, 0x59) { //89
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		cargo_allow_refit: [PASS, TOUR];
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_passengerM_gfx;
+		cargo_capacity: sw_wagon_passengerM_cap;
+	}
+}
+
+
+item(FEAT_TRAINS, wagon_mailA_id28, 0x1C) { //28
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: MAIL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_MAIL);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_mail;
+		purchase: sprites_mailP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_mailB_id58, 0x3A) { //58
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: MAIL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_MAIL);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_mail;
+		purchase: sprites_mailP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_mailC_id90, 0x5A) { //90
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: MAIL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_MAIL);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_mail;
+		purchase: sprites_mailP;
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_coalR_gfx, [cargo_type_in_veh]){
+	IORE: gr_wagon_ironoreR;
+	CORE: gr_wagon_clayR;
+	SUGR: gr_wagon_sugar;
+	TOFF: gr_wagon_toffee;
+	SAND: gr_wagon_sand;
+	AORE: gr_wagon_stone;
+	LIME: gr_wagon_clayR;
+	SGBT: gr_wagon_sugar;
+	CLAY: gr_wagon_clayR;
+	GRVL: gr_wagon_stone;
+	SGCN: gr_wagon_sugar;
+	URAN: gr_wagon_plast;
+	CTCD: gr_wagon_candy;
+	gr_wagon_coalR; //COAL
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_coalM_gfx, [cargo_type_in_veh]
+){
+	IORE: gr_wagon_ironoreM;
+	CORE: gr_wagon_clayM;
+	SUGR: gr_wagon_sugar;
+	TOFF: gr_wagon_toffee;
+	SAND: gr_wagon_sand;
+	AORE: gr_wagon_stone;
+	LIME: gr_wagon_clayM;
+	SGBT: gr_wagon_sugar;
+	CLAY: gr_wagon_clayM;
+	GRVL: gr_wagon_stone;
+	SGCN: gr_wagon_sugar;
+	URAN: gr_wagon_plast;
+	CTCD: gr_wagon_candy;
+	gr_wagon_coalM; //COAL
+}
+
+item(FEAT_TRAINS, wagon_coalA_id29, 0x1D) { //29
+	property {
+		name: string(STR_WAGON_MINERAL1);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: COAL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_coalR_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_coalB_id59, 0x3B) { //59
+	property {
+		name: string(STR_WAGON_MINERAL1);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: COAL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_coalM_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_coalC_id91, 0x5B) { //91
+	property {
+		name: string(STR_WAGON_MINERAL1);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: COAL;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_coalM_gfx;
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_oilR_gfx, [cargo_type_in_veh]
+){
+	WATR: sprites_water;
+	COLA: gr_wagon_refined;
+	FZDR: gr_wagon_fizzy;
+	DYES: sprites_dyes;
+	FERT: sprites_fertiliser;
+	RFPR: gr_wagon_refined;
+	PETR: sprites_petrol;
+	CMNT: sprites_cement;
+	MILK: sprites_water;
+	BEER: sprites_dyes;
+	ENRG: gr_wagon_bubble;
+	sprites_oilR; //OIL_
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_oilM_gfx, [cargo_type_in_veh]){
+	WATR: sprites_water;
+	COLA: gr_wagon_refined;
+	FZDR: gr_wagon_fizzy;
+	DYES: sprites_dyes;
+	FERT: sprites_fertiliser;
+	RFPR: gr_wagon_refined;
+	PETR: sprites_petrol;
+	CMNT: sprites_cement;
+	MILK: sprites_water;
+	BEER: sprites_dyes;
+	ENRG: gr_wagon_bubble;
+	sprites_oilM; //OIL_
+}
+
+item(FEAT_TRAINS, wagon_oilA_id30, 0x1E) { //30
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: OIL_;
+		cargo_allow_refit: [FZDR, CMNT, FERT];
+		cargo_disallow_refit: [PLST, RUBR];
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_oilR_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_oilB_id60, 0x3C) { //60
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: OIL_;
+		cargo_allow_refit: [FZDR, CMNT, FERT];
+		cargo_disallow_refit: [PLST, RUBR];
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_oilM_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_oilC_id92, 0x5C) { //92
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: OIL_;
+		cargo_allow_refit: [FZDR, CMNT, FERT];
+		cargo_disallow_refit: [PLST, RUBR];
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_oilM_gfx;
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_livestockR_gfx, [cargo_type_in_veh]){
+	HCOW: gr_wagon_goods_PINK;
+	gr_wagon_livestockR;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_livestockM_gfx, [cargo_type_in_veh]){
+	HCOW: gr_wagon_goods_PINK;
+	sprites_livestockM;
+}
+
+item(FEAT_TRAINS, wagon_livestockA_id31, 0x1F) { //31
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: LVST;
+		cargo_allow_refit: [LVST, HCOW];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_livestockR_gfx;
+		purchase: sprites_livestockRP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_livestockB_id61, 0x3D) { //61
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: LVST;
+		cargo_allow_refit: [LVST, HCOW];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_livestockM_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_livestockC_id93, 0x5D) { //93
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: LVST;
+		cargo_allow_refit: [LVST, HCOW];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_livestockM_gfx;
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_goodsR_gfx, [cargo_type_in_veh]
+){
+	TOYS: sprites_fish;
+	SWET: sprites2_sweets;
+	WOOL: gr_wagon_goods_GREEN;
+	BRCK: gr_wagon_goods_ORANGE;
+	MNSP: gr_wagon_goods_YELLOW;
+	FMSP: gr_wagon_goods_PINK;
+	ENSP: gr_wagon_goods_LTBLUE;
+	RCYC: sprites_goods_ORANGE;
+	CASH: sprites_tmail;
+	PAPR: gr_wagon_goods_LTBLUE;
+	GLAS: gr_wagon_goods_YELLOW;
+	gr_wagon_goodsR; //GOOD
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_goodsM_gfx, [cargo_type_in_veh]){
+	TOYS: sprites_fish;
+	SWET: sprites2_sweets;
+	WOOL: gr_wagon_goods_GREEN;
+	BRCK: gr_wagon_goods_ORANGE;
+	MNSP: gr_wagon_goods_YELLOW;
+	FMSP: gr_wagon_goods_PINK;
+	ENSP: gr_wagon_goods_LTBLUE;
+	RCYC: sprites_goods_ORANGE;
+	CASH: sprites_tmail;
+	PAPR: gr_wagon_goods_LTBLUE;
+	GLAS: gr_wagon_goods_YELLOW;
+	sprites_goodsM;	//GOOD
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_livestockR_cap, [cargo_type_in_veh]){
+	GOOD: 25;
+	WOOL: 25;
+	20;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_livestockMR_cap, [cargo_type_in_veh]){
+	GOOD: 30;
+	WOOL: 30;
+	25;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_livestockM_cap, [cargo_type_in_veh]){
+	GOOD: 32;
+	WOOL: 32;
+	30;
+}
+
+item(FEAT_TRAINS, wagon_goodsA_id32, 0x20) { //32
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		cargo_allow_refit: [GOOD, PAPR, TOYS, BRCK, GLAS, WOOL];
+		cargo_disallow_refit: [BEER, FISH, FOOD, FRUT, FRVG, MILK, TOUR, YETI, HCOW];
+		refittable_cargo_classes: bitmask(CC_EXPRESS);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_goodsR_gfx;
+		purchase: sprites_goodsRP;
+		cargo_capacity: sw_wagon_livestockR_cap;
+	}
+}
+
+item(FEAT_TRAINS, wagon_goodsB_id62, 0x3E) { //62
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		cargo_allow_refit: [GOOD, PAPR, TOYS, BRCK, GLAS, WOOL];
+		cargo_disallow_refit: [BEER, FISH, FOOD, FRUT, FRVG, MILK, TOUR, YETI, HCOW];
+		refittable_cargo_classes: bitmask(CC_EXPRESS);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_goodsM_gfx;
+		purchase: sprites_goodsMP;
+		cargo_capacity: sw_wagon_livestockMR_cap;
+	}
+}
+
+item(FEAT_TRAINS, wagon_goodsC_id94, 0x5E) { //94
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		cargo_allow_refit: [GOOD, PAPR, TOYS, BRCK, GLAS, WOOL];
+		cargo_disallow_refit: [BEER, FISH, FOOD, FRUT, FRVG, MILK, TOUR, YETI, HCOW];
+		refittable_cargo_classes: bitmask(CC_EXPRESS);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_goodsM_gfx;
+		purchase: sprites_goodsMP;
+		cargo_capacity: sw_wagon_livestockM_cap;
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_grainR_gfx, [cargo_type_in_veh]){
+	RUBR: gr_wagon_rubber;
+	OLSD: gr_wagon_rubber;
+	FICR: gr_wagon_toffee;
+	SGBT: gr_wagon_sugar;
+	SGCN: gr_wagon_sugar;
+	gr_wagon_grainR; //GRAI, MAIZ, WHEA, CERE
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_grainM_gfx, [cargo_type_in_veh]){
+	RUBR: gr_wagon_rubber;
+	OLSD: gr_wagon_rubber;
+	FICR: gr_wagon_toffee;
+	SGBT: gr_wagon_sugar;
+	SGCN: gr_wagon_sugar;
+	gr_wagon_grainM; //GRAI, MAIZ, WHEA, CERE
+}
+
+item(FEAT_TRAINS, wagon_grainA_id33, 0x21) { //33
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GRAI;
+		cargo_allow_refit: [CERE, FICR, GRAI, MAIZ, OLSD, RUBR, SGBT, SGCN, WHEA];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_grainR_gfx;
+		purchase: sprites_grainRP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_grainB_id63, 0x3F) { //63
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GRAI;
+		cargo_allow_refit: [CERE, FICR, GRAI, MAIZ, OLSD, RUBR, SGBT, SGCN, WHEA];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_grainM_gfx;
+		purchase: sprites_grainMP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_grainC_id95, 0x5F) { //95
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GRAI;
+		cargo_allow_refit: [CERE, FICR, GRAI, MAIZ, OLSD, RUBR, SGBT, SGCN, WHEA];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_grainM_gfx;
+		purchase: sprites_grainMP;
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_woodR_gfx, [cargo_type_in_veh]){
+	WDPR: gr_wagon_timber; 
+	gr_wagon_woodR; //wood
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_woodM_gfx, [cargo_type_in_veh]){
+	WDPR: gr_wagon_timber; 
+	gr_wagon_woodM; //wood
+}
+
+item(FEAT_TRAINS, wagon_woodA_id34, 0x22) { //34
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WOOD;
+		cargo_allow_refit: [WDPR, WOOD];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_woodR_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_woodB_id64, 0x40) { //64
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WOOD;
+		cargo_allow_refit: [WDPR, WOOD];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_woodM_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_woodC_id96, 0x60) { //96
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WOOD;
+		cargo_allow_refit: [WDPR, WOOD];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_woodM_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_ironA_id35, 0x23) { //35
+	property {
+		name: string(STR_WAGON_MINERAL2);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: IORE;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, COAL, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_coalR_gfx;
+		purchase: sprites_ironoreRP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_ironB_id65, 0x41) { //65
+	property {
+		name: string(STR_WAGON_MINERAL2);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: IORE;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, COAL, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_coalM_gfx;
+		purchase: sprites_ironoreMP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_ironC_id97, 0x61) { //97
+	property {
+		name: string(STR_WAGON_MINERAL2);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: IORE;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [BDMT, CERE, COAL, CMNT, FERT, FICR, FRUT, GRAI, MAIZ, OLSD, SCMT, SGBT, SGCN, WDPR, WHEA];
+		refittable_cargo_classes: bitmask(CC_BULK);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_coalM_gfx;
+		purchase: sprites_ironoreMP;
+	}
+}
+
+random_switch (FEAT_TRAINS, SELF, rsw_wagon_vehicles) {
+	2: gr_wagon_vehiclesS1;
+	2: gr_wagon_vehiclesS2;
+	2: gr_wagon_vehiclesS3;
+	2: gr_wagon_vehiclesS4;
+	2: gr_wagon_vehiclesS5;
+	1: gr_wagon_vehiclesS6;
+	1: gr_wagon_vehiclesS7;
+	1: gr_wagon_vehiclesS8;
+	3: gr_wagon_vehicles2;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_steelR_gfx, [cargo_type_in_veh]){
+	PAPR: gr_wagon_paperR;
+	BATT: gr_wagon_batt;
+	BUBL: gr_wagon_bubble;
+	PLST: gr_wagon_plast;
+	VEHI: rsw_wagon_vehicles;
+	SCMT: gr_wagon_metal;
+	GLAS: gr_wagon_bolsterBW;
+	BDMT: gr_wagon_bolsterRG;
+	gr_wagon_steelR; //steel
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_steelM_gfx, [cargo_type_in_veh]){
+	PAPR: gr_wagon_paperM;
+	BATT: gr_wagon_batt;
+	BUBL: gr_wagon_bubble;
+	PLST: gr_wagon_plast;
+	VEHI: rsw_wagon_vehicles;
+	SCMT: gr_wagon_metal;
+	GLAS: gr_wagon_bolsterBW;
+	BDMT: gr_wagon_bolsterRG;
+	gr_wagon_steelM; //steel
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_steelR_cap, [cargo_type_in_veh]
+){
+	VEHI: 12;
+	default: 20;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_steelMR_cap, [cargo_type_in_veh]
+){
+	VEHI: 15;
+	default: 25;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_steelM_cap, [cargo_type_in_veh]
+){
+	VEHI: 20;
+	default: 30;
+}
+
+item(FEAT_TRAINS, wagon_steelA_id36, 0x24) { //36
+	property {
+		name: string(STR_WAGON_BOLSTER);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: STEL;
+		cargo_allow_refit: [PLST, SCMT];
+		cargo_disallow_refit: [FERT, FICR, FOOD, FRUT, FZDR, LVST, TOYS, WDPR, WOOD, WOOL];
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID);
+	}
+	graphics {
+		default: sw_wagon_steelR_gfx;
+		cargo_capacity: sw_wagon_steelR_cap;
+		purchase: sprites_steelRP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_steelB_id66, 0x42) { //66
+	property {
+		name: string(STR_WAGON_BOLSTER);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: STEL;
+		cargo_allow_refit: [PLST, SCMT];
+		cargo_disallow_refit: [FERT, FICR, FOOD, FRUT, FZDR, LVST, TOYS, WDPR, WOOD, WOOL];
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID);
+	}
+	graphics {
+		default: sw_wagon_steelM_gfx;
+		cargo_capacity: sw_wagon_steelMR_cap;
+		purchase: sprites_steelMP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_steelC_id98, 0x62) { //98
+	property {
+		name: string(STR_WAGON_BOLSTER);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: STEL;
+		cargo_allow_refit: [PLST, SCMT];
+		cargo_disallow_refit: [FERT, FICR, FOOD, FRUT, FZDR, LVST, TOYS, WDPR, WOOD, WOOL];
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID);
+	}
+	graphics {
+		default: sw_wagon_steelM_gfx;
+		cargo_capacity: sw_wagon_steelM_cap;
+		purchase: sprites_steelMP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_armouredA_id37, 0x25) { //37
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: VALU;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_ARMOURED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_goldR;
+	}
+}
+
+item(FEAT_TRAINS, wagon_armouredB_id67, 0x43) { //67
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: VALU;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_ARMOURED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_goldM;
+	}
+}
+
+item(FEAT_TRAINS, wagon_armouredC_id99, 0x63) { //99
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: VALU;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_ARMOURED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_goldM;
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_foodR_gfx, [cargo_type_in_veh]){
+	FISH: sprites_fish;
+	gr_wagon_foodR; //food
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_foodM_gfx, [cargo_type_in_veh]){
+	FISH: sprites_fish;
+	sprites_foodM; //food
+}
+
+item(FEAT_TRAINS, wagon_foodA_id38, 0x26) { //38
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FOOD;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [FRUT, FRVG, MILK];
+		refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_foodR_gfx;
+		purchase: sprites_foodRP;
+	}
+}
+
+item(FEAT_TRAINS, wagon_foodB_id68, 0x44) { //68
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FOOD;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [FRUT, FRVG, MILK];
+		refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_foodM_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_foodC_id100, 0x64) { //100
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FOOD;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [FRUT, FRVG, MILK];
+		refittable_cargo_classes: bitmask(CC_REFRIGERATED);
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sw_wagon_foodM_gfx;
+	}
+}
+
+item(FEAT_TRAINS, wagon_paperA_id39, 0x27) { //39
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PAPR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_paperR;
+	}
+}
+
+item(FEAT_TRAINS, wagon_paperB_id69, 0x45) { //69
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PAPR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_paperM;
+	}
+}
+
+item(FEAT_TRAINS, wagon_paperC_id101, 0x65) { //101
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: PAPR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_paperM;
+	}
+}
+
+item(FEAT_TRAINS, wagon_touristsA_id40, 0x28) { //40
+	property {
+		name: string(STR_WAGON_TOURISTS);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: TOUR;
+		cargo_allow_refit: [TOUR, YETI];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+		cargo_capacity: 20;
+		weight: 30;
+		cost_factor: 200;
+	}
+	graphics {
+		default: sprites_tourists;
+	}
+}
+
+item(FEAT_TRAINS, wagon_touristsB_id70, 0x46) { //70
+	property {
+		name: string(STR_WAGON_TOURISTS);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: TOUR;
+		cargo_allow_refit: [TOUR, YETI];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+		cargo_capacity: 25;
+		weight: 30;
+		cost_factor: 225;
+	}
+	graphics {
+		default: sprites_tourists;
+	}
+}
+
+item(FEAT_TRAINS, wagon_touristsC_id102, 0x66) { //102
+	property {
+		name: string(STR_WAGON_TOURISTS);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: TOUR;
+		cargo_allow_refit: [TOUR, YETI];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+		cargo_capacity: 30;
+		weight: 30;
+		cost_factor: 255;
+	}
+	graphics {
+		default: sprites_tourists;
+	}
+}
+
+item(FEAT_TRAINS, wagon_waterA_id41, 0x29) { //41
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WATR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_water;
+	}
+}
+
+item(FEAT_TRAINS, wagon_waterB_id71, 0x47) { //71
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WATR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_water;
+	}
+}
+
+item(FEAT_TRAINS, wagon_waterC_id103, 0x67) { //103
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: WATR;
+		cargo_allow_refit: [];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: sprites_water;
+	}
+}
+
+item(FEAT_TRAINS, wagon_fruitA_id42, 0x2A) { //42
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FRUT;
+		cargo_allow_refit: [FRUT, FRVG];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_fruit;
+	}
+}
+
+item(FEAT_TRAINS, wagon_fruitB_id72, 0x48) { //72
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FRUT;
+		cargo_allow_refit: [FRUT, FRVG];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_fruit;
+	}
+}
+
+item(FEAT_TRAINS, wagon_fruitC_id104, 0x68) { //104
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: FRUT;
+		cargo_allow_refit: [FRUT, FRVG];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask();
+		non_refittable_cargo_classes: 0;
+	}
+	graphics {
+		default: gr_wagon_fruit;
+	}
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_universalR_gfx, [cargo_type_in_veh]){
+	PASS: sprites_passR;
+	COAL: gr_wagon_coalR;
+	MAIL: gr_wagon_mail;
+	OIL_: sprites_oilR;
+	LVST: gr_wagon_livestockR;
+	GOOD: gr_wagon_goodsR;
+	GRAI: gr_wagon_grainR;
+	WOOD: gr_wagon_woodR;
+	IORE: gr_wagon_ironoreR;
+	STEL: gr_wagon_steelR;
+	VALU: sprites_goldR;
+	PAPR: gr_wagon_paperR;
+	WHEA: gr_wagon_grainR;
+	FOOD: gr_wagon_foodR;
+	GOLD: sprites_goldR;
+	RUBR: gr_wagon_rubber;
+	FRUT: gr_wagon_fruit;
+	MAIZ: gr_wagon_grainR;
+	CORE: gr_wagon_clayR;
+	WATR: sprites_water;
+	DIAM: sprites_goldR;
+	SUGR: gr_wagon_sugar;
+	TOYS: sprites_fish;
+	BATT: gr_wagon_batt;
+	SWET: sprites2_sweets;
+	TOFF: gr_wagon_toffee;
+	COLA: gr_wagon_refined;
+	CTCD: gr_wagon_candy;
+	BUBL: gr_wagon_bubble;
+	PLST: gr_wagon_plast;
+	FZDR: gr_wagon_fizzy;
+	CERE: gr_wagon_grainR;
+	FISH: sprites_fish;
+	WOOL: gr_wagon_goods_GREEN;
+	BRCK: gr_wagon_goods_ORANGE;
+	SAND: gr_wagon_sand;
+	GLAS: gr_wagon_goods_YELLOW;
+	WDPR: gr_wagon_timber;
+	DYES: sprites_dyes;
+	FERT: sprites_fertiliser;
+	OLSD: gr_wagon_rubber;
+	RFPR: gr_wagon_refined;
+	VEHI: rsw_wagon_vehicles;
+	PETR: sprites_petrol;
+	AORE: gr_wagon_stone;
+	BDMT: gr_wagon_bolsterRG;
+	FICR: gr_wagon_toffee;
+	CMNT: sprites_cement;
+	TOUR: sprites_tourists;
+	LIME: gr_wagon_clayR;
+	MILK: sprites_water;
+	SGBT: gr_wagon_sugar;
+	FRVG: gr_wagon_fruit;
+	CLAY: gr_wagon_clayR;
+	MNSP: gr_wagon_goods_YELLOW;
+	SCMT: gr_wagon_metal;
+	FMSP: gr_wagon_goods_PINK;
+	ENSP: gr_wagon_goods_LTBLUE;
+	GRVL: gr_wagon_stone;
+	BEER: sprites_dyes;
+	SGCN: gr_wagon_sugar;
+	RCYC: sprites_goods_ORANGE;
+	YETI: sprites_tourists;
+	URAN: gr_wagon_plast;
+	CASH: sprites_tmail;
+	HCOW: gr_wagon_goods_PINK;
+	ENRG: gr_wagon_bubble;
+	sprites_universal_wagon;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_universalM_gfx, [cargo_type_in_veh]){
+	PASS: sprites_passM;
+	COAL: gr_wagon_coalM;
+	MAIL: gr_wagon_mail;
+	OIL_: sprites_oilM;
+	LVST: sprites_livestockM;
+	GOOD: sprites_goodsM;
+	GRAI: gr_wagon_grainM;
+	WOOD: gr_wagon_woodM;
+	IORE: gr_wagon_ironoreM;
+	STEL: gr_wagon_steelM;
+	VALU: sprites_goldM;
+	PAPR: gr_wagon_paperM;
+	WHEA: gr_wagon_grainM;
+	FOOD: sprites_foodM;
+	GOLD: sprites_goldM;
+	RUBR: gr_wagon_rubber;
+	FRUT: gr_wagon_fruit;
+	MAIZ: gr_wagon_grainM;
+	CORE: gr_wagon_clayM;
+	WATR: sprites_water;
+	DIAM: sprites_goldM;
+	SUGR: gr_wagon_sugar;
+	TOYS: sprites_fish;
+	BATT: gr_wagon_batt;
+	SWET: sprites2_sweets;
+	TOFF: gr_wagon_toffee;
+	COLA: gr_wagon_refined;
+	CTCD: gr_wagon_candy;
+	BUBL: gr_wagon_bubble;
+	PLST: gr_wagon_plast;
+	FZDR: gr_wagon_fizzy;
+	CERE: gr_wagon_grainM;
+	FISH: sprites_fish;
+	WOOL: gr_wagon_goods_GREEN;
+	BRCK: gr_wagon_goods_ORANGE;
+	SAND: gr_wagon_sand;
+	GLAS: gr_wagon_goods_YELLOW;
+	WDPR: gr_wagon_timber;
+	DYES: sprites_dyes;
+	FERT: sprites_fertiliser;
+	OLSD: gr_wagon_rubber;
+	RFPR: gr_wagon_refined;
+	VEHI: rsw_wagon_vehicles;
+	PETR: sprites_petrol;
+	AORE: gr_wagon_stone;
+	BDMT: gr_wagon_bolsterRG;
+	FICR: gr_wagon_toffee;
+	CMNT: sprites_cement;
+	TOUR: sprites_tourists;
+	LIME: gr_wagon_clayM;
+	MILK: sprites_water;
+	SGBT: gr_wagon_sugar;
+	FRVG: gr_wagon_fruit;
+	CLAY: gr_wagon_clayM;
+	MNSP: gr_wagon_goods_YELLOW;
+	SCMT: gr_wagon_metal;
+	FMSP: gr_wagon_goods_PINK;
+	ENSP: gr_wagon_goods_LTBLUE;
+	GRVL: gr_wagon_stone;
+	BEER: sprites_dyes;
+	SGCN: gr_wagon_sugar;
+	RCYC: sprites_goods_ORANGE;
+	YETI: sprites_tourists;
+	URAN: gr_wagon_plast;
+	CASH: sprites_tmail;
+	HCOW: gr_wagon_goods_PINK;
+	ENRG: gr_wagon_bubble;
+	sprites_universal_wagon;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_universalR_cap, [cargo_type_in_veh]){
+	PASS: 40;
+	COAL: 30;
+	MAIL: 30;
+	OIL_: 30;
+	LVST: 25;
+	GOOD: 25;
+	GRAI: 30;
+	WOOD: 30;
+	IORE: 30;
+	STEL: 20;
+	VALU: 20;
+	PAPR: 20;
+	WHEA: 30;
+	FOOD: 25;
+	GOLD: 20;
+	RUBR: 30;
+	FRUT: 25;
+	MAIZ: 30;
+	CORE: 30;
+	WATR: 30;
+	DIAM: 20;
+	SUGR: 30;
+	TOYS: 25;
+	BATT: 20;
+	SWET: 25;
+	TOFF: 30;
+	COLA: 30;
+	CTCD: 30;
+	BUBL: 30;
+	PLST: 30;
+	FZDR: 30;
+	CERE: 30;
+	FISH: 25;
+	WOOL: 25;
+	BRCK: 20;
+	SAND: 30;
+	GLAS: 20;
+	WDPR: 30;
+	DYES: 30;
+	FERT: 30;
+	OLSD: 30;
+	RFPR: 30;
+	VEHI: 12;
+	PETR: 30;
+	AORE: 30;
+	BDMT: 20;
+	FICR: 30;
+	CMNT: 30;
+	TOUR: 20;
+	LIME: 30;
+	MILK: 30;
+	SGBT: 30;
+	FRVG: 25;
+	CLAY: 30;
+	MNSP: 25;
+	SCMT: 20;
+	FMSP: 25;
+	ENSP: 25;
+	GRVL: 30;
+	BEER: 30;
+	SGCN: 30;
+	RCYC: 25;
+	YETI: 30;
+	URAN: 30;
+	CASH: 25;
+	HCOW: 25;
+	ENRG: 30;
+	20;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_universalMR_cap, [cargo_type_in_veh]){
+	PASS: 45;
+	COAL: 35;
+	MAIL: 35;
+	OIL_: 35;
+	LVST: 30;
+	GOOD: 30;
+	GRAI: 35;
+	WOOD: 35;
+	IORE: 35;
+	STEL: 25;
+	VALU: 25;
+	PAPR: 25;
+	WHEA: 35;
+	FOOD: 30;
+	GOLD: 25;
+	RUBR: 35;
+	FRUT: 30;
+	MAIZ: 35;
+	CORE: 35;
+	WATR: 35;
+	DIAM: 25;
+	SUGR: 35;
+	TOYS: 30;
+	BATT: 25;
+	SWET: 30;
+	TOFF: 35;
+	COLA: 35;
+	CTCD: 35;
+	BUBL: 35;
+	PLST: 35;
+	FZDR: 35;
+	CERE: 35;
+	FISH: 30;
+	WOOL: 30;
+	BRCK: 25;
+	SAND: 35;
+	GLAS: 25;
+	WDPR: 35;
+	DYES: 35;
+	FERT: 35;
+	OLSD: 35;
+	RFPR: 35;
+	VEHI: 15;
+	PETR: 35;
+	AORE: 35;
+	BDMT: 25;
+	FICR: 35;
+	CMNT: 35;
+	TOUR: 25;
+	LIME: 35;
+	MILK: 35;
+	SGBT: 35;
+	FRVG: 30;
+	CLAY: 35;
+	MNSP: 30;
+	SCMT: 25;
+	FMSP: 30;
+	ENSP: 30;
+	GRVL: 35;
+	BEER: 35;
+	SGCN: 35;
+	RCYC: 30;
+	YETI: 35;
+	URAN: 35;
+	CASH: 30;
+	HCOW: 30;
+	ENRG: 35;
+	25;
+}
+
+switch(FEAT_TRAINS, SELF, sw_wagon_universalM_cap, [cargo_type_in_veh]){
+	PASS: 50;
+	COAL: 37;
+	MAIL: 37;
+	OIL_: 37;
+	LVST: 32;
+	GOOD: 32;
+	GRAI: 37;
+	WOOD: 37;
+	IORE: 37;
+	STEL: 30;
+	VALU: 27;
+	PAPR: 30;
+	WHEA: 37;
+	FOOD: 32;
+	GOLD: 27;
+	RUBR: 37;
+	FRUT: 32;
+	MAIZ: 37;
+	CORE: 37;
+	WATR: 37;
+	DIAM: 27;
+	SUGR: 37;
+	TOYS: 32;
+	BATT: 30;
+	SWET: 32;
+	TOFF: 37;
+	COLA: 37;
+	CTCD: 37;
+	BUBL: 37;
+	PLST: 37;
+	FZDR: 37;
+	CERE: 37;
+	FISH: 32;
+	WOOL: 32;
+	BRCK: 30;
+	SAND: 37;
+	GLAS: 30;
+	WDPR: 37;
+	DYES: 37;
+	FERT: 37;
+	OLSD: 37;
+	RFPR: 37;
+	VEHI: 20;
+	PETR: 37;
+	AORE: 37;
+	BDMT: 30;
+	FICR: 37;
+	CMNT: 37;
+	TOUR: 30;
+	LIME: 37;
+	MILK: 37;
+	SGBT: 37;
+	FRVG: 32;
+	CLAY: 37;
+	MNSP: 32;
+	SCMT: 30;
+	FMSP: 32;
+	ENSP: 32;
+	GRVL: 37;
+	BEER: 37;
+	SGCN: 37;
+	RCYC: 32;
+	YETI: 37;
+	URAN: 37;
+	CASH: 32;
+	HCOW: 32;
+	ENRG: 37;
+	25;
+}
+
+
+item(FEAT_TRAINS, wagon_universalA_id43, 0x2B) { //43
+	property {
+		name: string(STR_WAGON_UNIVERSALA);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		refittable_cargo_classes: ALL_CARGO_CLASSES;
+		cost_factor: 255;
+	}
+	graphics {
+		default: sw_wagon_universalR_gfx;
+		purchase: sprites_universal_wagonP;
+		cargo_capacity: sw_wagon_universalR_cap;
+	}
+}
+
+item(FEAT_TRAINS, wagon_universalB_id73, 0x49) { //73
+	property {
+		name: string(STR_WAGON_UNIVERSALB);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		refittable_cargo_classes: ALL_CARGO_CLASSES;
+		cost_factor: 255;
+	}
+	graphics {
+		default: sw_wagon_universalM_gfx;
+		purchase: sprites_universal_wagonP;
+		cargo_capacity: sw_wagon_universalMR_cap;
+	}
+}
+
+item(FEAT_TRAINS, wagon_universalC_id105, 0x69) { //105
+	property {
+		name: string(STR_WAGON_UNIVERSALC);
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		default_cargo_type: GOOD;
+		refittable_cargo_classes: ALL_CARGO_CLASSES;
+		cost_factor: 255;
+	}
+	graphics {
+		default: sw_wagon_universalM_gfx;
+		purchase: sprites_universal_wagonP;
+		cargo_capacity: sw_wagon_universalM_cap;
+	}
+}
+
+switch(FEAT_TRAINS, PARENT, sw_train_sound_chakachaka, [motion_counter]
+){
+	14: sound("src/chakachaka.wav");
+	CB_RESULT_NO_SOUND;
+}
+
+switch(FEAT_TRAINS, SELF, sw_train_sound_choochoo, [extra_callback_info1]
+){
+	SOUND_EVENT_START: sound("src/chakachaka.wav");
+	SOUND_EVENT_TUNNEL: sound("src/choochoo.wav");
+	//SOUND_EVENT_RUNNING: sw_train_sound_chakachaka;
+	CB_RESULT_NO_SOUND;
+}
+
+if(choochoo != 0){
+	item(FEAT_TRAINS, train_choochooHeavy_id2, 0x02) { //2
+		property {
+			name: string(STR_TRAIN_CHOOCHOO1);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			climates_available: ALL_CLIMATES;
+			speed: 300 km/h;
+			cost_factor: 255;
+			power: 25600 hp;
+			running_cost_factor: 255;
+			weight: 100;
+			cost_factor: 255;
+			tractive_effort_coefficient: 0.941;
+			air_drag_coefficient: 0.1;
+		}
+		graphics {
+			default: sprites_choochoo1;
+			sound_effect: sw_train_sound_choochoo;
+		}
+	}
+
+	item(FEAT_TRAINS, train_choochooHeavy_id3, 0x03) { //3
+		property {
+			name: string(STR_TRAIN_CHOOCHOO2);
+			sprite_id: SPRITE_ID_NEW_TRAIN;
+			climates_available: ALL_CLIMATES;
+			speed: 650 km/h;
+			cost_factor: 255;
+			power: 7777 hp;
+			running_cost_factor: 255;
+			weight: 77;
+			cost_factor: 255;
+			tractive_effort_coefficient: 0.15;
+			air_drag_coefficient: 0.004;
+		}
+		graphics {
+			default: sprites_choochoo2;
+			sound_effect: sw_train_sound_choochoo;
+		}
+	}
+}
+
+sort(FEAT_TRAINS, [
+	wagon_passengerA_id27,
+	wagon_mailA_id28,
+	wagon_coalA_id29,
+	wagon_oilA_id30,
+	wagon_livestockA_id31,
+	wagon_goodsA_id32,
+	wagon_grainA_id33,
+	wagon_woodA_id34,
+	wagon_ironA_id35,
+	wagon_steelA_id36,
+	wagon_armouredA_id37,
+	wagon_foodA_id38,
+	wagon_paperA_id39,
+	wagon_touristsA_id40,
+	wagon_waterA_id41,
+	wagon_fruitA_id42,
+	wagon_universalA_id43,
+
+	wagon_passengerB_id57,
+	wagon_mailB_id58,
+	wagon_coalB_id59,
+	wagon_oilB_id60,
+	wagon_livestockB_id61,
+	wagon_goodsB_id62,
+	wagon_grainB_id63,
+	wagon_woodB_id64,
+	wagon_ironB_id65,
+	wagon_steelB_id66,
+	wagon_armouredB_id67,
+	wagon_foodB_id68,
+	wagon_paperB_id69,
+	wagon_touristsB_id70,
+	wagon_waterB_id71,
+	wagon_fruitB_id72,
+	wagon_universalB_id73,
+
+	wagon_passengerC_id89,
+	wagon_mailC_id90,
+	wagon_coalC_id91,
+	wagon_oilC_id92,
+	wagon_livestockC_id93,
+	wagon_goodsC_id94,
+	wagon_grainC_id95,
+	wagon_woodC_id96,
+	wagon_ironC_id97,
+	wagon_steelC_id98,
+	wagon_armouredC_id99,
+	wagon_foodC_id100,
+	wagon_paperC_id101,
+	wagon_touristsC_id102,
+	wagon_waterC_id103,
+	wagon_fruitC_id104,
+	wagon_universalC_id105
+]);

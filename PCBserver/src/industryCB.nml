@@ -1,0 +1,309 @@
+
+/*
+switch(FEAT_INDUSTRIES, SELF, , []){
+}
+*/
+
+if(hasbit(param[0], 3)){
+  if(climate == CLIMATE_TEMPERATE){
+		item(FEAT_INDUSTRIES, coal_mine,           0){ property{ prob_random: 10; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, power_station,       1){ property{ prob_random: 10; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, sawmill,             2){ property{ prob_random:  1; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, forest,              3){ property{ prob_random:  4; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, oil_refinery,        4){ property{ prob_random:  1; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, oil_rig,             5){ property{ prob_random:  2; prob_in_game:  4; }}
+		item(FEAT_INDUSTRIES, factory,             6){ property{ prob_random:  2; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, steel_mill,          8){ property{ prob_random:  1; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, farm,                9){ property{ prob_random: 10; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, oil_wells,          11){ property{ prob_random:  4; prob_in_game:  1; }}
+		item(FEAT_INDUSTRIES, bank,               12){ property{ prob_random: 16; prob_in_game: 16; }}
+		item(FEAT_INDUSTRIES, iron_ore_mine,      18){ property{ prob_random:  4; prob_in_game:  2; }}
+
+  	item(FEAT_INDUSTRIES, power_station,       1){
+			graphics{
+			  location_check: sw_power_station_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_POWER_CLOSETOWN);
+			}
+		}
+    item(FEAT_INDUSTRIES, coal_mine,           0){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, oil_refinery,        4){
+  		graphics{
+			  location_check: sw_oil_refinery_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_OILRAF);
+			}
+		}
+		item(FEAT_INDUSTRIES, farm,                9){
+  		graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, oil_wells,          11){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+    item(FEAT_INDUSTRIES, forest,              3){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+    item(FEAT_INDUSTRIES, iron_ore_mine,      18){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, sawmill,             2){
+			graphics{
+			  location_check: sw_sawmill_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_SAWMILL);
+			}
+		}
+		item(FEAT_INDUSTRIES, factory,             6){
+  		graphics{
+			  location_check: sw_factory_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_FACTORY);
+			}
+		}
+		item(FEAT_INDUSTRIES, steel_mill,          8){
+  		graphics{
+			  location_check: sw_steelmill_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_STELLMILL);
+			}
+		}
+		item(FEAT_INDUSTRIES, bank,               12){
+		  property {
+				spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+			}
+			graphics{
+			  location_check: sw_bank_cb_mapgen;
+			  extra_text_fund: string(STR_INDWDTEXT_BANK_TEMP);
+			  monthly_prod_change: sw_bank_cb_prod;
+			}
+		}
+		if(param[7] != 0){
+			item(FEAT_INDUSTRIES, farm,                9){
+			  property {
+					spec_flags: bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY); //plant after built
+				}
+	  		graphics{
+				  control_special: sw_farm_cb_fields;
+				}
+			}
+		}
+	}
+	if(climate == CLIMATE_ARCTIC){
+		item(FEAT_INDUSTRIES, coal_mine,           0){ property{ prob_random:  8; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, power_station,       1){ property{ prob_random: 10; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, printing_works,      7){ property{ prob_random:  5; prob_in_game:  4; }}
+		item(FEAT_INDUSTRIES, forest,              3){ property{ prob_random:  1; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, oil_refinery,        4){ property{ prob_random:  2; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, farm,                9){ property{ prob_random:  7; prob_in_game:  4; }}
+		item(FEAT_INDUSTRIES, oil_wells,          11){ property{ prob_random:  5; prob_in_game:  5; }}
+		item(FEAT_INDUSTRIES, food_plant,         13){ property{ prob_random:  2; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, paper_mill,         14){ property{ prob_random:  1; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, gold_mine,          15){ property{ prob_random:  4; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, bank_tropic_arctic, 16){ property{ prob_random: 13; prob_in_game:  0; }}
+
+		item(FEAT_INDUSTRIES, power_station,       1){
+			graphics{
+			  location_check: sw_power_station_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_POWER_CLOSETOWN);
+			}
+		}
+    item(FEAT_INDUSTRIES, coal_mine,           0){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, oil_refinery,        4){
+  		graphics{
+			  location_check: sw_oil_refinery_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_OILRAF);
+			}
+		}
+		item(FEAT_INDUSTRIES, farm,                9){
+  		graphics{
+			  location_check: sw_farms_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+    if(param[7] != 0){
+			item(FEAT_INDUSTRIES, farm,                9){
+			  property {
+					spec_flags: bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY); //plant after built
+				}
+	  		graphics{
+				  control_special: sw_farm_cb_fields;
+				  location_check: sw_farms_cb_nocity;
+			  	extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+				}
+			}
+		}
+		item(FEAT_INDUSTRIES, oil_wells,          11){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, gold_mine,          15){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+    item(FEAT_INDUSTRIES, forest,              3){
+			graphics{
+			  location_check: sw_forest_cb_city;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, bank_tropic_arctic, 16){ 
+			graphics{
+			  location_check: sw_bankat_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, printing_works,      7){
+  		graphics{
+			  location_check: sw_printworks_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_PRINTWORKS);
+			}
+		}
+		item(FEAT_INDUSTRIES, food_plant,         13){
+  		graphics{
+			  location_check: sw_foodplant_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_FOODPP);
+			}
+		}
+		item(FEAT_INDUSTRIES, paper_mill,         14){
+  		graphics{
+			  location_check: sw_papermill_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_PAPERMILL);
+			}
+		}
+	}
+	if(climate == CLIMATE_TROPICAL){
+		item(FEAT_INDUSTRIES, oil_refinery,        4){ property{ prob_random:  2; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, copper_ore_mine,    10){ property{ prob_random:  5; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, oil_wells,          11){ property{ prob_random: 10; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, food_plant,         13){ property{ prob_random:  4; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, bank_tropic_arctic, 16){ property{ prob_random: 13; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, diamond_mine,       17){ property{ prob_random:  8; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, fruit_plantation,   19){ property{ prob_random:  7; prob_in_game:  4; }}
+		item(FEAT_INDUSTRIES, rubber_plantation,  20){ property{ prob_random:  4; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, water_supply,       21){ property{ prob_random: 10; prob_in_game:  3; }}
+		item(FEAT_INDUSTRIES, water_tower,        22){ property{ prob_random: 16; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, factory_2,          23){ property{ prob_random:  2; prob_in_game:  0; }}
+		item(FEAT_INDUSTRIES, farm_2,             24){ property{ prob_random:  7; prob_in_game:  4; }}
+		item(FEAT_INDUSTRIES, lumber_mill,        25){ property{ prob_random:  0; prob_in_game:  0; }}
+
+		item(FEAT_INDUSTRIES, oil_refinery,        4){
+			graphics{
+			  location_check: sw_oil_refinery_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_OILRAF);
+			}
+		}
+		item(FEAT_INDUSTRIES, copper_ore_mine,    10){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, diamond_mine,       17){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, oil_wells,          11){
+			graphics{
+			  location_check: sw_industry_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+    item(FEAT_INDUSTRIES, farm_2,                24){
+  		graphics{
+			  location_check: sw_farms_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+    if(param[7] != 0){
+			item(FEAT_INDUSTRIES, farm_2,                24){
+			  property {
+					spec_flags: bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY); //plant after built
+				}
+	  		graphics{
+				  control_special: sw_farm_cb_fields;
+				  location_check: sw_farms_cb_nocity;
+			  	extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+				}
+			}
+		}
+		item(FEAT_INDUSTRIES, food_plant,         13){
+			graphics{
+			  location_check: sw_foodplant_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_FOODPP);
+			}
+		}
+		item(FEAT_INDUSTRIES, bank_tropic_arctic, 16){
+			graphics{
+			  location_check: sw_bankat_cb_nocity;
+			  extra_text_fund: string(STR_INDWDTEXT_TOWN_FAR);
+			}
+		}
+		item(FEAT_INDUSTRIES, factory_2,          23){
+			graphics{
+			  location_check: sw_factory2_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_FACTORY2);
+			}
+		}
+	}
+	if(climate == CLIMATE_TOYLAND){
+		item(FEAT_INDUSTRIES, cotton_candy,       26){ property{ prob_random: 15; prob_in_game: 13; }}
+		item(FEAT_INDUSTRIES, candy_factory,      27){ property{ prob_random:  6; prob_in_game:  2; }}
+		item(FEAT_INDUSTRIES, battery_farm,       28){ property{ prob_random: 12; prob_in_game: 13; }}
+		item(FEAT_INDUSTRIES, cola_wells,         29){ property{ prob_random: 12; prob_in_game: 13; }}
+		item(FEAT_INDUSTRIES, toy_shop,           30){ property{ prob_random:  3; prob_in_game:  2; }}
+		item(FEAT_INDUSTRIES, toy_factory,        31){ property{ prob_random:  4; prob_in_game:  2; }}
+		item(FEAT_INDUSTRIES, plastic_fountains,  32){ property{ prob_random: 13; prob_in_game: 12; }}
+		item(FEAT_INDUSTRIES, fizzy_drink,        33){ property{ prob_random:  6; prob_in_game:  2; }}
+		item(FEAT_INDUSTRIES, bubble_generator,   34){ property{ prob_random: 13; prob_in_game: 13; }}
+		item(FEAT_INDUSTRIES, toffee_quarry,      35){ property{ prob_random: 13; prob_in_game: 11; }}
+		item(FEAT_INDUSTRIES, sugar_mine,         36){ property{ prob_random: 14; prob_in_game: 14; }}
+
+    item(FEAT_INDUSTRIES, candy_factory,      27){
+  		graphics{
+			  location_check: sw_candyfactory_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_SWEETFACT);
+			}
+		}
+  	item(FEAT_INDUSTRIES, toy_shop,           30){
+			graphics{
+			  location_check: sw_toyshop_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_TOYSHOP);
+			}
+		}
+		item(FEAT_INDUSTRIES, toy_factory,        31){
+  		graphics{
+			  location_check: sw_toyfactory_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_TOYFACT);
+			}
+		}
+    item(FEAT_INDUSTRIES, fizzy_drink,        33){
+			graphics{
+			  location_check: sw_fizzydrink_cb_towndist;
+			  extra_text_fund: string(STR_INDWDTEXT_FIZZYFACT);
+			}
+		}
+	}
+} //end of industryCB BLOCK

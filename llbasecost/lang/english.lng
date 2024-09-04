@@ -1,0 +1,10 @@
+STR_GRF_NAME           :Novapolis Basecosts
+STR_GRF_DESCRIPTION    :{LTBLUE}For use with goal servers{}http://novapolis.net/{}{YELLOW}Coded Together by The Dude{}{BROWN}GNU GPL v2{}{GREEN}Version # 2014.12.01
+STR_GRF_URL            :http://www.novapolis.net/
+
+
+STR_PARAM0_NAME        :Basecost modifier
+STR_PARAM0_DESC        :Choose basecost preset
+STR_PARAM0_VAL0        :Default
+STR_PARAM0_VAL1        :Easy
+STR_PARAM0_VAL2        :Hard

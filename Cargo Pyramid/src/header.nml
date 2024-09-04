@@ -1,0 +1,22 @@
+grf {
+	grfid:                  "TD\09\01";
+	name:                   string(STR_GRF_NAME);
+	desc:                   string(STR_GRF_DESCRIPTION);
+	version:                6;
+	min_compatible_version: 6;
+	url: string(STR_GRF_URL);
+}
+
+cargotable {
+	PASS, COAL, MAIL, OIL_, LVST, GOOD, GRAI, WOOD,
+	IORE, STEL, DIAM, PAPR, FOOD, FRUT, CORE, WATR,
+	RUBR, SUGR, TOYS, BATT, SWET, TOFF, COLA, CTCD,
+	BUBL, PLST, FZDR, MAIZ, WHEA, GOLD, VALU, CASH,
+	HCOW, ENRG
+}
+
+basecost {
+ 	PR_BUILD_INDUSTRY: 3;
+ 	PR_BUILD_INDUSTRY_RAW: 1;
+}
+

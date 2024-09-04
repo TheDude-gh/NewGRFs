@@ -1,0 +1,144 @@
+##grflangid 0x01
+##plural 0
+STR_GRF_NAME        :Cargo Pyramid Industry Set
+STR_GRF_DESCRIPTION :{LTBLUE}GNU GPLv2{}{YELLOW}Coded by The Dude{}{GREEN}Version # 2014.11.29
+STR_GRF_URL         :http://www.novapolis.net/
+
+STR_CARGO_PASSENGERS        :Pax
+STR_CARGO_PASSENGERS_UNIT   :One Pax
+STR_CARGO_PASSENGERS_UNITS  :{COMMA} Pax
+STR_CARGO_PASSENGERS_ITEMS  :{COMMA} Pax
+STR_CARGO_PASSENGERS_ABBR   :{TINYFONT}PX
+
+STR_CARGO_SINGULAR_MONEY     :Money
+STR_QUANTITY_MONEY           :{COMMA} Money
+STR_ABBREV_MONEY             :{TINYFONT}MN
+
+STR_CARGO_SINGULAR_ENERGY    :Energy
+STR_QUANTITY_ENERGY          :{COMMA} bolts of Energy
+STR_ABBREV_ENERGY            :{TINYFONT}EN
+
+STR_CARGO_SINGULAR_HOLYCOW   :Holy cow
+STR_QUANTITY_HOLYCOW         :{COMMA} items of holy cow{P "" s}
+STR_ABBREV_HOLYCOW           :{TINYFONT}HC
+
+STR_CARGO_SINGULAR_HOLYCOW_INC :Holy cow true
+STR_QUANTITY_HOLYCOW_INC       :{COMMA} items of holy cow{P "" s}
+STR_ABBREV_HOLYCOW_INC         :{TINYFONT}HI
+
+
+STR_CARGO_SINGULAR_PASSENGERS         :Passenger
+STR_CARGO_SINGULAR_COAL         :Coal
+STR_CARGO_SINGULAR_MAIL         :Mail
+STR_CARGO_SINGULAR_OIL         :Oil
+STR_CARGO_SINGULAR_LIVESTOCK         :Livestock
+STR_CARGO_SINGULAR_GOODS         :Goods
+STR_CARGO_SINGULAR_GRAIN         :Grain
+STR_CARGO_SINGULAR_WOOD         :Wood
+STR_CARGO_SINGULAR_IRON_ORE         :Iron Ore
+STR_CARGO_SINGULAR_STEEL         :Steel
+STR_CARGO_SINGULAR_VALUABLES         :Valuables
+STR_CARGO_SINGULAR_COPPER_ORE         :Copper Ore
+STR_CARGO_SINGULAR_FRUIT         :Fruit
+STR_CARGO_SINGULAR_DIAMOND         :Diamond
+STR_CARGO_SINGULAR_FOOD         :Food
+STR_CARGO_SINGULAR_GOLD         :Gold
+STR_CARGO_SINGULAR_WATER         :Water
+STR_CARGO_SINGULAR_RUBBER         :Rubber
+STR_CARGO_SINGULAR_SUGAR         :Sugar
+STR_CARGO_SINGULAR_TOY         :Toy
+STR_CARGO_SINGULAR_SWEET         :Sweet
+STR_CARGO_SINGULAR_COLA         :Cola
+STR_CARGO_SINGULAR_COTTON_CANDY         :Candyfloss
+STR_CARGO_SINGULAR_BUBBLE         :Bubble
+STR_CARGO_SINGULAR_TOFFEE         :Toffee
+STR_CARGO_SINGULAR_FIZZY_DRINK         :Fizzy Drink
+
+STR_QUANTITY_PASSENGERS         :{COMMA} passenger{P "" s}
+STR_QUANTITY_COAL         :{WEIGHT} of coal
+STR_QUANTITY_MAIL         :{COMMA} bag{P "" s} of mail
+STR_QUANTITY_OIL         :{VOLUME} of oil
+STR_QUANTITY_LIVESTOCK         :{COMMA} item{P "" s} of livestock
+STR_QUANTITY_GOODS         :{COMMA} crate{P "" s} of goods
+STR_QUANTITY_GRAIN         :{WEIGHT} of grain
+STR_QUANTITY_WOOD         :{WEIGHT} of wood
+STR_QUANTITY_IRON_ORE         :{WEIGHT} of iron ore
+STR_QUANTITY_STEEL         :{WEIGHT} of steel
+STR_QUANTITY_VALUABLES         :{COMMA} bag{P "" s} of valuables
+STR_QUANTITY_COPPER_ORE         :{WEIGHT} of copper ore
+STR_QUANTITY_FRUIT         :{WEIGHT} of fruit
+STR_QUANTITY_DIAMONDS         :{COMMA} bag{P "" s} of diamonds
+STR_QUANTITY_FOOD         :{WEIGHT} of food
+STR_QUANTITY_GOLD         :{COMMA} bag{P "" s} of gold
+STR_QUANTITY_WATER         :{VOLUME} of water
+STR_QUANTITY_RUBBER         :{VOLUME} of rubber
+STR_QUANTITY_SUGAR         :{WEIGHT} of sugar
+STR_QUANTITY_TOYS         :{COMMA} toy{P "" s}
+STR_QUANTITY_SWEETS         :{COMMA} bag{P "" s} of sweets
+STR_QUANTITY_COLA         :{VOLUME} of cola
+STR_QUANTITY_COTTON_CANDY         :{WEIGHT} of candyfloss
+STR_QUANTITY_BUBBLES         :{COMMA} bubble{P "" s}
+STR_QUANTITY_TOFFEE         :{WEIGHT} of toffee
+STR_QUANTITY_FIZZY_DRINKS         :{COMMA} fizzy drink{P "" s}
+
+STR_ABBREV_PASSENGERS         :{TINYFONT}PS
+STR_ABBREV_COAL         :{TINYFONT}CL
+STR_ABBREV_MAIL         :{TINYFONT}ML
+STR_ABBREV_OIL         :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK         :{TINYFONT}LV
+STR_ABBREV_GOODS         :{TINYFONT}GD
+STR_ABBREV_GRAIN         :{TINYFONT}GR
+STR_ABBREV_WOOD         :{TINYFONT}WD
+STR_ABBREV_IRON_ORE         :{TINYFONT}OR
+STR_ABBREV_STEEL         :{TINYFONT}ST
+STR_ABBREV_VALUABLES         :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE         :{TINYFONT}CO
+STR_ABBREV_FRUIT         :{TINYFONT}FT
+STR_ABBREV_DIAMONDS         :{TINYFONT}DM
+STR_ABBREV_FOOD         :{TINYFONT}FD
+STR_ABBREV_GOLD         :{TINYFONT}GD
+STR_ABBREV_WATER         :{TINYFONT}WR
+STR_ABBREV_RUBBER         :{TINYFONT}RB
+STR_ABBREV_SUGAR         :{TINYFONT}SG
+STR_ABBREV_TOYS         :{TINYFONT}TY
+STR_ABBREV_SWEETS         :{TINYFONT}SW
+STR_ABBREV_COLA         :{TINYFONT}CL
+STR_ABBREV_COTTON_CANDY         :{TINYFONT}CF
+STR_ABBREV_BUBBLES         :{TINYFONT}BU
+STR_ABBREV_TOFFEE         :{TINYFONT}TF
+STR_ABBREV_FIZZY_DRINKS         :{TINYFONT}FZ
+
+STR_INDUSTRY_ACME                      :4A ACME
+STR_INDUSTRY_ACMEACC                   :5A FINISH
+STR_INDUSTRY_FARM_ANIMAL               :1D Animal Farm
+STR_INDUSTRY_COAL_MINE                 :1A Coal mine
+STR_INDUSTRY_POWER_STATION             :3A Power station
+STR_INDUSTRY_FOREST                    :1B Forest
+STR_INDUSTRY_FACTORY                   :2B Factory
+STR_INDUSTRY_PRINTING_WORKS            :2C Printing works
+STR_INDUSTRY_STEEL_MILL                :2A Steel mill
+STR_INDUSTRY_FARM                      :1D Farm
+STR_INDUSTRY_COPPER_ORE_MINE           :1B Copper ore mine
+STR_INDUSTRY_OIL_WELLS                 :1A Oil wells
+STR_INDUSTRY_BANK                      :1C Bank
+STR_INDUSTRY_FOOD_PROCESSING_PLANT     :2D Food processing plant
+STR_INDUSTRY_GOLD_MINE                 :1C Gold mine
+STR_INDUSTRY_DIAMOND_MINE              :1C Diamond mine
+STR_INDUSTRY_IRON_ORE_MINE             :1A Iron ore mine
+STR_INDUSTRY_FRUIT_PLANTATION          :1D Fruit plantation
+STR_INDUSTRY_RUBBER_PLANTATION         :1B Rubber plantation
+STR_INDUSTRY_WATER_SUPPLY              :1E Water supply
+STR_INDUSTRY_CANDYFLOSS_FOREST         :1F Candyfloss forest
+STR_INDUSTRY_SWEET_FACTORY             :2F Sweet factory
+STR_INDUSTRY_COLA_WELLS                :1E Cola wells
+STR_INDUSTRY_TOY_FACTORY               :3B Toy factory
+STR_INDUSTRY_FIZZY_DRINK_FACTORY       :2E Fizzy drink factory
+STR_INDUSTRY_BUBBLE_GENERATOR          :1E Bubble generator
+STR_INDUSTRY_TOFFEE_QUARRY             :1F Toffee quarry
+STR_INDUSTRY_SUGAR_MINE                :1F Sugar mine
+
+
+STR_STATION_MINE      :Mine
+STR_STATION_FARM      :Farm
+STR_TOWN 							:{STRING}
+STR_STATION 				  :{STRING} {STRING}
