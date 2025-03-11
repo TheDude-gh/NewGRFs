@@ -1,0 +1,10 @@
+CHANGELOG
+
+Version - date
+1 - 2025-02-23
+Polished
+Final industry tracks amount of cargo delivered
+
+Version - date
+0 - 2014-11-19
+NewGRF created

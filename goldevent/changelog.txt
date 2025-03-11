@@ -1,0 +1,10 @@
+CHANGELOG
+
+Version - date
+1 - 2025-03-01
+Polished for NML
+
+
+Version - date
+0 - 2014-02-16
+NewGRF created

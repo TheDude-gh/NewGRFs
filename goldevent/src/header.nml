@@ -2,10 +2,10 @@ grf {
 	grfid:                  "TD\09\00";
 	name:                   string(STR_GRF_NAME);
 	desc:                   string(STR_GRF_DESCRIPTION);
-	version:                6;
-	min_compatible_version: 6;
+	version:                1;
+	min_compatible_version: 1;
 	url: string(STR_GRF_URL);
-	
+
 		param 0 { par_start_year {
 			type: int;  name: string(STR_PAR_DESC);  desc: string(STR_PAR_DESC);  min_value: 0;  max_value: 2100;  def_value: 1950; }
 		}
@@ -366,16 +366,16 @@ item(FEAT_AIRCRAFT, plane_0, 0x02) {
 
 //pax payment    do: ((10 - time) << 5), max(min(res, 16), -1000)
 switch(FEAT_CARGOS, SELF, sw_cargo_pax_payment,
-  max(min((10 - ((extra_callback_info2 >> 16) & 0xFF)) * 32, 16), -1000)
+  max(min((10 - getbits(extra_callback_info2, 24, 8)) * 32, 16), -1000)
 ){
 	default: return;
 }
 
-item(FEAT_CARGOS, pax, 0x01) {
+item(FEAT_CARGOS, pax, 0x00) {
 	property {
 	  penalty_lowerbound: 4;
 		single_penalty_length: 18;
-		price_factor: 256;
+		price_factor: 6.3;
 	}
 	graphics {
   	profit: sw_cargo_pax_payment;
@@ -384,45 +384,41 @@ item(FEAT_CARGOS, pax, 0x01) {
 
 //gold payment, income = result/8192 * amount * cpf;   //var18: ttaadddd -> LE.ddddaatt, tt 1 unit =185 ticks ~= 2,5 days, 1 day ~= 74 ticks
 //gold payment, nvar=0 returns callback result
-// max(time - 5, 0), store in TR[0]
-// max(that - 20, 0) store in TR[1]
-// max(that - 50, 0) *4 -> store in TR[2]
+// max(time - 5, 0), store in TR[0]           12.5 days
+// max(that - 16, 0) store in TR[1]           40 days
+// max(that - 30, 0) store in TR[2]           75 days
 // max(255 - TR[0] - TR[1] - TR[2], 31)
-// ((that * dist) >> 8) * TR[3] & 3F FF (first 14 bits)
+// ((that * dist) / 8) * TR[3] & 3F FF (first 14 bits)
 switch(FEAT_CARGOS, SELF, sw_gold_final,	[
-	STORE_TEMP(max(STORE_TEMP(max(STORE_TEMP(max(((extra_callback_info2 >> 16) & 0xFF) - 5, 0), 0x00) - 20, 0), 0x01) - 40, 0) * 4, 0x02),
-	(max(255 - LOAD_TEMP(0x00) - LOAD_TEMP(0x01) - LOAD_TEMP(0x02), 31) * (extra_callback_info2 & 0xFFFF) / 256 * LOAD_TEMP(0x03)) & 0x3FFF
+	STORE_TEMP(max(STORE_TEMP(max(STORE_TEMP(max(getbits(extra_callback_info2, 24, 8) - 5, 0), 0x00) - 16, 0), 0x01) - 30, 0), 0x02),
+	(max(255 - LOAD_TEMP(0x00) - LOAD_TEMP(0x01) - LOAD_TEMP(0x02), 31) * getbits(extra_callback_info2, 0, 16) / 256 * LOAD_TEMP(0x03)) & 0x3FFF
 ]){
 	default: return;
 }
 
-//negative profit   do: (time - 70) * 5 ->store in TR[0], do: -1 - TR[0] return that
+//negative profit   do: (time - 40) * 5 ->store in TR[0], do: -1 - TR[0] return that
 switch(FEAT_CARGOS, SELF, sw_gold_negative, [
-	STORE_TEMP((((extra_callback_info2 >> 16) & 0xFF) - 70) * 5, 0x00),
+	STORE_TEMP((getbits(extra_callback_info2, 24, 8) - 40) * 5, 0x00),
 	((-1 - LOAD_TEMP(0x00)) & 0x7FFF) | 0x4000
 ]){
 	default: return;
 }
-// do: max(time, 60), if >70 go to negative calc
-switch(FEAT_CARGOS, SELF, sw_gold_time, max((extra_callback_info2 >> 16) & 0xFF, 70) ){
-	0..70: sw_gold_final;
+// do: max(time, 40), if >40 go to negative calc   ~ 100 days
+switch(FEAT_CARGOS, SELF, sw_gold_time, max(getbits(extra_callback_info2, 24, 8), 40) ){
+	0..40: sw_gold_final;
 	default: sw_gold_negative;
 }
 //delivery multiplier, year based, store in TR[3]
 switch(FEAT_CARGOS, SELF, sw_gold_delivery_mult1, STORE_TEMP(2, 0x03)){
-	0: sw_gold_final;
 	default: sw_gold_final;
 }
 switch(FEAT_CARGOS, SELF, sw_gold_delivery_mult2, STORE_TEMP(3, 0x03)){
-	0: sw_gold_final;
 	default: sw_gold_final;
 }
 switch(FEAT_CARGOS, SELF, sw_gold_delivery_mult3, STORE_TEMP(8, 0x03)){
-	0: sw_gold_time;
 	default: sw_gold_time;
 }
 switch(FEAT_CARGOS, SELF, sw_gold_delivery_mult4, STORE_TEMP(19, 0x03)){
-	0: sw_gold_time;
 	default: sw_gold_time;
 }
 
@@ -440,7 +436,7 @@ item(FEAT_CARGOS, gold, 0x0A) {
 	property {
 	  penalty_lowerbound: 8;
 		single_penalty_length: 22;
-		price_factor: 5802;
+		price_factor: 144;
 		town_growth_effect: TOWNGROWTH_GOODS;
 		town_growth_multiplier: 100;
 	}
@@ -461,41 +457,37 @@ item(FEAT_INDUSTRIES, bank, 0x10) {
 }
 //GOLDMINE
 /*
-7C - PSTO, 7D - TSTO, 7F - parameter
 industry acceptance
-PR[0] = WAITING CARGO
-PR[1] = >0-DISABLE ACCEPT, 0-ENABLE ACCEPT
+PR[1] = >0-DISABLE ACCEPT, 1-ENABLE ACCEPT
 PR[2] = MAX ACCEPT
--PR[3] =
--PR[4] =
-PR[5] = YEAR DIFF (CURRENT - START)
-PR[6] = SUBSTRACT
-PR[7] = ADD
+TR[6] = SUBSTRACT
+TR[7] = ADD
 */
 
 //production callback called every 256 ticks (3.5 days, day=74 ticks), 8,5x per month"
 //prodcall loaded from TR
 //PRODUCTION CALLBACK
-produce(sw_goldmine_production_final, LOAD_TEMP(0x06), 0, 0, LOAD_TEMP(0x07), 0, 0);
+produce(sw_goldmine_production_final,
+	[PASS: LOAD_TEMP(0x06);],
+	[GOLD: LOAD_TEMP(0x07);]
+)
 
-//do: waiting cargo -> store in PR[0] / PR[2] -> store in PR[1]
-// SUBSTRACT = waiting / 8, ADD = SUBSTRACT >> 1
-//do: waiting cargo >> 3 -> store in TR[6] >> 1  -> store in TR[7], set 0 to TR[8] (def value for prod call)
+//do: waiting cargo / PR[2] -> store in PR[1]
+// SUBSTRACT = waiting / 8, ADD = SUBSTRACT / 2
+//do: waiting cargo / 8 -> store in TR[6] / 2  -> store in TR[7]
 switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_do, [
-	STORE_PERM(STORE_PERM(waiting_cargo_1, 0x00) / LOAD_PERM(0x02), 0x01),
-	STORE_TEMP(STORE_TEMP(waiting_cargo_1 / 8, 0x06) / 2, 0x07),
-	STORE_TEMP(0, 0x08)
+	STORE_PERM(incoming_cargo_waiting("PASS") / LOAD_PERM(0x02), 0x01),
+	STORE_TEMP(STORE_TEMP(incoming_cargo_waiting("PASS") / 8, 0x06) / 2, 0x07)
 ]){
-	0: sw_goldmine_production_final;
 	default: sw_goldmine_production_final;
 }
-switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept1, STORE_PERM(50, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
-switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept2, STORE_PERM(150, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
-switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept3, STORE_PERM(250, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
-switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept4, STORE_PERM(450, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
-switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept5, STORE_PERM(10000, 0x02)){	0: sw_goldmine_production_do; default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept1, STORE_PERM(50, 0x02))   { default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept2, STORE_PERM(150, 0x02))  { default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept3, STORE_PERM(250, 0x02))  { default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept4, STORE_PERM(450, 0x02))  { default: sw_goldmine_production_do; }
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production_maxaccept5, STORE_PERM(10000, 0x02)){ default: sw_goldmine_production_do; }
 
-switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production, STORE_PERM(current_year - param[0], 0x05)){
+switch(FEAT_INDUSTRIES, SELF, sw_goldmine_production, current_year - param[0]){
 	0..2: sw_goldmine_production_maxaccept1;
 	3..5: sw_goldmine_production_maxaccept2;
 	6..7: sw_goldmine_production_maxaccept3;
@@ -510,7 +502,7 @@ switch(FEAT_INDUSTRIES, SELF, sw_goldmine_decide_accept, LOAD_PERM(0x01)){
 }
 //CARGO SUBTEXT
 switch(FEAT_INDUSTRIES, SELF, sw_goldmine_cargosubtext_show, [
-	STORE_TEMP(LOAD_PERM(0x02) + LOAD_PERM(0x01), 0x100),
+	STORE_TEMP(LOAD_PERM(0x02), 0x100),
 	LOAD_PERM(0x01)
 ]){
 	0: string(STR_GOLDMINEYES);
@@ -535,10 +527,11 @@ item(FEAT_INDUSTRIES, goldmine, 0x15) {
  		substitute: 15;
 		override: 15;
 		fund_cost_multiplier: 255;
-		prod_multiplier: [0];
+		cargo_types: [
+			produce_cargo("GOLD", 0),
+			accept_cargo("PASS", produce_cargo("GOLD", 0.5))
+		];
 		life_type: IND_LIFE_TYPE_PROCESSING;
-		accept_cargo_types: [PASS];
-		input_multiplier_1: [0.5];
 	}
 	graphics {
     produce_256_ticks: sw_goldmine_production;
@@ -547,6 +540,4 @@ item(FEAT_INDUSTRIES, goldmine, 0x15) {
     stop_accept_cargo: sw_goldmine_decide_accept;
 	}
 }
-   
-   
-   
+

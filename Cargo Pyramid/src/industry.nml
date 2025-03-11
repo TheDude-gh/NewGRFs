@@ -92,22 +92,40 @@ switch(FEAT_INDUSTRIES, SELF, produce_level4,
 	produce_level4_ok;
 }
 
+switch(FEAT_INDUSTRIES, SELF, text_acme_accept,
+	[STORE_TEMP(LOAD_PERM(0x00), 0x100)] //, STORE_TEMP(cargotype("HCOW"), 0x101)
+){
+  return string(STR_INDUSTRY_ACME_ACCEPT);
+}
+
+
+//consume everything stored in previous step
+produce(produce_finish_none, [HCOW: LOAD_TEMP(0x00);], [])
+
+//store P: previous value + newly delivered cargo,  store T: newly delivered cargo to wholy consume in production
+switch(FEAT_INDUSTRIES, SELF, acme_cargo_arrival,
+  [STORE_PERM(LOAD_PERM(0x00) + incoming_cargo_waiting("HCOW"), 0x00), STORE_TEMP(incoming_cargo_waiting("HCOW"), 0x00)]
+){
+  produce_finish_none;
+}
+
+
 item(FEAT_INDUSTRIES, COAL_MINE, 0){
 	property{
 		substitute: 0;
 		override: 0;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [COAL];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [16, 0];
+		cargo_types: [
+			produce_cargo("COAL", 16),
+			accept_cargo("PASS", produce_cargo("COAL", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [STEEL_MILL];
 		prob_random: 100;
 		prob_in_game: 100;
 		map_colour: 0x01;
 		spec_flags: 0;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_COAL_MINE);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_COAL_MINE));
@@ -120,9 +138,12 @@ item(FEAT_INDUSTRIES, POWER_STATION, 1){
 		override: 1;
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		fund_cost_multiplier: 57;
-		prod_cargo_types: [ENRG];
-		accept_cargo_types: [FOOD, SWET, FZDR];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("ENRG", 0),
+			accept_cargo("FOOD"),
+			accept_cargo("SWET"),
+			accept_cargo("FZDR")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FOOD_PROCESSING_PLANT, FIZZY_DRINK_FACTORY, SWEET_FACTORY];
 		prob_random: 0;
@@ -142,15 +163,15 @@ item(FEAT_INDUSTRIES, FOREST, 3){
 		override: 3;
 		life_type: IND_LIFE_TYPE_ORGANIC;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [WOOD];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [15, 0];
+		cargo_types: [
+			produce_cargo("WOOD", 15),
+			accept_cargo("PASS", produce_cargo("WOOD", 0.5))
+		];
 		min_cargo_distr: 30;
 		conflicting_ind_types: [FACTORY];
 		prob_random: 120;
 		prob_in_game: 100;
 		map_colour: 0x53;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_FOREST);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FOREST));
@@ -182,9 +203,11 @@ item(FEAT_INDUSTRIES, ACME, 4){
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		//life_type: IND_LIFE_TYPE_ORGANIC;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [HCOW];
-		accept_cargo_types: [ENRG, TOYS];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("HCOW", 0),
+			accept_cargo("ENRG"),
+			accept_cargo("TOYS")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [ACMEACC, POWER_STATION, TOY_FACTORY];
 		prob_random: 0;
@@ -222,9 +245,9 @@ item(FEAT_INDUSTRIES, ACMEACC, 14){
 		layouts: [layout_finish];
 		life_type: IND_LIFE_TYPE_BLACK_HOLE;
 		fund_cost_multiplier: 216;
-		prod_cargo_types: [];
-		accept_cargo_types: [HCOW];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			accept_cargo("HCOW")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [ACME, ACMEACC];
 		prob_random: 0;
@@ -232,6 +255,10 @@ item(FEAT_INDUSTRIES, ACMEACC, 14){
 		map_colour: 0xBF;
 		name: string(STR_INDUSTRY_ACMEACC);
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_ACMEACC));
+	}
+	graphics {
+		produce_cargo_arrival: acme_cargo_arrival;
+		extra_text_industry: text_acme_accept;
 	}
 }
 
@@ -241,9 +268,12 @@ item(FEAT_INDUSTRIES, FACTORY, 6){
 		override: 6;
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		fund_cost_multiplier: 57;
-		prod_cargo_types: [GOOD];
-		accept_cargo_types: [WOOD, RUBR, CORE];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("GOOD", 0),
+			accept_cargo("WOOD"),
+			accept_cargo("RUBR"),
+			accept_cargo("CORE")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FOREST, COPPER_ORE_MINE, RUBBER_PLANTATION];
 		prob_random: 20;
@@ -263,9 +293,12 @@ item(FEAT_INDUSTRIES, PRINTING_WORKS, 7){
 		override: 7;
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		fund_cost_multiplier: 57;
-		prod_cargo_types: [CASH];
-		accept_cargo_types: [DIAM, GOLD, VALU];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("CASH", 0),
+			accept_cargo("DIAM"),
+			accept_cargo("GOLD"),
+			accept_cargo("VALU")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [DIAMOND_MINE, GOLD_MINE, BANK];
 		prob_random: 20;
@@ -285,9 +318,12 @@ item(FEAT_INDUSTRIES, STEEL_MILL, 8){
 		override: 8;
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		fund_cost_multiplier: 57;
-		prod_cargo_types: [STEL];
-		accept_cargo_types: [COAL, IORE, OIL_];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("STEL", 0),
+			accept_cargo("COAL"),
+			accept_cargo("IORE"),
+			accept_cargo("OIL_")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [COAL_MINE, IRON_ORE_MINE, OIL_WELLS];
 		prob_random: 20;
@@ -307,16 +343,16 @@ item(FEAT_INDUSTRIES, FARM, 9){
 		override: 9;
 		life_type: IND_LIFE_TYPE_ORGANIC;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [GRAI];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [20, 0];
+		cargo_types: [
+			produce_cargo("GRAI", 20),
+			accept_cargo("PASS", produce_cargo("GRAI", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FOOD_PROCESSING_PLANT, FARM_ANIMAL];
 		prob_random: 80;
 		prob_in_game: 80;
 		map_colour: 0x30;
 		spec_flags: bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY);
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_FARM);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FARM));
@@ -329,15 +365,15 @@ item(FEAT_INDUSTRIES, COPPER_ORE_MINE, 10){
 		override: 10;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [CORE];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [15, 0];
+		cargo_types: [
+			produce_cargo("CORE", 15),
+			accept_cargo("PASS", produce_cargo("CORE", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FACTORY];
 		prob_random: 110;
 		prob_in_game: 100;
 		map_colour: 0x05;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_COPPER_ORE_MINE);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_COPPER_ORE_MINE));
@@ -350,16 +386,16 @@ item(FEAT_INDUSTRIES, OIL_WELLS, 11){
 		override: 11;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [OIL_];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [15, 0];
+		cargo_types: [
+			produce_cargo("OIL_", 15),
+			accept_cargo("PASS", produce_cargo("OIL_", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [STEEL_MILL];
 		prob_random: 100;
 		prob_in_game: 100;
 		map_colour: 0x98;
 		spec_flags: 0;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_OIL_WELLS);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_OIL_WELLS));
@@ -372,16 +408,16 @@ item(FEAT_INDUSTRIES, BANK, 12){
 		override: 12;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [VALU];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [16, 0];
+		cargo_types: [
+			produce_cargo("VALU", 16),
+			accept_cargo("PASS", produce_cargo("VALU", 0.5))
+		];
 		min_cargo_distr: 10;
 		conflicting_ind_types: [PRINTING_WORKS, BANK];
 		prob_random: 90;
 		prob_in_game: 100;
 		map_colour: 0x92;
 		spec_flags: bitmask(IND_FLAG_BUILT_NEAR_TOWN);
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_BANK);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_BANK));
@@ -394,9 +430,12 @@ item(FEAT_INDUSTRIES, FOOD_PROCESSING_PLANT, 13){
 		override: 13;
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		fund_cost_multiplier: 57;
-		prod_cargo_types: [FOOD];
-		accept_cargo_types: [LVST, GRAI, FRUT];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("FOOD", 0),
+			accept_cargo("LVST"),
+			accept_cargo("GRAI"),
+			accept_cargo("FRUT")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FARM, FARM_ANIMAL, FRUIT_PLANTATION];
 		prob_random: 20;
@@ -416,15 +455,15 @@ item(FEAT_INDUSTRIES, GOLD_MINE, 15){
 		override: 15;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [GOLD];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [14, 0];
+		cargo_types: [
+			produce_cargo("GOLD", 14),
+			accept_cargo("PASS", produce_cargo("GOLD", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [DIAMOND_MINE, PRINTING_WORKS];
 		prob_random: 130;
 		prob_in_game: 130;
 		map_colour: 0xC2;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_GOLD_MINE);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_GOLD_MINE));
@@ -437,15 +476,15 @@ item(FEAT_INDUSTRIES, DIAMOND_MINE, 17){
 		override: 17;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [DIAM];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [14, 0];
+		cargo_types: [
+			produce_cargo("DIAM", 14),
+			accept_cargo("PASS", produce_cargo("DIAM", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [GOLD_MINE, PRINTING_WORKS];
 		prob_random: 125;
 		prob_in_game: 125;
 		map_colour: 0x2F;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_DIAMOND_MINE);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_DIAMOND_MINE));
@@ -458,15 +497,15 @@ item(FEAT_INDUSTRIES, IRON_ORE_MINE, 18){
 		override: 18;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [IORE];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [15, 0];
+		cargo_types: [
+			produce_cargo("IORE", 15),
+			accept_cargo("PASS", produce_cargo("IORE", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [STEEL_MILL];
 		prob_random: 110;
 		prob_in_game: 100;
 		map_colour: 0x37;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_IRON_ORE_MINE);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_IRON_ORE_MINE));
@@ -479,15 +518,15 @@ item(FEAT_INDUSTRIES, FRUIT_PLANTATION, 19){
 		override: 19;
 		life_type: IND_LIFE_TYPE_ORGANIC;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [FRUT];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [16, 0];
+		cargo_types: [
+			produce_cargo("FRUT", 16),
+			accept_cargo("PASS", produce_cargo("FRUT", 0.5))
+		];
 		min_cargo_distr: 15;
 		conflicting_ind_types: [FOOD_PROCESSING_PLANT];
 		prob_random: 110;
 		prob_in_game: 100;
 		map_colour: 0x57;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_FRUIT_PLANTATION);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FRUIT_PLANTATION));
@@ -500,15 +539,15 @@ item(FEAT_INDUSTRIES, RUBBER_PLANTATION, 20){
 		override: 20;
 		life_type: IND_LIFE_TYPE_ORGANIC;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [RUBR];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [16, 0];
+		cargo_types: [
+			produce_cargo("RUBR", 16),
+			accept_cargo("PASS", produce_cargo("RUBR", 0.5))
+		];
 		min_cargo_distr: 15;
 		conflicting_ind_types: [FACTORY];
 		prob_random: 100;
 		prob_in_game: 90;
 		map_colour: 0x27;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_RUBBER_PLANTATION);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_RUBBER_PLANTATION));
@@ -521,15 +560,15 @@ item(FEAT_INDUSTRIES, WATER_SUPPLY, 21){
 		override: 21;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [WATR];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [18, 0];
+		cargo_types: [
+			produce_cargo("WATR", 18),
+			accept_cargo("PASS", produce_cargo("WATR", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FIZZY_DRINK_FACTORY];
 		prob_random: 90;
 		prob_in_game: 90;
 		map_colour: 0x25;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_WATER_SUPPLY);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_WATER_SUPPLY));
@@ -542,16 +581,16 @@ item(FEAT_INDUSTRIES, FARM_ANIMAL, 24){
 		override: 24;
 		life_type: IND_LIFE_TYPE_ORGANIC;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [LVST];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [18, 0];
+		cargo_types: [
+			produce_cargo("LVST", 18),
+			accept_cargo("PASS", produce_cargo("LVST", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FARM, FOOD_PROCESSING_PLANT];
 		prob_random: 90;
 		prob_in_game: 80;
 		map_colour: 0x5D;
 		spec_flags: bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY);
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_FARM_ANIMAL);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_FARM_ANIMAL));
@@ -564,15 +603,15 @@ item(FEAT_INDUSTRIES, CANDYFLOSS_FOREST, 26){
 		override: 26;
 		life_type: IND_LIFE_TYPE_ORGANIC;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [CTCD];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [15, 0];
+		cargo_types: [
+			produce_cargo("CTCD", 15),
+			accept_cargo("PASS", produce_cargo("CTCD", 0.5))
+		];
 		min_cargo_distr: 30;
 		conflicting_ind_types: [SWEET_FACTORY];
 		prob_random: 110;
 		prob_in_game: 110;
 		map_colour: 0xA5;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_CANDYFLOSS_FOREST);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_CANDYFLOSS_FOREST));
@@ -585,15 +624,17 @@ item(FEAT_INDUSTRIES, SWEET_FACTORY, 27){
 		override: 27;
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		fund_cost_multiplier: 57;
-		prod_cargo_types: [SWET];
-		accept_cargo_types: [CTCD, SUGR, TOFF];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("SWET", 0),
+			accept_cargo("CTCD"),
+			accept_cargo("SUGR"),
+			accept_cargo("TOFF")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [TOFFEE_QUARRY, SUGAR_MINE, CANDYFLOSS_FOREST];
 		prob_random: 20;
 		prob_in_game: 20;
 		map_colour: 0xBD;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_SWEET_FACTORY);
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_SWEET_FACTORY));
 	}
@@ -608,15 +649,15 @@ item(FEAT_INDUSTRIES, COLA_WELLS, 29){
 		override: 29;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [COLA];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [16, 0];
+		cargo_types: [
+			produce_cargo("COLA", 16),
+			accept_cargo("PASS", produce_cargo("COLA", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FIZZY_DRINK_FACTORY];
 		prob_random: 110;
 		prob_in_game: 120;
 		map_colour: 0x3C;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_COLA_WELLS);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_COLA_WELLS));
@@ -629,9 +670,12 @@ item(FEAT_INDUSTRIES, TOY_FACTORY, 31){
 		override: 31;
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		fund_cost_multiplier: 57;
-		prod_cargo_types: [TOYS];
-		accept_cargo_types: [STEL, GOOD, CASH];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("TOYS", 0),
+			accept_cargo("STEL"),
+			accept_cargo("GOOD"),
+			accept_cargo("CASH")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [STEEL_MILL, FACTORY, PRINTING_WORKS];
 		prob_random: 0;
@@ -651,9 +695,12 @@ item(FEAT_INDUSTRIES, FIZZY_DRINK_FACTORY, 33){
 		override: 33;
 		life_type: IND_LIFE_TYPE_PROCESSING;
 		fund_cost_multiplier: 57;
-		prod_cargo_types: [FZDR];
-		accept_cargo_types: [BUBL, COLA, WATR];
-		prod_multiplier: [0, 0];
+		cargo_types: [
+			produce_cargo("FZDR", 0),
+			accept_cargo("BUBL"),
+			accept_cargo("COLA"),
+			accept_cargo("WATR")
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [COLA_WELLS, WATER_SUPPLY, BUBBLE_GENERATOR];
 		prob_random: 20;
@@ -673,15 +720,15 @@ item(FEAT_INDUSTRIES, BUBBLE_GENERATOR, 34){
 		override: 34;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [BUBL];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [17, 0];
+		cargo_types: [
+			produce_cargo("BUBL", 17),
+			accept_cargo("PASS", produce_cargo("BUBL", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [FIZZY_DRINK_FACTORY];
 		prob_random: 90;
 		prob_in_game: 85;
 		map_colour: 0x94;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_BUBBLE_GENERATOR);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_BUBBLE_GENERATOR));
@@ -694,15 +741,15 @@ item(FEAT_INDUSTRIES, TOFFEE_QUARRY, 35){
 		override: 35;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [TOFF];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [15, 0];
+		cargo_types: [
+			produce_cargo("TOFF", 15),
+			accept_cargo("PASS", produce_cargo("TOFF", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [SWEET_FACTORY];
 		prob_random: 100;
 		prob_in_game: 100;
 		map_colour: 0xBC;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_TOFFEE_QUARRY);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_TOFFEE_QUARRY));
@@ -715,15 +762,15 @@ item(FEAT_INDUSTRIES, SUGAR_MINE, 36){
 		override: 36;
 		life_type: IND_LIFE_TYPE_EXTRACTIVE;
 		fund_cost_multiplier: 143;
-		prod_cargo_types: [SUGR];
-		accept_cargo_types: [PASS];
-		prod_multiplier: [24, 0];
+		cargo_types: [
+			produce_cargo("SUGR", 24),
+			accept_cargo("PASS", produce_cargo("SUGR", 0.5))
+		];
 		min_cargo_distr: 5;
 		conflicting_ind_types: [SWEET_FACTORY];
 		prob_random: 80;
 		prob_in_game: 70;
 		map_colour: 0x0F;
-		input_multiplier_1: [0.5];
 		name: string(STR_INDUSTRY_SUGAR_MINE);
 		prospect_chance: 1;
 		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_INDUSTRY_SUGAR_MINE));
